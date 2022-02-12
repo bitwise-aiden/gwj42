@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://source/scenes/main/hand.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 64, 74 )
+
+[node name="hand" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="positions" type="Node2D" parent="."]
+
+[node name="rune_position_0" type="Position2D" parent="positions"]
+
+[node name="rune_position_1" type="Position2D" parent="positions"]
+position = Vector2( 130, 0 )
+
+[node name="rune_position_2" type="Position2D" parent="positions"]
+position = Vector2( 260, 0 )
+
+[node name="triggers" type="Node2D" parent="."]
+
+[node name="hover_area_0" type="Area2D" parent="triggers"]
+
+[node name="bounds" type="CollisionShape2D" parent="triggers/hover_area_0"]
+position = Vector2( 0, -10 )
+shape = SubResource( 1 )
+
+[node name="hover_area_1" type="Area2D" parent="triggers"]
+position = Vector2( 130, 0 )
+
+[node name="bounds" type="CollisionShape2D" parent="triggers/hover_area_1"]
+position = Vector2( 0, -10 )
+shape = SubResource( 1 )
+
+[node name="hover_area_2" type="Area2D" parent="triggers"]
+position = Vector2( 260, 0 )
+
+[node name="bounds" type="CollisionShape2D" parent="triggers/hover_area_2"]
+position = Vector2( 0, -10 )
+shape = SubResource( 1 )
+
+[node name="runes" type="Node2D" parent="."]

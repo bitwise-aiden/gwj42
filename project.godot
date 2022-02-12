@@ -15,6 +15,31 @@ _global_script_classes=[ {
 "path": "res://source/helpers/tasks/base_task.gd"
 }, {
 "base": "Reference",
+"class": "Card",
+"language": "GDScript",
+"path": "res://source/cards/card.gd"
+}, {
+"base": "Reference",
+"class": "CardDeck",
+"language": "GDScript",
+"path": "res://source/cards/card_deck.gd"
+}, {
+"base": "Reference",
+"class": "CardManager",
+"language": "GDScript",
+"path": "res://source/cards/card_manager.gd"
+}, {
+"base": "Reference",
+"class": "CardPool",
+"language": "GDScript",
+"path": "res://source/cards/card_pool.gd"
+}, {
+"base": "Reference",
+"class": "CardState",
+"language": "GDScript",
+"path": "res://source/cards/card_state.gd"
+}, {
+"base": "Reference",
 "class": "CommandData",
 "language": "GDScript",
 "path": "res://addons/gift/util/cmd_data.gd"
@@ -39,6 +64,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/godot_reset/godot_reset.gd"
 }, {
+"base": "Node2D",
+"class": "Hand",
+"language": "GDScript",
+"path": "res://source/scenes/main/hand.gd"
+}, {
 "base": "Node",
 "class": "ImageCache",
 "language": "GDScript",
@@ -49,10 +79,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/helpers/player_input.gd"
 }, {
+"base": "Sprite",
+"class": "Rune",
+"language": "GDScript",
+"path": "res://source/scenes/main/rune.gd"
+}, {
 "base": "Reference",
 "class": "SenderData",
 "language": "GDScript",
 "path": "res://addons/gift/util/sender_data.gd"
+}, {
+"base": "Node2D",
+"class": "Stack",
+"language": "GDScript",
+"path": "res://source/scenes/main/stack.gd"
 }, {
 "base": "Reference",
 "class": "Task",
@@ -66,14 +106,22 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "BaseTask": "",
+"Card": "",
+"CardDeck": "",
+"CardManager": "",
+"CardPool": "",
+"CardState": "",
 "CommandData": "",
 "CommandInfo": "",
 "CurrentQueue": "",
 "Gift": "",
 "GodotReset": "",
+"Hand": "",
 "ImageCache": "",
 "PlayerInput": "",
+"Rune": "",
 "SenderData": "",
+"Stack": "",
 "Task": "",
 "TaskQueue": ""
 }
@@ -81,7 +129,7 @@ _global_script_class_icons={
 [application]
 
 config/name="gwj42"
-run/main_scene="res://source/main.tscn"
+run/main_scene="res://source/scenes/main/main.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -111,7 +159,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/godot_reset/plugin.cfg", "res://addons/velopbot/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/godot_reset/plugin.cfg" )
 
 [rendering]
 

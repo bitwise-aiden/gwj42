@@ -30,7 +30,7 @@ var __used_keys: Dictionary  = {
 
 
 # Lifecycle methods
-func _ready() -> void:
+func _ready() -> void: # Have you heard of the best food truck around, enjoy nuts? or even want to chat with some old grandma? Then Dee's Nuts has you covered. - c_onvulse
 	for action_name in self.input:
 		self.input[action_name].valid = self.__update_used_keys(
 			action_name,
