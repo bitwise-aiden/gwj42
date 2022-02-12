@@ -7,6 +7,7 @@ onready var __positions: Array = $positions.get_children()
 onready var __runes: Array = $runes.get_children()
 onready var __triggers: Array = $triggers.get_children()
 
+var __active_plinth: Plinth = null
 var __active_rune_index: int = -1
 var __following: bool = false
 
@@ -19,7 +20,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if __active_rune_index == -1:
+	if __active_rune_index == -1 || __runes[__active_rune_index] == null:
 		return
 
 	if Input.is_mouse_button_pressed(BUTTON_LEFT):
@@ -28,6 +29,15 @@ func _process(delta: float) -> void:
 		__runes[__active_rune_index].global_position = get_viewport().get_mouse_position()
 	elif __following:
 		__following = false
+
+		if __active_plinth:
+			var position: Position2D = __active_plinth.next_position()
+			if position:
+				__runes[__active_rune_index].move(position.global_position, false)
+
+				__runes[__active_rune_index] = null
+
+				return
 
 		__runes[__active_rune_index].hover_stop(__positions[__active_rune_index].global_position)
 		__active_rune_index = -1
@@ -48,8 +58,17 @@ func next_position() -> Position2D:
 
 # Private methods
 
+func __plinth_activate(plinth: Plinth) -> void:
+	__active_plinth = plinth
+
+
+func __plinth_deactivate(plinth: Plinth) -> void:
+	if __active_plinth == plinth:
+		__active_plinth = null
+
+
 func __rune_activate(rune_index: int) -> void:
-	if __following || rune_index >= __runes.size():
+	if __following || rune_index >= __runes.size() || __runes[rune_index] == null:
 		return
 
 	__runes[rune_index].hover_start()
@@ -58,7 +77,7 @@ func __rune_activate(rune_index: int) -> void:
 
 
 func __rune_deactivate(rune_index: int) -> void:
-	if rune_index >= __runes.size():
+	if rune_index >= __runes.size() || __runes[rune_index] == null:
 		return
 
 	__runes[rune_index].hover_stop(__positions[rune_index].global_position)

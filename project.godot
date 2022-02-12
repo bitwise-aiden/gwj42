@@ -80,6 +80,11 @@ _global_script_classes=[ {
 "path": "res://source/helpers/player_input.gd"
 }, {
 "base": "Sprite",
+"class": "Plinth",
+"language": "GDScript",
+"path": "res://source/scenes/main/plinth.gd"
+}, {
+"base": "Sprite",
 "class": "Rune",
 "language": "GDScript",
 "path": "res://source/scenes/main/rune.gd"
@@ -119,6 +124,7 @@ _global_script_class_icons={
 "Hand": "",
 "ImageCache": "",
 "PlayerInput": "",
+"Plinth": "",
 "Rune": "",
 "SenderData": "",
 "Stack": "",

@@ -11,6 +11,7 @@ onready var __enemy_hand: Hand = $enemy_hand
 onready var __enemy_stack: Stack = $enemy_stack
 onready var __player_hand: Hand = $player_hand
 onready var __player_stack: Stack = $player_stack
+onready var __player_plinths: Array = $player_plinths.get_children()
 
 var __enemy: CardManager = null
 var __player: CardManager = null
@@ -36,6 +37,11 @@ func _ready() -> void:
 		false,
 		Vector2(980.0, -84.0)
 	)
+
+	for plinth in __player_plinths:
+		if plinth is Plinth:
+			plinth.hover_area.connect("mouse_entered", __player_hand, "__plinth_activate", [plinth])
+			plinth.hover_area.connect("mouse_exited", __player_hand, "__plinth_dectivate", [plinth])
 
 
 # Private method
