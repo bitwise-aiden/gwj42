@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/thor_statue.png-b90c3824010ac977b8842f7ed10df383.stex"
+path="res://.import/battle.png-24b63d6dc94a859eaf03d648c24c2a18.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/opponents/thor_statue.png"
-dest_files=[ "res://.import/thor_statue.png-b90c3824010ac977b8842f7ed10df383.stex" ]
+source_file="res://assets/buttons/battle.png"
+dest_files=[ "res://.import/battle.png-24b63d6dc94a859eaf03d648c24c2a18.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
