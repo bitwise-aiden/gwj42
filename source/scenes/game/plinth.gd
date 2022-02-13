@@ -15,8 +15,11 @@ var __rune: Rune = null
 
 # Public variables
 
-func next_position() -> Position2D:
-	if __rune:
-		return null
+func add(rune: Rune) -> void:
+	__rune = rune
 
-	return __rune_position
+	yield(rune.move(__rune_position.global_position, false), "completed")
+
+
+func can_add() -> bool:
+	return __rune == null

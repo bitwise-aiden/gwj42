@@ -123,6 +123,8 @@ func move(incoming: Vector2, visible: bool = true) -> void:
 
 	yield(__tween,"tween_completed")
 
+	# TODO: Particles here
+
 
 # Private methods
 
