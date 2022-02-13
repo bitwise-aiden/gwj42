@@ -3,20 +3,8 @@ class_name Stack extends Node2D
 
 # Private variables
 
-onready var __runes: Array = $runes.get_children()
+onready var __runes: Array = []
 onready var __next_position: Vector2 = global_position
-
-
-# Lifecycle methods
-
-func _ready() -> void:
-	var offset: float = 0.0
-
-	for rune in __runes:
-		rune.position += Vector2(offset, 0.0)
-
-		offset += randf() * 10.0 - 5.0
-		offset = clamp(offset, -20.0, 20.0)
 
 
 # Public methods
@@ -31,8 +19,8 @@ func add(rune: Rune) -> void:
 	yield(rune.move(rune_position, false), "completed")
 
 
-func top() -> Rune:
-	return __runes[-1]
+func empty() -> bool:
+	return __runes.empty()
 
 
 func pop() -> Rune:

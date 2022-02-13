@@ -9,3 +9,7 @@ extends Node
 #	> 1.0 is speed up
 var time_modifier: float = 1.0
 
+
+# Game globals
+
+const DECK_SIZE_MAX: int = 9

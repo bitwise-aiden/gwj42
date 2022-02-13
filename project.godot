@@ -54,6 +54,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/helpers/current_queue.gd"
 }, {
+"base": "Node2D",
+"class": "Discard",
+"language": "GDScript",
+"path": "res://source/scenes/game/discard.gd"
+}, {
 "base": "Reference",
 "class": "Gift",
 "language": "GDScript",
@@ -78,6 +83,11 @@ _global_script_classes=[ {
 "class": "PlayerInput",
 "language": "GDScript",
 "path": "res://source/helpers/player_input.gd"
+}, {
+"base": "TurnController",
+"class": "PlayerTurnController",
+"language": "GDScript",
+"path": "res://source/scenes/game/controllers/player_turn_controller.gd"
 }, {
 "base": "Sprite",
 "class": "Plinth",
@@ -108,6 +118,11 @@ _global_script_classes=[ {
 "class": "TaskQueue",
 "language": "GDScript",
 "path": "res://source/helpers/tasks/task_queue.gd"
+}, {
+"base": "Node",
+"class": "TurnController",
+"language": "GDScript",
+"path": "res://source/scenes/game/controllers/turn_controller.gd"
 } ]
 _global_script_class_icons={
 "BaseTask": "",
@@ -119,17 +134,20 @@ _global_script_class_icons={
 "CommandData": "",
 "CommandInfo": "",
 "CurrentQueue": "",
+"Discard": "",
 "Gift": "",
 "GodotReset": "",
 "Hand": "",
 "ImageCache": "",
 "PlayerInput": "",
+"PlayerTurnController": "",
 "Plinth": "",
 "Rune": "",
 "SenderData": "",
 "Stack": "",
 "Task": "",
-"TaskQueue": ""
+"TaskQueue": "",
+"TurnController": ""
 }
 
 [application]
