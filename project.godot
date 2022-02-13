@@ -165,7 +165,7 @@ _global_script_class_icons={
 [application]
 
 config/name="gwj42"
-run/main_scene="res://source/scenes/game/game.tscn"
+run/main_scene="res://source/scenes/opponent_choice/opponent_choice.tscn"
 config/icon="res://icon.png"
 
 [autoload]
