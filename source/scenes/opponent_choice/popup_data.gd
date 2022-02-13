@@ -12,5 +12,4 @@ func _on_back_button_pressed():
 
 
 func _on_battle_button_pressed():
-	#get_tree().change_scene(TODO, ADD GAME SCENE)
-	pass
+	get_tree().change_scene("res://source/scenes/game/game.tscn")
