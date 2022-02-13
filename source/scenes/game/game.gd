@@ -2,7 +2,7 @@ extends Node2D
 
 # Private constants
 
-const __RUNE_SCENE: PackedScene = preload("res://source/scenes/main/rune.tscn")
+const __RUNE_SCENE: PackedScene = preload("res://source/scenes/game/rune.tscn")
 
 
 # Private variables
@@ -40,8 +40,8 @@ func _ready() -> void:
 
 	for plinth in __player_plinths:
 		if plinth is Plinth:
-			plinth.hover_area.connect("mouse_entered", __player_hand, "__plinth_activate", [plinth])
 			plinth.hover_area.connect("mouse_exited", __player_hand, "__plinth_dectivate", [plinth])
+			plinth.hover_area.connect("mouse_entered", __player_hand, "__plinth_activate", [plinth])
 
 
 # Private method

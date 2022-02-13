@@ -67,7 +67,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Hand",
 "language": "GDScript",
-"path": "res://source/scenes/main/hand.gd"
+"path": "res://source/scenes/game/hand.gd"
 }, {
 "base": "Node",
 "class": "ImageCache",
@@ -82,12 +82,12 @@ _global_script_classes=[ {
 "base": "Sprite",
 "class": "Plinth",
 "language": "GDScript",
-"path": "res://source/scenes/main/plinth.gd"
+"path": "res://source/scenes/game/plinth.gd"
 }, {
 "base": "Sprite",
 "class": "Rune",
 "language": "GDScript",
-"path": "res://source/scenes/main/rune.gd"
+"path": "res://source/scenes/game/rune.gd"
 }, {
 "base": "Reference",
 "class": "SenderData",
@@ -97,7 +97,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Stack",
 "language": "GDScript",
-"path": "res://source/scenes/main/stack.gd"
+"path": "res://source/scenes/game/stack.gd"
 }, {
 "base": "Reference",
 "class": "Task",
@@ -135,7 +135,7 @@ _global_script_class_icons={
 [application]
 
 config/name="gwj42"
-run/main_scene="res://source/scenes/main/main.tscn"
+run/main_scene="res://source/scenes/game/game.tscn"
 config/icon="res://icon.png"
 
 [autoload]

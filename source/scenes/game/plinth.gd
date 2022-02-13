@@ -15,6 +15,12 @@ var __rune: Rune = null
 
 # Public variables
 
+func add(rune: Rune) -> void:
+	if __rune:
+		return
+
+
+
 func next_position() -> Position2D:
 	if __rune:
 		return null

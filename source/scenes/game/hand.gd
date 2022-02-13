@@ -1,6 +1,11 @@
 class_name Hand extends Node2D
 
 
+# Public variables
+
+export(bool) var can_interact: bool = true
+
+
 # Private variables
 
 onready var __positions: Array = $positions.get_children()
@@ -14,6 +19,9 @@ var __following: bool = false
 # Lifecycle methods
 
 func _ready() -> void:
+	if !can_interact:
+		return
+
 	for i in __triggers.size():
 		__triggers[i].connect("mouse_entered", self, "__rune_activate", [i])
 		__triggers[i].connect("mouse_exited", self, "__rune_deactivate", [i])

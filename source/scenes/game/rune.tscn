@@ -1,0 +1,17 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/sprites/rune-shears.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/rune-stone.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/rune-parchment.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/rune.png" type="Texture" id=4]
+[ext_resource path="res://source/scenes/game/rune.gd" type="Script" id=5]
+
+[node name="rune" type="Sprite"]
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+sprite_parchment = ExtResource( 3 )
+sprite_shears = ExtResource( 1 )
+sprite_stone = ExtResource( 2 )
+
+[node name="type" type="Sprite" parent="."]
+visible = false
