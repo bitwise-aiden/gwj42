@@ -26,15 +26,23 @@ func _process(delta: float) -> void:
 		__following = true
 
 		__active_rune.global_position = get_viewport().get_mouse_position()
+		__active_rune.z_index = 10
 	elif __following:
 		__following = false
 
 		if __active_plinth && __active_plinth.can_add():
 			_hand.remove(__active_rune)
-			__active_plinth.add(__active_rune)
+
+			var rune: Rune = __active_rune
 			__active_rune = null
+
+			yield(__active_plinth.add(rune), "completed")
+
+			emit_signal("rune_picked")
+
 		else:
-			pass
+			_hand.deactivate_rune(__active_rune)
+			__active_rune.z_index = 0
 	else:
 		__active_rune = _hand.active_rune
 

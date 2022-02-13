@@ -53,6 +53,8 @@ func hover_stop(origin: Vector2) -> void:
 	__tween.start()
 
 func move(incoming: Vector2, visible: bool = true) -> void:
+	z_index = 10
+
 	# Move up off stack
 	__tween.interpolate_property(
 		self,
@@ -122,6 +124,8 @@ func move(incoming: Vector2, visible: bool = true) -> void:
 	__tween.start()
 
 	yield(__tween,"tween_completed")
+
+	z_index = 0
 
 	# TODO: Particles here
 

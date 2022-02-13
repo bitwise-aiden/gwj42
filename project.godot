@@ -59,6 +59,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/scenes/game/discard.gd"
 }, {
+"base": "TurnController",
+"class": "EnemyTurnController",
+"language": "GDScript",
+"path": "res://source/scenes/game/controllers/enemy_controller.gd"
+}, {
 "base": "Reference",
 "class": "Gift",
 "language": "GDScript",
@@ -119,15 +124,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/helpers/tasks/task_queue.gd"
 }, {
-"base": "TextureButton",
-"class": "opponent_button",
-"language": "GDScript",
-"path": "res://source/scenes/opponent_choice/opponent_button.gd"
-}, {
 "base": "Node",
 "class": "TurnController",
 "language": "GDScript",
 "path": "res://source/scenes/game/controllers/turn_controller.gd"
+}, {
+"base": "TextureButton",
+"class": "opponent_button",
+"language": "GDScript",
+"path": "res://source/scenes/opponent_choice/opponent_button.gd"
 } ]
 _global_script_class_icons={
 "BaseTask": "",
@@ -140,6 +145,7 @@ _global_script_class_icons={
 "CommandInfo": "",
 "CurrentQueue": "",
 "Discard": "",
+"EnemyTurnController": "",
 "Gift": "",
 "GodotReset": "",
 "Hand": "",
@@ -152,8 +158,8 @@ _global_script_class_icons={
 "Stack": "",
 "Task": "",
 "TaskQueue": "",
-"opponent_button": "",
-"TurnController": ""
+"TurnController": "",
+"opponent_button": ""
 }
 
 [application]

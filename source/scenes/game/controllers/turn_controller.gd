@@ -1,6 +1,11 @@
 class_name TurnController extends Node
 
 
+# Public signals
+
+signal rune_picked()
+
+
 # Private constants
 
 const _RUNE_SCENE: PackedScene = preload("res://source/scenes/game/rune.tscn")
@@ -45,6 +50,11 @@ func set_deck(deck: CardDeck) -> void:
 	_deck = deck
 
 	__initialize_discard()
+
+
+func flip() -> void:
+	for plinth in _plinths:
+		yield(plinth.flip(), "completed")
 
 
 # Private methods

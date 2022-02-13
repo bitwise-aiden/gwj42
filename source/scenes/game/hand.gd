@@ -33,32 +33,6 @@ func _ready() -> void:
 		__triggers[i].connect("mouse_exited", self, "__rune_deactivate", [i])
 
 
-#func _process(delta: float) -> void:
-#	if __active_rune_index == -1 || __runes[__active_rune_index] == null:
-#		return
-#
-#	if Input.is_mouse_button_pressed(BUTTON_LEFT):
-#		__following = true
-#
-#		__runes[__active_rune_index].global_position = get_viewport().get_mouse_position()
-#		__runes[__active_rune_index].z_index = 10
-#	elif __following:
-#		__following = false
-#
-#		__runes[__active_rune_index].z_index = 0
-#
-#		if __active_plinth && __active_plinth.can_add():
-#			__active_plinth.add(__runes[__active_rune_index])
-#
-#			__runes[__active_rune_index] = null
-#			__active_rune_index = -1
-#
-#			return
-#
-#		__active_rune_index = -1
-#		__runes[__active_rune_index].hover_stop(__positions[__active_rune_index].global_position)
-
-
 # Public methods
 
 func add(rune: Rune) -> void:
@@ -79,11 +53,26 @@ func can_add() -> bool:
 	return false
 
 
+func deactivate_rune(rune: Rune) -> void:
+	for i in __runes.size():
+		if __runes[i] == rune:
+			__runes[i].hover_stop(__positions[i].global_position)
+
+
+func runes() -> Array:
+	var remaining: Array = []
+
+	for rune in __runes:
+		if rune != null:
+			remaining.append(rune)
+
+	return remaining
+
+
 func remove(rune: Rune) -> void:
 	for i in __runes.size():
 		if __runes[i] == rune:
 			__runes[i] = null
-
 
 # Private methods
 
