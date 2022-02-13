@@ -1,0 +1,169 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://source/scenes/opponent_choice/opponent_choice.gd" type="Script" id=1]
+[ext_resource path="res://assets/backgrounds/opponent_choice_background.png" type="Texture" id=2]
+[ext_resource path="res://source/scenes/opponent_choice/popup_data.gd" type="Script" id=3]
+[ext_resource path="res://assets/buttons/battle.png" type="Texture" id=4]
+[ext_resource path="res://assets/buttons/back.png" type="Texture" id=5]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="opponent_one_spot" type="Control" parent="."]
+margin_left = 480.0
+margin_top = 400.0
+margin_right = 528.0
+margin_bottom = 492.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Popup" type="Popup" parent="opponent_one_spot"]
+pause_mode = 2
+visible = true
+margin_left = 60.0
+margin_top = 60.0
+margin_right = 460.0
+margin_bottom = 660.0
+popup_exclusive = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="opponent_one_spot/Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.52549, 0.490196, 0.25098, 0.572549 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="back_button" type="TextureButton" parent="opponent_one_spot/Popup"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -50.0
+margin_right = 120.0
+texture_normal = ExtResource( 5 )
+
+[node name="battle_button" type="TextureButton" parent="opponent_one_spot/Popup"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -120.0
+margin_top = -50.0
+texture_normal = ExtResource( 4 )
+
+[node name="picture" type="TextureRect" parent="opponent_one_spot/Popup"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 288.0
+margin_bottom = 288.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="description" type="RichTextLabel" parent="opponent_one_spot/Popup"]
+margin_left = 32.0
+margin_top = 364.0
+margin_right = 368.0
+margin_bottom = 492.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+scroll_active = false
+
+[node name="name_popup" type="TextureRect" parent="opponent_one_spot/Popup"]
+margin_left = 32.0
+margin_top = 304.0
+margin_right = 288.0
+margin_bottom = 336.0
+
+[node name="opponent_two_spot" type="Control" parent="."]
+margin_left = 808.0
+margin_top = 400.0
+margin_right = 856.0
+margin_bottom = 492.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Popup" type="Popup" parent="opponent_two_spot"]
+pause_mode = 2
+visible = true
+margin_left = 820.0
+margin_top = 60.0
+margin_right = 1220.0
+margin_bottom = 660.0
+popup_exclusive = true
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="opponent_two_spot/Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.52549, 0.490196, 0.25098, 0.572549 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="back_button" type="TextureButton" parent="opponent_two_spot/Popup"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -50.0
+margin_right = 120.0
+texture_normal = ExtResource( 5 )
+
+[node name="battle_button" type="TextureButton" parent="opponent_two_spot/Popup"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -120.0
+margin_top = -50.0
+texture_normal = ExtResource( 4 )
+
+[node name="picture" type="TextureRect" parent="opponent_two_spot/Popup"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 288.0
+margin_bottom = 288.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="description" type="RichTextLabel" parent="opponent_two_spot/Popup"]
+margin_left = 32.0
+margin_top = 364.0
+margin_right = 368.0
+margin_bottom = 492.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name_popup" type="TextureRect" parent="opponent_two_spot/Popup"]
+margin_left = 32.0
+margin_top = 304.0
+margin_right = 288.0
+margin_bottom = 336.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="opponent_one_spot/Popup/back_button" to="opponent_one_spot/Popup" method="_on_back_button_pressed"]
+[connection signal="pressed" from="opponent_one_spot/Popup/battle_button" to="opponent_one_spot/Popup" method="_on_battle_button_pressed"]
+[connection signal="pressed" from="opponent_two_spot/Popup/back_button" to="opponent_two_spot/Popup" method="_on_back_button_pressed"]
+[connection signal="pressed" from="opponent_two_spot/Popup/battle_button" to="opponent_two_spot/Popup" method="_on_battle_button_pressed"]
