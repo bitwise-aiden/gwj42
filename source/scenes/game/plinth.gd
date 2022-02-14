@@ -29,6 +29,10 @@ func flip() -> void:
 	yield(__rune.move(__rune_position.global_position, true), "completed")
 
 
+func get_rune() -> Rune:
+	return __rune
+
+
 func remove() -> Rune:
 	var rune: Rune = __rune
 

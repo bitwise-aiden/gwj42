@@ -4,20 +4,27 @@ class_name TurnController extends Node
 # Public signals
 
 signal rune_picked()
+signal died()
 
 
 # Private constants
 
-const _RUNE_SCENE: PackedScene = preload("res://source/scenes/game/rune.tscn")
+const __RUNE_SCENE: PackedScene = preload("res://source/scenes/game/rune.tscn")
+const __INITIAL_HEALTH: int = 5
 
 
-# Private variables
+# Protected variables
 
 var _deck: CardDeck = null
 var _discard: Discard = null
 var _hand: Hand = null
 var _plinths: Array = []
 var _stack: Stack = null
+
+
+# Private variables
+
+var __health: int = __INITIAL_HEALTH
 
 
 # Lifecycle methods
@@ -35,6 +42,13 @@ func _init(
 
 
 # Public methods
+
+func damage(amount: int) -> void:
+	__health = max(0, __health - amount)
+
+	if __health == 0:
+		emit_signal("died")
+
 
 func discard() -> void:
 	for plinth in _plinths:
@@ -57,7 +71,6 @@ func draw() -> void:
 		yield(get_tree().create_timer(1.0), "timeout")
 
 
-
 func flip() -> void:
 	for plinth in _plinths:
 		yield(plinth.flip(), "completed")
@@ -69,11 +82,20 @@ func set_deck(deck: CardDeck) -> void:
 	__initialize_discard()
 
 
+func get_runes() -> Array:
+	var runes: Array = []
+
+	for plinth in _plinths:
+		runes.append(plinth.get_rune())
+
+	return runes
+
+
 # Private methods
 
 func __initialize_discard() -> void:
 	for card_state in _deck.cards:
-		var rune: Rune = _RUNE_SCENE.instance()
+		var rune: Rune = __RUNE_SCENE.instance()
 		rune.global_position = _discard.global_position
 		rune.card_state = card_state
 

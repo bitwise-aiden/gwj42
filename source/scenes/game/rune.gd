@@ -35,6 +35,15 @@ func _ready() -> void:
 
 # Public methods
 
+func attack(other: Rune) -> void:
+	var origin: Vector2 = global_position
+
+	var offset: Vector2 = (origin - other.position).normalized() * 50.0
+
+	yield(move(other.global_position + offset), "completed")
+	yield(move(origin), "completed")
+
+
 func hover_start() -> void:
 	__tween.interpolate_property(
 		self,

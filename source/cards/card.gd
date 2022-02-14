@@ -3,7 +3,7 @@ class_name Card
 
 # Public enums
 
-enum Types { STONE, PARCHMENT, SHEARS }
+enum Types { PARCHMENT, SHEARS, STONE }
 enum Elements { NORMAL }
 
 
