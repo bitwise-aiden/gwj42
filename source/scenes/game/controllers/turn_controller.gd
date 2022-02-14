@@ -36,25 +36,37 @@ func _init(
 
 # Public methods
 
+func discard() -> void:
+	for plinth in _plinths:
+		var rune: Rune = plinth.remove()
+
+		if rune:
+			yield(_discard.add(rune), "completed")
+
+
 func draw() -> void:
 	while _hand.can_add():
 		if _stack.empty():
 			yield(__shuffle_discard(), "completed")
+			yield(get_tree().create_timer(0.7), "timeout")
 
 		var rune: Rune = _stack.pop()
 
-		yield(_hand.add(rune), "completed")
+		_hand.add(rune)
+
+		yield(get_tree().create_timer(1.0), "timeout")
+
+
+
+func flip() -> void:
+	for plinth in _plinths:
+		yield(plinth.flip(), "completed")
 
 
 func set_deck(deck: CardDeck) -> void:
 	_deck = deck
 
 	__initialize_discard()
-
-
-func flip() -> void:
-	for plinth in _plinths:
-		yield(plinth.flip(), "completed")
 
 
 # Private methods
@@ -76,4 +88,6 @@ func __shuffle_discard() -> void:
 	while !_discard.empty():
 		var rune: Rune = _discard.pop()
 
-		yield(_stack.add(rune), "completed")
+		_stack.add(rune)
+
+		yield(get_tree().create_timer(0.7), "timeout")

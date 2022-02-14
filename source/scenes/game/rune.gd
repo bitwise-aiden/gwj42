@@ -1,6 +1,11 @@
 class_name Rune extends Sprite
 
 
+# Private constants
+
+const __SPEED_HORIZONTAL: float = 600.0
+const __SPEED_VERTICAL: float = 700.0
+
 # Public variables
 
 export(Texture) var sprite_parchment: Texture = null
@@ -70,12 +75,13 @@ func move(incoming: Vector2, visible: bool = true) -> void:
 	yield(__tween, "tween_completed")
 
 	# Move accross to be inline with desired location
+	var horizontal_position: Vector2 = Vector2(incoming.x, global_position.y)
 	__tween.interpolate_property(
 		self,
 		"global_position",
 		global_position,
-		Vector2(incoming.x, global_position.y),
-		0.5,
+		horizontal_position,
+		(global_position - horizontal_position).length() / __SPEED_HORIZONTAL,
 		Tween.TRANS_LINEAR,
 		Tween.EASE_IN_OUT
 	)
@@ -91,7 +97,7 @@ func move(incoming: Vector2, visible: bool = true) -> void:
 			"scale:x",
 			1.0,
 			0.0,
-			0.1
+			0.15
 		)
 		__tween.start()
 
@@ -105,19 +111,20 @@ func move(incoming: Vector2, visible: bool = true) -> void:
 			"scale:x",
 			0.0,
 			1.0,
-			0.1
+			0.15
 		)
 		__tween.start()
 
 		yield(__tween, "tween_completed")
 
 	# Fall down to desired location
+	var vertical_position: Vector2 = incoming
 	__tween.interpolate_property(
 		self,
 		"global_position",
 		global_position,
 		incoming,
-		0.5,
+		(global_position - vertical_position).length() / __SPEED_VERTICAL,
 		Tween.TRANS_EXPO,
 		Tween.EASE_IN
 	)

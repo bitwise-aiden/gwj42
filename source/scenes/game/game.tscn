@@ -7,7 +7,7 @@
 [ext_resource path="res://source/scenes/game/game.gd" type="Script" id=5]
 [ext_resource path="res://source/scenes/game/discard.tscn" type="PackedScene" id=6]
 
-[node name="main" type="Node2D"]
+[node name="game" type="Node2D"]
 script = ExtResource( 5 )
 
 [node name="text" type="Label" parent="."]
@@ -41,7 +41,7 @@ position = Vector2( 510, 136 )
 can_interact = false
 
 [node name="enemy_discard" parent="." instance=ExtResource( 6 )]
-position = Vector2( 980, -84 )
+position = Vector2( 1380, -84 )
 
 [node name="player_stack" parent="." instance=ExtResource( 4 )]
 position = Vector2( 300, 620 )

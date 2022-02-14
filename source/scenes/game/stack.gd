@@ -24,4 +24,6 @@ func empty() -> bool:
 
 
 func pop() -> Rune:
+	__next_position = __runes[-1].global_position
+
 	return __runes.pop_back()

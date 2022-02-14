@@ -27,3 +27,11 @@ func can_add() -> bool:
 
 func flip() -> void:
 	yield(__rune.move(__rune_position.global_position, true), "completed")
+
+
+func remove() -> Rune:
+	var rune: Rune = __rune
+
+	__rune = null
+
+	return rune

@@ -22,7 +22,6 @@ func _ready() -> void:
 
 	__enemy_manager = CardManager.new()
 	__enemy_controller.set_deck(__enemy_manager.deck)
-	__enemy_controller.draw()
 
 	__player_controller = PlayerTurnController.new(
 		$player_discard,
@@ -34,7 +33,6 @@ func _ready() -> void:
 
 	__player_manager = CardManager.new()
 	__player_controller.set_deck(__player_manager.deck)
-	__player_controller.draw()
 
 	__player_controller.connect("rune_picked", __enemy_controller, "pick_rune")
 
@@ -45,8 +43,14 @@ func _ready() -> void:
 
 func __game_loop() -> void:
 	while true: # TODO: once health is in, wait until player dead
+		__enemy_controller.draw()
+		yield(__player_controller.draw(), "completed")
+
 		yield(__enemy_controller, "rune_picked")
 		yield(__enemy_controller, "rune_picked")
 
 		__enemy_controller.flip()
 		yield(__player_controller.flip(), "completed")
+
+		__enemy_controller.discard()
+		yield(__player_controller.discard(), "completed")
