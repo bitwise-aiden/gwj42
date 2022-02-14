@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/plinth.png-70c1b6a9aca60f6b54396a5d3a2a5e5a.stex"
+path="res://.import/hearts_empty.png-3d0fb83319e52f6bc408b99a9a27c12d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/plinth.png"
-dest_files=[ "res://.import/plinth.png-70c1b6a9aca60f6b54396a5d3a2a5e5a.stex" ]
+source_file="res://assets/sprites/hearts_empty.png"
+dest_files=[ "res://.import/hearts_empty.png-3d0fb83319e52f6bc408b99a9a27c12d.stex" ]
 
 [params]
 
