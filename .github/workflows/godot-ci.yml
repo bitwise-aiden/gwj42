@@ -39,7 +39,7 @@ jobs:
           name: windows
           path: build/windows
       - name: Butler Upload
-        uses: josephbmanley/butler-publish-itchio-action@v1.0.2
+        uses: josephbmanley/butler-publish-itchio-action@v1.0.3
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
           CHANNEL: windows
@@ -75,7 +75,7 @@ jobs:
           name: linux
           path: build/linux
       - name: Butler Upload
-        uses: josephbmanley/butler-publish-itchio-action@v1.0.2
+        uses: josephbmanley/butler-publish-itchio-action@v1.0.3
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
           CHANNEL: linux
@@ -111,7 +111,7 @@ jobs:
           name: web
           path: build/web
       - name: Butler Upload
-        uses: josephbmanley/butler-publish-itchio-action@v1.0.2
+        uses: josephbmanley/butler-publish-itchio-action@v1.0.3
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
           CHANNEL: web
@@ -148,7 +148,7 @@ jobs:
           name: mac
           path: build/mac
       - name: Butler Upload
-        uses: josephbmanley/butler-publish-itchio-action@v1.0.2
+        uses: josephbmanley/butler-publish-itchio-action@v1.0.3
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
           CHANNEL: mac
