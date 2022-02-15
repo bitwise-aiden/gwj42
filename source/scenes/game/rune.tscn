@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/sprites/rune-shears.png" type="Texture" id=1]
 [ext_resource path="res://assets/sprites/rune-stone.png" type="Texture" id=2]
@@ -6,12 +6,137 @@
 [ext_resource path="res://assets/sprites/rune.png" type="Texture" id=4]
 [ext_resource path="res://source/scenes/game/rune.gd" type="Script" id=5]
 
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.676, 1 )
+colors = PoolColorArray( 0.623047, 0.622703, 0.610478, 1, 0.677734, 0.674263, 0.550781, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 55, 5, 1 )
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+gravity = Vector3( 0, -200, 0 )
+initial_velocity = 400.0
+initial_velocity_random = 0.15
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -1500.0
+linear_accel_random = 0.1
+scale = 2.0
+scale_random = 1.0
+color_ramp = SubResource( 2 )
+hue_variation = 0.01
+hue_variation_random = 1.0
+
+[sub_resource type="ParticlesMaterial" id=4]
+emission_shape = 2
+emission_box_extents = Vector3( 5, 55, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, -200, 0 )
+initial_velocity = 400.0
+initial_velocity_random = 0.3
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -1000.0
+linear_accel_random = 0.2
+tangential_accel = -200.0
+scale = 2.0
+scale_random = 1.0
+color_ramp = SubResource( 2 )
+hue_variation = 0.01
+hue_variation_random = 1.0
+
+[sub_resource type="ParticlesMaterial" id=5]
+emission_shape = 2
+emission_box_extents = Vector3( 55, 5, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+gravity = Vector3( 0, -200, 0 )
+initial_velocity = 400.0
+initial_velocity_random = 0.15
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -1000.0
+linear_accel_random = 0.1
+scale = 2.0
+scale_random = 1.0
+color_ramp = SubResource( 2 )
+hue_variation = 0.01
+hue_variation_random = 1.0
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 2
+emission_box_extents = Vector3( 5, 55, 1 )
+flag_disable_z = true
+direction = Vector3( -1, 0, 0 )
+gravity = Vector3( 0, -200, 0 )
+initial_velocity = 400.0
+initial_velocity_random = 0.3
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -1000.0
+linear_accel_random = 0.2
+tangential_accel = 200.0
+scale = 2.0
+scale_random = 1.0
+color_ramp = SubResource( 2 )
+hue_variation = 0.01
+hue_variation_random = 1.0
+
 [node name="rune" type="Sprite"]
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
 sprite_parchment = ExtResource( 3 )
 sprite_shears = ExtResource( 1 )
 sprite_stone = ExtResource( 2 )
 
 [node name="type" type="Sprite" parent="."]
 visible = false
+
+[node name="dust" type="Node2D" parent="."]
+
+[node name="topDust" type="Particles2D" parent="dust"]
+position = Vector2( 0, -55 )
+emitting = false
+amount = 128
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+process_material = SubResource( 3 )
+
+[node name="rightDust" type="Particles2D" parent="dust"]
+position = Vector2( 55, 0 )
+emitting = false
+amount = 256
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+process_material = SubResource( 4 )
+
+[node name="bottomDust" type="Particles2D" parent="dust"]
+position = Vector2( 0, 55 )
+emitting = false
+amount = 128
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+process_material = SubResource( 5 )
+
+[node name="leftDust" type="Particles2D" parent="dust"]
+position = Vector2( -55, 0 )
+emitting = false
+amount = 256
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+process_material = SubResource( 6 )
