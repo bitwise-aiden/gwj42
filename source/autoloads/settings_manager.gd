@@ -12,7 +12,11 @@ var __settings_default: Dictionary = {
 		"Music": 1.0,
 		"Sound Effects": 1.0
 	},
-	"input": {}
+	"input": {},
+	"graphics":{
+		"Particles": ["Low", "Medium", "High"],
+		"Fullscreen": [true, false]
+	}
 }
 
 

@@ -11,6 +11,7 @@ const __SPEED_VERTICAL: float = 700.0
 export(Texture) var sprite_parchment: Texture = null
 export(Texture) var sprite_shears: Texture = null
 export(Texture) var sprite_stone: Texture = null
+export(Resource) var dust_scene : Resource
 
 var card_state: CardState = null setget __card_state_set, __card_state_get
 
@@ -18,11 +19,9 @@ var card_state: CardState = null setget __card_state_set, __card_state_get
 # Private variables
 
 onready var __sprite_type: Sprite = $type
-onready var __dust_nodes: Node2D = get_node("dust")
 
 var __ready: bool = false
 var __tween: Tween = Tween.new()
-
 
 # Lifecylce method
 
@@ -144,8 +143,9 @@ func move(incoming: Vector2, visible: bool = true) -> void:
 
 	z_index = 0
 
-	# TODO: Particles here
-	emit_dust()
+	# Dust particles (Should we add some variables to set?)
+	var new_dust = dust_scene.instance()
+	self.call_deferred("add_child", new_dust)
 
 
 # Private methods
@@ -170,6 +170,3 @@ func __card_state_set(incoming: CardState) -> void:
 		Card.Types.STONE:
 			__sprite_type.texture = sprite_stone
 
-func emit_dust() -> void:
-	for dust in __dust_nodes.get_children():
-		dust.emitting = true
