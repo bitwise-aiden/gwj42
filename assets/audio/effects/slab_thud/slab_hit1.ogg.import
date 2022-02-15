@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/slab_hit1.ogg-fc139c5b5b2ac96281d1f0f6d88a4097.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/effects/slab_thud/slab_hit1.ogg"
+dest_files=[ "res://.import/slab_hit1.ogg-fc139c5b5b2ac96281d1f0f6d88a4097.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
