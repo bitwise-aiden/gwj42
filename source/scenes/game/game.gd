@@ -12,6 +12,7 @@ var __player_manager: CardManager = null
 # Lifecycle methods
 
 func _ready() -> void:
+	Globals.plinth_check_polygon = $plinth_check_polygon.polygon
 	randomize()
 
 	__enemy_controller = EnemyTurnController.new(

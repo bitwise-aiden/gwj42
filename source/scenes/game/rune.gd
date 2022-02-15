@@ -25,7 +25,7 @@ var __tween: Tween = Tween.new()
 
 # Lifecylce method
 
-func _ready() -> void:
+func _ready() -> void:	
 	add_child(__tween)
 
 	__ready = true
@@ -41,6 +41,8 @@ func attack(other: Rune) -> void:
 	var offset: Vector2 = (origin - other.position).normalized() * 50.0
 
 	yield(move(other.global_position + offset), "completed")
+	Event.emit_signal("add_shake", 0.4)
+	Event.emit_signal("emit_audio", {"bus": "effect", "choice": "rune_thud"})
 	yield(move(origin), "completed")
 
 
@@ -142,11 +144,13 @@ func move(incoming: Vector2, visible: bool = true) -> void:
 	yield(__tween,"tween_completed")
 
 	z_index = 0
-
-	# Dust particles (Should we add some variables to set?)
-	var new_dust = dust_scene.instance()
-	self.call_deferred("add_child", new_dust)
-
+	# Make thump sound only when on screen
+	if self.position.x > 0 and self.position.x < 1280:
+		if not Geometry.is_point_in_polygon(incoming, Globals.plinth_check_polygon):
+			# Dust particles (Should we add some variables to set?)
+			var new_dust = dust_scene.instance()
+			self.call_deferred("add_child", new_dust)
+		
 
 # Private methods
 
@@ -169,4 +173,3 @@ func __card_state_set(incoming: CardState) -> void:
 
 		Card.Types.STONE:
 			__sprite_type.texture = sprite_stone
-
