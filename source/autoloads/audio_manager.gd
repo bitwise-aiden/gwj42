@@ -14,6 +14,7 @@ var __volume_min: float = -40.0
 
 # Lifecylce methods
 func _ready() -> void:
+	randomize()
 	var levels = SettingsManager.get_setting("volume", {})
 	for key in levels.keys():
 		var index = self.__get_bus_index(key)
@@ -21,7 +22,7 @@ func _ready() -> void:
 		var value: float = lerp(self.__volume_min, self.__volume_max[key], levels[key])
 		AudioServer.set_bus_volume_db(index, value)
 	
-	Event.connect("emit_audio", self, "play_audio")
+	Event.connect("emit_audio", self, "__play_audio")
 
 
 # Public methods
@@ -63,4 +64,15 @@ func __play_music(choice: String) -> void:
 	pass
 
 func __play_effect(choice: String) -> void:
-	pass
+	var new_player = effect_player.instance()
+	new_player.pitch_scale = rand_range(0.9, 1.1)
+	match choice:
+		"rune_thud":
+			var randChoice = randi() % 2
+			match randChoice:
+				0:
+					new_player.audio_path = "res://assets/audio/effects/slab_thud/slab_hit1.ogg"
+				1:
+					new_player.audio_path = "res://assets/audio/effects/slab_thud/slab_hit2.ogg"
+	
+	self.add_child(new_player)
