@@ -25,7 +25,7 @@ var __tween: Tween = Tween.new()
 
 # Lifecylce method
 
-func _ready() -> void:
+func _ready() -> void:	
 	add_child(__tween)
 
 	__ready = true

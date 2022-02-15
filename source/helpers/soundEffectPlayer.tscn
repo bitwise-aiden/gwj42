@@ -1,0 +1,4 @@
+[gd_scene format=2]
+
+[node name="soundEffectPlayer" type="AudioStreamPlayer"]
+bus = "Sound Effects"

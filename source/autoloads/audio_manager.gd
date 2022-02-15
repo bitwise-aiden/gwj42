@@ -1,5 +1,9 @@
 extends Node
 
+var effect_player = preload("res://source/helpers/soundEffectPlayer.tscn")
+var music_player = preload("res://source/helpers/musicPlayer.tscn")
+
+var active_music_players : Array = []
 
 var __volume_max: Dictionary = {
 	# key: bus name
@@ -16,6 +20,8 @@ func _ready() -> void:
 		self.__volume_max[key] = AudioServer.get_bus_volume_db(index)
 		var value: float = lerp(self.__volume_min, self.__volume_max[key], levels[key])
 		AudioServer.set_bus_volume_db(index, value)
+	
+	Event.connect("emit_audio", self, "play_audio")
 
 
 # Public methods
@@ -42,3 +48,19 @@ func set_volume(name: String, value: float) -> void:
 # Private methods
 func __get_bus_index(name: String) -> int:
 	return AudioServer.get_bus_index(name)
+
+func __play_audio(options: Dictionary) -> void:
+	var bus = options["bus"]
+	var choice = options["choice"]
+	if bus == "music":
+		__play_music(choice)
+	elif bus == "effect":
+		__play_effect(choice)
+	else:
+		__play_effect("error")
+
+func __play_music(choice: String) -> void:
+	pass
+
+func __play_effect(choice: String) -> void:
+	pass
