@@ -18,6 +18,7 @@ const __INITIAL_HEALTH: int = 5
 var _deck: CardDeck = null
 var _discard: Discard = null
 var _hand: Hand = null
+var _interact: bool = false
 var _plinths: Array = []
 var _stack: Stack = null
 
@@ -59,6 +60,7 @@ func discard() -> void:
 
 
 func draw() -> void:
+
 	while _hand.can_add():
 		if _stack.empty():
 			yield(__shuffle_discard(), "completed")
@@ -80,6 +82,10 @@ func set_deck(deck: CardDeck) -> void:
 	_deck = deck
 
 	__initialize_discard()
+
+
+func set_interact(interact: bool) -> void:
+	_interact = interact
 
 
 func get_runes() -> Array:

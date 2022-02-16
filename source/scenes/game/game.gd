@@ -55,8 +55,12 @@ func __game_loop() -> void:
 		__enemy_controller.draw()
 		yield(__player_controller.draw(), "completed")
 
+		__player_controller.set_interact(true)
+
 		yield(__enemy_controller, "rune_picked")
 		yield(__enemy_controller, "rune_picked")
+
+		__player_controller.set_interact(false)
 
 		__enemy_controller.flip()
 		yield(__player_controller.flip(), "completed")

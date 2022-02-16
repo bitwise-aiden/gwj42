@@ -22,7 +22,7 @@ func _init(
 
 
 func _process(delta: float) -> void:
-	if Input.is_mouse_button_pressed(BUTTON_LEFT) && __active_rune:
+	if Input.is_mouse_button_pressed(BUTTON_LEFT) && __active_rune && _interact:
 		__following = true
 
 		__active_rune.global_position = get_viewport().get_mouse_position()
