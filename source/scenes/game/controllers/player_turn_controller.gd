@@ -17,7 +17,7 @@ func _init(
 	plinths: Array,
 	stack: Stack
 ).(discard, hand, hearts, plinths, stack) -> void:
-	for plinth in plinths:
+	for plinth in _plinths:
 		plinth.hover_area.connect("mouse_exited", self, "__plinth_dectivate", [plinth])
 		plinth.hover_area.connect("mouse_entered", self, "__plinth_activate", [plinth])
 
@@ -47,7 +47,8 @@ func _process(delta: float) -> void:
 
 			yield(__active_plinth.add(rune), "completed")
 
-			emit_signal("rune_picked")
+			print("Player has %d health" % _health)
+			emit_signal("rune_picked", PlayerState.new(_health, _plinths, _hand))
 
 		else:
 			_hand.deactivate_rune(__active_rune)

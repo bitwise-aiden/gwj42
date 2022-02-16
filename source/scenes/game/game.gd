@@ -134,4 +134,4 @@ func __score_round() -> void:
 	else:
 		__player_controller.damage(abs(result))
 
-	print("player: %s, enemy: %s" %[__player_controller.__health, __enemy_controller.__health])
+	print("player: %s, enemy: %s" %[__player_controller._health, __enemy_controller._health])

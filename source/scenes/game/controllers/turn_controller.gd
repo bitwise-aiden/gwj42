@@ -3,7 +3,7 @@ class_name TurnController extends Node
 
 # Public signals
 
-signal rune_picked()
+signal rune_picked(player_state)
 signal died()
 
 
@@ -26,7 +26,7 @@ var _stack: Stack = null
 
 # Private variables
 
-var __health: int = __INITIAL_HEALTH
+var _health: int = __INITIAL_HEALTH
 
 
 # Lifecycle methods
@@ -48,12 +48,12 @@ func _init(
 # Public methods
 
 func damage(amount: int) -> void:
-	__health = max(0, __health - amount)
+	_health = max(0, _health - amount)
 
 	for i in _hearts.size():
-		_hearts[i].set_full(i < __health)
+		_hearts[i].set_full(i < _health)
 
-	if __health == 0:
+	if _health == 0:
 		emit_signal("died")
 
 
