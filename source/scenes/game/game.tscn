@@ -136,3 +136,69 @@ script = ExtResource( 7 )
 [node name="plinth_check_polygon" type="Polygon2D" parent="."]
 visible = false
 polygon = PoolVector2Array( 500, 250, 775, 250, 775, 475, 500, 475 )
+
+[node name="ui" type="Node2D" parent="."]
+z_index = 20
+
+[node name="end_screen" type="Control" parent="ui"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1280.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label_result" type="Label" parent="ui/end_screen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -67.0
+margin_top = -110.0
+margin_right = 67.0
+margin_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You win!"
+
+[node name="buttons" type="VBoxContainer" parent="ui/end_screen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -77.5
+margin_top = -56.0
+margin_right = 77.5
+margin_bottom = 96.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button_next" type="Button" parent="ui/end_screen/buttons"]
+margin_right = 155.0
+margin_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button_replay" type="Button" parent="ui/end_screen/buttons"]
+margin_top = 52.0
+margin_right = 155.0
+margin_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Replay"
+
+[node name="button_menu" type="Button" parent="ui/end_screen/buttons"]
+visible = false
+margin_top = 104.0
+margin_right = 155.0
+margin_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "menu"
