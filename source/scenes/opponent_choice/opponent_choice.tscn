@@ -33,7 +33,6 @@ __meta__ = {
 
 [node name="Popup" type="Popup" parent="opponent_one_spot"]
 pause_mode = 2
-visible = true
 margin_left = 60.0
 margin_top = 60.0
 margin_right = 460.0
@@ -102,7 +101,6 @@ __meta__ = {
 
 [node name="Popup" type="Popup" parent="opponent_two_spot"]
 pause_mode = 2
-visible = true
 margin_left = 820.0
 margin_top = 60.0
 margin_right = 1220.0
