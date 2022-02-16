@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://source/scenes/game/plinth.tscn" type="PackedScene" id=1]
 [ext_resource path="res://source/scenes/game/hand.tscn" type="PackedScene" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://source/scenes/game/game.gd" type="Script" id=5]
 [ext_resource path="res://source/scenes/game/discard.tscn" type="PackedScene" id=6]
 [ext_resource path="res://source/scenes/game/camera.gd" type="Script" id=7]
+[ext_resource path="res://source/scenes/game/heart.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/sprites/hearts_full.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/hearts_empty.png" type="Texture" id=10]
 
 [node name="game" type="Node2D"]
 script = ExtResource( 5 )
@@ -41,6 +44,38 @@ position = Vector2( 739, 294 )
 position = Vector2( 510, 136 )
 can_interact = false
 
+[node name="enemy_hearts" type="Node2D" parent="."]
+position = Vector2( 70, 70 )
+
+[node name="heart_0" parent="enemy_hearts" instance=ExtResource( 8 )]
+scale = Vector2( 2, 2 )
+texture_empty = ExtResource( 10 )
+texture_full = ExtResource( 9 )
+
+[node name="heart_1" parent="enemy_hearts" instance=ExtResource( 8 )]
+position = Vector2( 64, 0 )
+scale = Vector2( 2, 2 )
+texture_empty = ExtResource( 10 )
+texture_full = ExtResource( 9 )
+
+[node name="heart_2" parent="enemy_hearts" instance=ExtResource( 8 )]
+position = Vector2( 128, 0 )
+scale = Vector2( 2, 2 )
+texture_empty = ExtResource( 10 )
+texture_full = ExtResource( 9 )
+
+[node name="heart_3" parent="enemy_hearts" instance=ExtResource( 8 )]
+position = Vector2( 192, 0 )
+scale = Vector2( 2, 2 )
+texture_empty = ExtResource( 10 )
+texture_full = ExtResource( 9 )
+
+[node name="heart_4" parent="enemy_hearts" instance=ExtResource( 8 )]
+position = Vector2( 256, 0 )
+scale = Vector2( 2, 2 )
+texture_empty = ExtResource( 10 )
+texture_full = ExtResource( 9 )
+
 [node name="enemy_discard" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1380, -84 )
 
@@ -57,6 +92,38 @@ position = Vector2( 739, 453 )
 
 [node name="player_hand" parent="." instance=ExtResource( 2 )]
 position = Vector2( 510, 620 )
+
+[node name="player_hearts" type="Node2D" parent="."]
+position = Vector2( 954, 650 )
+
+[node name="heart_0" parent="player_hearts" instance=ExtResource( 8 )]
+scale = Vector2( 2, 2 )
+texture_empty = ExtResource( 10 )
+texture_full = ExtResource( 9 )
+
+[node name="heart_1" parent="player_hearts" instance=ExtResource( 8 )]
+position = Vector2( 64, 0 )
+scale = Vector2( 2, 2 )
+texture_empty = ExtResource( 10 )
+texture_full = ExtResource( 9 )
+
+[node name="heart_2" parent="player_hearts" instance=ExtResource( 8 )]
+position = Vector2( 128, 0 )
+scale = Vector2( 2, 2 )
+texture_empty = ExtResource( 10 )
+texture_full = ExtResource( 9 )
+
+[node name="heart_3" parent="player_hearts" instance=ExtResource( 8 )]
+position = Vector2( 192, 0 )
+scale = Vector2( 2, 2 )
+texture_empty = ExtResource( 10 )
+texture_full = ExtResource( 9 )
+
+[node name="heart_4" parent="player_hearts" instance=ExtResource( 8 )]
+position = Vector2( 256, 0 )
+scale = Vector2( 2, 2 )
+texture_empty = ExtResource( 10 )
+texture_full = ExtResource( 9 )
 
 [node name="player_discard" parent="." instance=ExtResource( 6 )]
 position = Vector2( -100, 400 )

@@ -6,9 +6,10 @@ class_name EnemyTurnController extends TurnController
 func _init(
 	discard: Discard,
 	hand: Hand,
+	hearts: Array,
 	plinths: Array,
 	stack: Stack
-).(discard, hand, plinths, stack) -> void:
+).(discard, hand, hearts, plinths, stack) -> void:
 	pass
 
 

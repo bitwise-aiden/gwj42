@@ -18,6 +18,7 @@ func _ready() -> void:
 	__enemy_controller = EnemyTurnController.new(
 		$enemy_discard,
 		$enemy_hand,
+		$enemy_hearts.get_children(),
 		$enemy_plinths.get_children(),
 		$enemy_stack
 	)
@@ -27,9 +28,14 @@ func _ready() -> void:
 	__enemy_controller.set_deck(__enemy_manager.deck)
 	__enemy_controller.connect("died", self, "__controller_died", [false])
 
+
+	var player_hearts: Array = $player_hearts.get_children()
+	player_hearts.invert()
+
 	__player_controller = PlayerTurnController.new(
 		$player_discard,
 		$player_hand,
+		player_hearts,
 		$player_plinths.get_children(),
 		$player_stack
 	)
@@ -51,6 +57,9 @@ func __controller_died(was_player: bool) -> void:
 
 
 func __game_loop() -> void:
+	__enemy_controller.heal()
+	__player_controller.heal()
+
 	while true: # TODO: once health is in, wait until player dead
 		__enemy_controller.draw()
 		yield(__player_controller.draw(), "completed")

@@ -13,9 +13,10 @@ var __following: bool = false
 func _init(
 	discard: Discard,
 	hand: Hand,
+	hearts: Array,
 	plinths: Array,
 	stack: Stack
-).(discard, hand, plinths, stack) -> void:
+).(discard, hand, hearts, plinths, stack) -> void:
 	for plinth in plinths:
 		plinth.hover_area.connect("mouse_exited", self, "__plinth_dectivate", [plinth])
 		plinth.hover_area.connect("mouse_entered", self, "__plinth_activate", [plinth])

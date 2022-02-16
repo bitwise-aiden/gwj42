@@ -18,6 +18,7 @@ const __INITIAL_HEALTH: int = 5
 var _deck: CardDeck = null
 var _discard: Discard = null
 var _hand: Hand = null
+var _hearts: Array = []
 var _interact: bool = false
 var _plinths: Array = []
 var _stack: Stack = null
@@ -33,11 +34,13 @@ var __health: int = __INITIAL_HEALTH
 func _init(
 	discard: Discard,
 	hand: Hand,
+	hearts: Array,
 	plinths: Array,
 	stack: Stack
 ) -> void:
 	_discard = discard
 	_hand = hand
+	_hearts = hearts
 	_plinths = plinths
 	_stack = stack
 
@@ -46,6 +49,9 @@ func _init(
 
 func damage(amount: int) -> void:
 	__health = max(0, __health - amount)
+
+	for i in _hearts.size():
+		_hearts[i].set_full(i < __health)
 
 	if __health == 0:
 		emit_signal("died")
@@ -77,6 +83,13 @@ func draw() -> void:
 func flip() -> void:
 	for plinth in _plinths:
 		yield(plinth.flip(), "completed")
+
+
+func heal() -> void:
+	for heart in _hearts:
+		heart.set_full(true)
+
+		yield(get_tree().create_timer(0.1), "timeout")
 
 
 func set_deck(deck: CardDeck) -> void:
