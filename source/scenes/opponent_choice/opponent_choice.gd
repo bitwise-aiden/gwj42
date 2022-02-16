@@ -31,6 +31,11 @@ func fill_opponents_array():
 
 func add_opponents():
 	rng.randomize()
-	opponent_one_spot.add_child(opponent_array[rng.randi_range(0,opponent_array.size() -1)])
-	opponent_two_spot.add_child(opponent_array[rng.randi_range(0,opponent_array.size() -1)])
+	var number_one = rng.randi_range(0,opponent_array.size() -1)
+	var number_two = rng.randi_range(0,opponent_array.size() -1)
+	while number_one == number_two:
+		number_two = rng.randi_range(0,opponent_array.size() -1)
+	
+	opponent_one_spot.add_child(opponent_array[number_one])
+	opponent_two_spot.add_child(opponent_array[number_two])
 
