@@ -56,7 +56,7 @@ func can_add() -> bool:
 func deactivate_rune(rune: Rune) -> void:
 	for i in __runes.size():
 		if __runes[i] == rune:
-			__runes[i].hover_stop(__positions[i].global_position)
+			__runes[i].hover_stop(__positions[i].global_position, true)
 
 
 func runes() -> Array:

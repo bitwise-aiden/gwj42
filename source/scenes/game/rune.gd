@@ -5,6 +5,7 @@ class_name Rune extends Sprite
 
 const __SPEED_HORIZONTAL: float = 600.0
 const __SPEED_VERTICAL: float = 700.0
+const __SPEED_RETURN: float = 1200.0
 
 # Public variables
 
@@ -63,8 +64,9 @@ func hover_start() -> void:
 	)
 	__tween.start()
 
-func hover_stop(origin: Vector2) -> void:
-	if !__is_hovering:
+
+func hover_stop(origin: Vector2, override: bool = false) -> void:
+	if !__is_hovering && !override:
 		return
 
 	__tween.stop(self, "global_position")
@@ -82,10 +84,14 @@ func hover_stop(origin: Vector2) -> void:
 
 	__is_hovering = false
 
+
 func move(incoming: Vector2, visible: bool = true) -> void:
+	print(incoming)
 	__is_moving = true
 
 	z_index = 10
+
+	__tween.stop_all()
 
 	# Move up off stack
 	__tween.interpolate_property(
