@@ -203,6 +203,11 @@ window/stretch/aspect="keep"
 
 enabled=PoolStringArray( "res://addons/godot_reset/plugin.cfg" )
 
+[gui]
+
+theme/custom="res://assets/themes/game.theme"
+theme/custom_font="res://assets/fonts/Gelio Greek Diner.tres"
+
 [rendering]
 
 2d/snapping/use_gpu_pixel_snap=true
