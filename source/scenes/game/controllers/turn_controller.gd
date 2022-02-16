@@ -3,7 +3,7 @@ class_name TurnController extends Node
 
 # Public signals
 
-signal rune_picked()
+signal rune_picked(player_state)
 signal died()
 
 
@@ -18,13 +18,15 @@ const __INITIAL_HEALTH: int = 5
 var _deck: CardDeck = null
 var _discard: Discard = null
 var _hand: Hand = null
+var _hearts: Array = []
+var _interact: bool = false
 var _plinths: Array = []
 var _stack: Stack = null
 
 
 # Private variables
 
-var __health: int = __INITIAL_HEALTH
+var _health: int = __INITIAL_HEALTH
 
 
 # Lifecycle methods
@@ -32,11 +34,13 @@ var __health: int = __INITIAL_HEALTH
 func _init(
 	discard: Discard,
 	hand: Hand,
+	hearts: Array,
 	plinths: Array,
 	stack: Stack
 ) -> void:
 	_discard = discard
 	_hand = hand
+	_hearts = hearts
 	_plinths = plinths
 	_stack = stack
 
@@ -44,9 +48,12 @@ func _init(
 # Public methods
 
 func damage(amount: int) -> void:
-	__health = max(0, __health - amount)
+	_health = max(0, _health - amount)
 
-	if __health == 0:
+	for i in _hearts.size():
+		_hearts[i].set_full(i < _health)
+
+	if _health == 0:
 		emit_signal("died")
 
 
@@ -55,7 +62,9 @@ func discard() -> void:
 		var rune: Rune = plinth.remove()
 
 		if rune:
-			yield(_discard.add(rune), "completed")
+			_discard.add(rune)
+
+			yield(get_tree().create_timer(0.7), "timeout")
 
 
 func draw() -> void:
@@ -76,10 +85,21 @@ func flip() -> void:
 		yield(plinth.flip(), "completed")
 
 
+func heal() -> void:
+	for heart in _hearts:
+		heart.set_full(true)
+
+		yield(get_tree().create_timer(0.1), "timeout")
+
+
 func set_deck(deck: CardDeck) -> void:
 	_deck = deck
 
 	__initialize_discard()
+
+
+func set_interact(interact: bool) -> void:
+	_interact = interact
 
 
 func get_runes() -> Array:

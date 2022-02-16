@@ -79,6 +79,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/scenes/game/hand.gd"
 }, {
+"base": "Sprite",
+"class": "Heart",
+"language": "GDScript",
+"path": "res://source/scenes/game/heart.gd"
+}, {
 "base": "Node",
 "class": "ImageCache",
 "language": "GDScript",
@@ -88,6 +93,11 @@ _global_script_classes=[ {
 "class": "PlayerInput",
 "language": "GDScript",
 "path": "res://source/helpers/player_input.gd"
+}, {
+"base": "Reference",
+"class": "PlayerState",
+"language": "GDScript",
+"path": "res://source/scenes/game/player_state.gd"
 }, {
 "base": "TurnController",
 "class": "PlayerTurnController",
@@ -149,8 +159,10 @@ _global_script_class_icons={
 "Gift": "",
 "GodotReset": "",
 "Hand": "",
+"Heart": "",
 "ImageCache": "",
 "PlayerInput": "",
+"PlayerState": "",
 "PlayerTurnController": "",
 "Plinth": "",
 "Rune": "",
@@ -196,6 +208,11 @@ window/stretch/aspect="keep"
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/godot_reset/plugin.cfg" )
+
+[gui]
+
+theme/custom="res://assets/themes/game.theme"
+theme/custom_font="res://assets/fonts/Gelio Greek Diner.tres"
 
 [rendering]
 

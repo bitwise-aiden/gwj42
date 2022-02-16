@@ -15,11 +15,11 @@ var opponent_two = 1
 func _ready():
 	fill_opponents_array(2)
 	add_opponents()
-	
+
 func fill_opponents_array(var opponents):
 	for i in range(opponents):
 		opponent_array.append(opponent_button.new(opponent_names[i], opponent_description[i]))
-	
+
 func add_opponents():
 	opponent_one_spot.add_child(opponent_array[opponent_one])
 	opponent_two_spot.add_child(opponent_array[opponent_two])

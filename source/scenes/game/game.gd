@@ -1,12 +1,26 @@
 extends Node2D
 
 
+# Private constants
+
+const __RESULT_TEXT = "%s won!"
+
+
 # Private variables
+
+onready var __end_screen: Control = $ui/end_screen
+onready var __label_result: Label = $ui/end_screen/label_result
+onready var __button_menu: Button = $ui/end_screen/buttons/button_menu
+onready var __button_next: Button = $ui/end_screen/buttons/button_next
+onready var __button_replay: Button = $ui/end_screen/buttons/button_replay
+
 
 var __enemy_controller: EnemyTurnController = null
 var __enemy_manager: CardManager = null
 var __player_controller: PlayerTurnController = null
 var __player_manager: CardManager = null
+
+var __alive: bool = true
 
 
 # Lifecycle methods
@@ -18,6 +32,7 @@ func _ready() -> void:
 	__enemy_controller = EnemyTurnController.new(
 		$enemy_discard,
 		$enemy_hand,
+		$enemy_hearts.get_children(),
 		$enemy_plinths.get_children(),
 		$enemy_stack
 	)
@@ -25,11 +40,17 @@ func _ready() -> void:
 
 	__enemy_manager = CardManager.new()
 	__enemy_controller.set_deck(__enemy_manager.deck)
+	__enemy_controller.heal()
 	__enemy_controller.connect("died", self, "__controller_died", [false])
+
+
+	var player_hearts: Array = $player_hearts.get_children()
+	player_hearts.invert()
 
 	__player_controller = PlayerTurnController.new(
 		$player_discard,
 		$player_hand,
+		player_hearts,
 		$player_plinths.get_children(),
 		$player_stack
 	)
@@ -37,9 +58,14 @@ func _ready() -> void:
 
 	__player_manager = CardManager.new()
 	__player_controller.set_deck(__player_manager.deck)
+	__player_controller.heal()
 	__player_controller.connect("died", self, "__controller_died", [true])
 
 	__player_controller.connect("rune_picked", __enemy_controller, "pick_rune")
+
+	__button_menu.connect("pressed", SceneManager, "load_scene", ["menu"])
+	__button_next.connect("pressed", SceneManager, "load_scene", ["opponent_choice"])
+	__button_replay.connect("pressed", SceneManager, "load_scene", ["game"])
 
 	__game_loop()
 
@@ -47,16 +73,29 @@ func _ready() -> void:
 # Private methods
 
 func __controller_died(was_player: bool) -> void:
-	print("controller died, was player: %s" % was_player)
+	__alive = false
+
+	__end_screen.visible = true
+
+	if was_player:
+		__label_result.text = __RESULT_TEXT % "The God" # Replace with god name
+		__button_next.text = "Back"
+	else:
+		__label_result.text = __RESULT_TEXT % "You"
+		__button_next.text = "Continue"
 
 
 func __game_loop() -> void:
-	while true: # TODO: once health is in, wait until player dead
+	while __alive:
 		__enemy_controller.draw()
 		yield(__player_controller.draw(), "completed")
 
+		__player_controller.set_interact(true)
+
 		yield(__enemy_controller, "rune_picked")
 		yield(__enemy_controller, "rune_picked")
+
+		__player_controller.set_interact(false)
 
 		__enemy_controller.flip()
 		yield(__player_controller.flip(), "completed")
@@ -95,4 +134,4 @@ func __score_round() -> void:
 	else:
 		__player_controller.damage(abs(result))
 
-	print("player: %s, enemy: %s" %[__player_controller.__health, __enemy_controller.__health])
+	print("player: %s, enemy: %s" %[__player_controller._health, __enemy_controller._health])

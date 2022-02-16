@@ -20,12 +20,14 @@ var card_state: CardState = null setget __card_state_set, __card_state_get
 
 onready var __sprite_type: Sprite = $type
 
+var __is_hovering: bool = false
+var __is_moving: bool = false
 var __ready: bool = false
 var __tween: Tween = Tween.new()
 
 # Lifecylce method
 
-func _ready() -> void:	
+func _ready() -> void:
 	add_child(__tween)
 
 	__ready = true
@@ -47,6 +49,11 @@ func attack(other: Rune) -> void:
 
 
 func hover_start() -> void:
+	if __is_moving:
+		return
+
+	__is_hovering = true
+
 	__tween.interpolate_property(
 		self,
 		"global_position",
@@ -57,6 +64,9 @@ func hover_start() -> void:
 	__tween.start()
 
 func hover_stop(origin: Vector2) -> void:
+	if !__is_hovering:
+		return
+
 	__tween.stop(self, "global_position")
 
 	__tween.interpolate_property(
@@ -68,7 +78,13 @@ func hover_stop(origin: Vector2) -> void:
 	)
 	__tween.start()
 
+	yield(__tween, "tween_completed")
+
+	__is_hovering = false
+
 func move(incoming: Vector2, visible: bool = true) -> void:
+	__is_moving = true
+
 	z_index = 10
 
 	# Move up off stack
@@ -150,7 +166,9 @@ func move(incoming: Vector2, visible: bool = true) -> void:
 			# Dust particles (Should we add some variables to set?)
 			var new_dust = dust_scene.instance()
 			self.call_deferred("add_child", new_dust)
-		
+
+	__is_moving = false
+
 
 # Private methods
 

@@ -13,16 +13,25 @@ var __following: bool = false
 func _init(
 	discard: Discard,
 	hand: Hand,
+	hearts: Array,
 	plinths: Array,
 	stack: Stack
-).(discard, hand, plinths, stack) -> void:
-	for plinth in plinths:
+).(discard, hand, hearts, plinths, stack) -> void:
+	for plinth in _plinths:
 		plinth.hover_area.connect("mouse_exited", self, "__plinth_dectivate", [plinth])
 		plinth.hover_area.connect("mouse_entered", self, "__plinth_activate", [plinth])
 
 
 func _process(delta: float) -> void:
-	if Input.is_mouse_button_pressed(BUTTON_LEFT) && __active_rune:
+	if Input.is_mouse_button_pressed(BUTTON_LEFT) && __active_rune && _interact:
+		var can_add: bool = false
+
+		for plinth in _plinths:
+			can_add = can_add || plinth.can_add()
+
+		if !can_add && !__following:
+			return
+
 		__following = true
 
 		__active_rune.global_position = get_viewport().get_mouse_position()
@@ -38,7 +47,8 @@ func _process(delta: float) -> void:
 
 			yield(__active_plinth.add(rune), "completed")
 
-			emit_signal("rune_picked")
+			print("Player has %d health" % _health)
+			emit_signal("rune_picked", PlayerState.new(_health, _plinths, _hand))
 
 		else:
 			_hand.deactivate_rune(__active_rune)
