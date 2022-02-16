@@ -53,15 +53,36 @@ func __get_bus_index(name: String) -> int:
 func __play_audio(options: Dictionary) -> void:
 	var bus = options["bus"]
 	var choice = options["choice"]
+	var loop = options["loop"]
 	if bus == "music":
-		__play_music(choice)
+		__play_music(choice, loop)
 	elif bus == "effect":
 		__play_effect(choice)
 	else:
 		__play_effect("error")
 
-func __play_music(choice: String) -> void:
-	pass
+func __play_music(choice: String, loop: bool) -> void:
+	var new_player = music_player.instance()
+	match choice:
+		"menu":
+			if !loop:
+				new_player.audio_path = "res://assets/audio/music/menu_start.ogg"
+			else:
+				new_player.audio_path = "res://assets/audio/music/menu_loop.ogg"
+			new_player.choice = "menu"
+		"battle":
+			if !loop:
+				new_player.audio_path = "res://assets/audio/music/battle_start.ogg"
+			else:
+				new_player.audio_path = "res://assets/audio/music/battle_loop.ogg"
+			new_player.choice = "battle"
+	# Delete last music player, if one exists
+	if active_music_players.size() > 0:
+		active_music_players[0].queue_free()
+		active_music_players.pop_front()
+	# Add handle to array for layer deletion
+	active_music_players.push_back(new_player)
+	self.add_child(new_player)
 
 func __play_effect(choice: String) -> void:
 	var new_player = effect_player.instance()
@@ -74,5 +95,24 @@ func __play_effect(choice: String) -> void:
 					new_player.audio_path = "res://assets/audio/effects/slab_thud/slab_hit1.ogg"
 				1:
 					new_player.audio_path = "res://assets/audio/effects/slab_thud/slab_hit2.ogg"
+		"rune_move":
+			var randChoice = randi() % 5
+			match randChoice:
+				0:
+					new_player.audio_path = "res://assets/audio/effects/slab_move/HeavyStone-00.ogg"
+				1:
+					new_player.audio_path = "res://assets/audio/effects/slab_move/HeavyStone-01.ogg"
+				2:
+					new_player.audio_path = "res://assets/audio/effects/slab_move/HeavyStone-02.ogg"
+				3:
+					new_player.audio_path = "res://assets/audio/effects/slab_move/HeavyStone-03.ogg"
+				4:
+					new_player.audio_path = "res://assets/audio/effects/slab_move/HeavyStone-04.ogg"
+		"rune_drop":
+			new_player.pitch_scale = rand_range(0.7, 1.0)
+			new_player.audio_path = "res://assets/audio/effects/slab_thud/land.ogg"
+		"GONG":
+			new_player.pitch_scale = rand_range(0.7, 1.0)
+			new_player.audio_path = "res://assets/audio/effects/god_select/GONG.ogg"
 	
 	self.add_child(new_player)

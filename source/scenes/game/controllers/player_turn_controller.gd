@@ -6,7 +6,7 @@ class_name PlayerTurnController extends TurnController
 var __active_plinth: Plinth = null
 var __active_rune: Rune = null
 var __following: bool = false
-
+var __has_sounded: bool = false
 
 # Lifecycle methods
 
@@ -36,7 +36,15 @@ func _process(delta: float) -> void:
 
 		__active_rune.global_position = get_viewport().get_mouse_position()
 		__active_rune.z_index = 10
+		
+		if !__has_sounded:
+			# Emit move sound when picking up rune
+			Event.emit_signal("emit_audio", {"bus": "effect", "choice": "rune_move", "loop": false})
+			__has_sounded = !__has_sounded
+		
 	elif __following:
+		if __has_sounded:
+			__has_sounded = !__has_sounded
 		__following = false
 
 		if __active_plinth && __active_plinth.can_add():

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/land.ogg-b8c5c36586eb8bccbd6c7ed3987c48f2.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/effects/slab_thud/land.ogg"
+dest_files=[ "res://.import/land.ogg-b8c5c36586eb8bccbd6c7ed3987c48f2.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

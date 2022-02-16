@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/HeavyStone-05.ogg-83cd7ae2f47c21829ebd4a993347a9de.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/effects/slab_thud/HeavyStone-05.ogg"
+dest_files=[ "res://.import/HeavyStone-05.ogg-83cd7ae2f47c21829ebd4a993347a9de.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

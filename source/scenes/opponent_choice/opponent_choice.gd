@@ -24,6 +24,10 @@ func _ready():
 	else:
 		push_error("Unexpected results from parsing gods.")
 	
+	# Play menu music
+	var audio_dict = {"bus": "music", "choice": "menu", "loop": false}
+	Event.emit_signal("emit_audio", audio_dict)
+	
 
 func fill_opponents_array():
 	rng.randomize()
@@ -34,6 +38,7 @@ func fill_opponents_array():
 			opponent_array.append(opponent_button.new(gods[god]["name"], gods[god]["description"]))
 	opponent_array.shuffle()
 	opponent_array.append(opponent_button.new(gods["zeus"]["name"], gods["zeus"]["description"]))
+	
 
 
 func add_opponents():
