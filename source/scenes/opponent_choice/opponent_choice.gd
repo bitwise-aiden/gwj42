@@ -15,6 +15,10 @@ var opponent_two = 1
 func _ready():
 	fill_opponents_array(2)
 	add_opponents()
+	
+	# Play menu music
+	var audio_dict = {"bus": "music", "choice": "menu", "loop": false}
+	Event.emit_signal("emit_audio", audio_dict)
 
 func fill_opponents_array(var opponents):
 	for i in range(opponents):

@@ -45,7 +45,7 @@ func attack(other: Rune) -> void:
 
 	yield(move(other.global_position + offset), "completed")
 	Event.emit_signal("add_shake", 0.4)
-	Event.emit_signal("emit_audio", {"bus": "effect", "choice": "rune_thud"})
+	Event.emit_signal("emit_audio", {"bus": "effect", "choice": "rune_thud", "loop": false})
 	yield(move(origin), "completed")
 
 
@@ -87,6 +87,7 @@ func hover_stop(origin: Vector2, override: bool = false) -> void:
 
 func move(incoming: Vector2, visible: bool = true) -> void:
 	print(incoming)
+	
 	__is_moving = true
 
 	z_index = 10
@@ -168,6 +169,7 @@ func move(incoming: Vector2, visible: bool = true) -> void:
 	z_index = 0
 	# Make thump sound only when on screen
 	if self.position.x > 0 and self.position.x < 1280:
+		Event.emit_signal("emit_audio", {"bus": "effect", "choice": "rune_drop", "loop": false})
 		if not Geometry.is_point_in_polygon(incoming, Globals.plinth_check_polygon):
 			# Dust particles (Should we add some variables to set?)
 			var new_dust = dust_scene.instance()

@@ -66,7 +66,11 @@ func _ready() -> void:
 	__button_menu.connect("pressed", SceneManager, "load_scene", ["menu"])
 	__button_next.connect("pressed", SceneManager, "load_scene", ["opponent_choice"])
 	__button_replay.connect("pressed", SceneManager, "load_scene", ["game"])
-
+	
+	# Play menu music
+	var audio_dict = {"bus": "music", "choice": "battle", "loop": false}
+	Event.emit_signal("emit_audio", audio_dict)
+	
 	__game_loop()
 
 
