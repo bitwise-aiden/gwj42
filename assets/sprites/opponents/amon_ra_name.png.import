@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/thor_name.png-0e7a222575e4e4f26454edd37ff9cfe5.stex"
+path="res://.import/amon_ra_name.png-c93ae3d7ff9c800781101c47bf7818a5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/opponents/thor_name.png"
-dest_files=[ "res://.import/thor_name.png-0e7a222575e4e4f26454edd37ff9cfe5.stex" ]
+source_file="res://assets/sprites/opponents/amon_ra_name.png"
+dest_files=[ "res://.import/amon_ra_name.png-c93ae3d7ff9c800781101c47bf7818a5.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
