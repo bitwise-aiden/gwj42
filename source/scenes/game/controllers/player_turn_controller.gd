@@ -23,6 +23,14 @@ func _init(
 
 func _process(delta: float) -> void:
 	if Input.is_mouse_button_pressed(BUTTON_LEFT) && __active_rune && _interact:
+		var can_add: bool = false
+
+		for plinth in _plinths:
+			can_add = can_add || plinth.can_add()
+
+		if !can_add && !__following:
+			return
+
 		__following = true
 
 		__active_rune.global_position = get_viewport().get_mouse_position()

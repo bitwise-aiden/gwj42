@@ -56,11 +56,12 @@ func discard() -> void:
 		var rune: Rune = plinth.remove()
 
 		if rune:
-			yield(_discard.add(rune), "completed")
+			_discard.add(rune)
+
+			yield(get_tree().create_timer(0.7), "timeout")
 
 
 func draw() -> void:
-
 	while _hand.can_add():
 		if _stack.empty():
 			yield(__shuffle_discard(), "completed")
