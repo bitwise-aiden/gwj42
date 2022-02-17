@@ -15,6 +15,7 @@
 script = ExtResource( 5 )
 
 [node name="text" type="Label" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -162,6 +163,7 @@ margin_bottom = -62.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "You win!"
+align = 1
 
 [node name="buttons" type="VBoxContainer" parent="ui/end_screen"]
 anchor_left = 0.5
@@ -202,3 +204,25 @@ margin_bottom = 152.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "menu"
+
+[node name="round_screen" type="Control" parent="ui"]
+visible = false
+margin_right = 1280.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label_result" type="Label" parent="ui/round_screen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -67.0
+margin_top = -24.0
+margin_right = 67.0
+margin_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Draw"
+align = 1

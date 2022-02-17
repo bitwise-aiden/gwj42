@@ -8,11 +8,13 @@ const __RESULT_TEXT = "%s won!"
 
 # Private variables
 
-onready var __end_screen: Control = $ui/end_screen
-onready var __label_result: Label = $ui/end_screen/label_result
+onready var __label_end_result: Label = $ui/end_screen/label_result
+onready var __label_round_result: Label = $ui/round_screen/label_result
 onready var __button_menu: Button = $ui/end_screen/buttons/button_menu
 onready var __button_next: Button = $ui/end_screen/buttons/button_next
 onready var __button_replay: Button = $ui/end_screen/buttons/button_replay
+onready var __screen_end: Control = $ui/end_screen
+onready var __screen_round: Control = $ui/round_screen
 
 
 var __enemy_controller: EnemyTurnController = null
@@ -66,11 +68,11 @@ func _ready() -> void:
 	__button_menu.connect("pressed", SceneManager, "load_scene", ["menu"])
 	__button_next.connect("pressed", SceneManager, "load_scene", ["opponent_choice"])
 	__button_replay.connect("pressed", SceneManager, "load_scene", ["game"])
-	
+
 	# Play menu music
 	var audio_dict = {"bus": "music", "choice": "battle", "loop": false}
 	Event.emit_signal("emit_audio", audio_dict)
-	
+
 	__game_loop()
 
 
@@ -79,13 +81,13 @@ func _ready() -> void:
 func __controller_died(was_player: bool) -> void:
 	__alive = false
 
-	__end_screen.visible = true
+	__screen_end.visible = true
 
 	if was_player:
-		__label_result.text = __RESULT_TEXT % "The God" # Replace with god name
+		__label_end_result.text = __RESULT_TEXT % "The God" # Replace with god name
 		__button_next.text = "Back"
 	else:
-		__label_result.text = __RESULT_TEXT % "You"
+		__label_end_result.text = __RESULT_TEXT % "You"
 		__button_next.text = "Continue"
 
 
@@ -106,8 +108,16 @@ func __game_loop() -> void:
 
 		yield(__score_round(), "completed")
 
+		__screen_round.visible = true && __alive
+
+		yield(get_tree().create_timer(0.5), "timeout")
+
 		__enemy_controller.discard()
-		yield(__player_controller.discard(), "completed")
+		__player_controller.discard()
+
+		yield(get_tree().create_timer(1.7), "timeout")
+
+		__screen_round.visible = false
 
 
 func __score_round() -> void:
@@ -133,9 +143,12 @@ func __score_round() -> void:
 				enemy_rune.move(enemy_rune.global_position)
 				yield(player_rune.move(player_rune.global_position), "completed")
 
-	if result > 0:
-		__enemy_controller.damage(result)
-	else:
-		__player_controller.damage(abs(result))
-
-	print("player: %s, enemy: %s" %[__player_controller._health, __enemy_controller._health])
+	match result:
+		1, 2:
+			__label_round_result.text = "Win"
+			__enemy_controller.damage(result)
+		-1, -2:
+			__label_round_result.text = "Loss"
+			__player_controller.damage(abs(result))
+		0:
+			__label_round_result.text = "Draw"

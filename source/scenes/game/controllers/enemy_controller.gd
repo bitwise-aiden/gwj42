@@ -24,8 +24,6 @@ func _init(
 # Public methods
 
 func pick_rune(opponent: PlayerState) -> void:
-	print("Other player has %d health" % opponent.health)
-
 	__generate_options(opponent)
 
 	match opponent.health:

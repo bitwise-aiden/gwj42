@@ -82,7 +82,7 @@ func __rune_activate(rune_index: int) -> void:
 
 	active_rune = __runes[rune_index]
 	active_rune.hover_start()
-	
+
 
 
 func __rune_deactivate(rune_index: int) -> void:

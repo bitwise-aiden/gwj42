@@ -34,28 +34,30 @@ func _process(delta: float) -> void:
 
 		__following = true
 
+		__active_rune.follow_start()
 		__active_rune.global_position = get_viewport().get_mouse_position()
 		__active_rune.z_index = 10
-		
+
 		if !__has_sounded:
 			# Emit move sound when picking up rune
 			Event.emit_signal("emit_audio", {"bus": "effect", "choice": "rune_move", "loop": false})
 			__has_sounded = !__has_sounded
-		
+
 	elif __following:
 		if __has_sounded:
 			__has_sounded = !__has_sounded
 		__following = false
 
 		if __active_plinth && __active_plinth.can_add():
+			__active_rune.follow_stop()
 			_hand.remove(__active_rune)
 
 			var rune: Rune = __active_rune
 			__active_rune = null
 
+			rune.__is_hovering = false
 			yield(__active_plinth.add(rune), "completed")
 
-			print("Player has %d health" % _health)
 			emit_signal("rune_picked", PlayerState.new(_health, _plinths, _hand))
 
 		else:

@@ -3,8 +3,8 @@ class_name Rune extends Sprite
 
 # Private constants
 
-const __SPEED_HORIZONTAL: float = 600.0
-const __SPEED_VERTICAL: float = 700.0
+const __SPEED_HORIZONTAL: float = 900.0
+const __SPEED_VERTICAL: float = 900.0
 const __SPEED_RETURN: float = 1200.0
 
 # Public variables
@@ -23,6 +23,7 @@ onready var __sprite_type: Sprite = $type
 
 var __is_hovering: bool = false
 var __is_moving: bool = false
+var __is_following: bool = false
 var __ready: bool = false
 var __tween: Tween = Tween.new()
 
@@ -49,6 +50,15 @@ func attack(other: Rune) -> void:
 	yield(move(origin), "completed")
 
 
+func follow_start() -> void:
+	__is_following = true
+	__tween.stop_all()
+
+
+func follow_stop() -> void:
+	__is_following = false
+
+
 func hover_start() -> void:
 	if __is_moving:
 		return
@@ -66,7 +76,7 @@ func hover_start() -> void:
 
 
 func hover_stop(origin: Vector2, override: bool = false) -> void:
-	if !__is_hovering && !override:
+	if !__is_hovering && !override && !__is_following:
 		return
 
 	__tween.stop(self, "global_position")
@@ -86,8 +96,6 @@ func hover_stop(origin: Vector2, override: bool = false) -> void:
 
 
 func move(incoming: Vector2, visible: bool = true) -> void:
-	print(incoming)
-	
 	__is_moving = true
 
 	z_index = 10
@@ -131,7 +139,7 @@ func move(incoming: Vector2, visible: bool = true) -> void:
 			"scale:x",
 			1.0,
 			0.0,
-			0.15
+			0.1
 		)
 		__tween.start()
 
@@ -145,7 +153,7 @@ func move(incoming: Vector2, visible: bool = true) -> void:
 			"scale:x",
 			0.0,
 			1.0,
-			0.15
+			0.1
 		)
 		__tween.start()
 

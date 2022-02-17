@@ -64,20 +64,18 @@ func discard() -> void:
 		if rune:
 			_discard.add(rune)
 
-			yield(get_tree().create_timer(0.7), "timeout")
-
 
 func draw() -> void:
 	while _hand.can_add():
 		if _stack.empty():
 			yield(__shuffle_discard(), "completed")
-			yield(get_tree().create_timer(0.7), "timeout")
+			yield(get_tree().create_timer(0.5), "timeout")
 
 		var rune: Rune = _stack.pop()
 
 		_hand.add(rune)
 
-		yield(get_tree().create_timer(1.0), "timeout")
+		yield(get_tree().create_timer(0.7), "timeout")
 
 
 func flip() -> void:
@@ -132,4 +130,4 @@ func __shuffle_discard() -> void:
 
 		_stack.add(rune)
 
-		yield(get_tree().create_timer(0.7), "timeout")
+		yield(get_tree().create_timer(0.5), "timeout")
