@@ -1,5 +1,5 @@
 #god_data.gd
-extends Resource
+class_name GodData extends Resource
 
 var name
 var description

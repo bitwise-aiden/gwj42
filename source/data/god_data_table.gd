@@ -1,5 +1,5 @@
 #god_data_table.gd
-extends Resource
+class_name GodDataTable extends Resource
 
 const GodStats = preload("res://source/data/god_data.gd")
 
