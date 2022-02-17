@@ -8,13 +8,15 @@ const __RESULT_TEXT = "%s won!"
 
 # Private variables
 
-onready var __label_end_result: Label = $ui/end_screen/label_result
-onready var __label_round_result: Label = $ui/round_screen/label_result
-onready var __button_menu: Button = $ui/end_screen/buttons/button_menu
-onready var __button_next: Button = $ui/end_screen/buttons/button_next
-onready var __button_replay: Button = $ui/end_screen/buttons/button_replay
-onready var __screen_end: Control = $ui/end_screen
-onready var __screen_round: Control = $ui/round_screen
+onready var __label_end_result: Label = $ui/screen_end/label_result
+onready var __label_round_result: Label = $ui/screen_round/label_result
+onready var __label_opponent_name: Label = $ui/screen_game/label_opponent_name
+onready var __button_menu: Button = $ui/screen_end/buttons/button_menu
+onready var __button_next: Button = $ui/screen_end/buttons/button_next
+onready var __button_replay: Button = $ui/screen_end/buttons/button_replay
+onready var __screen_end: Control = $ui/screen_end
+onready var __screen_game: Control = $ui/screen_game
+onready var __screen_round: Control = $ui/screen_round
 
 
 var __enemy_controller: EnemyTurnController = null
@@ -45,7 +47,6 @@ func _ready() -> void:
 	__enemy_controller.heal()
 	__enemy_controller.connect("died", self, "__controller_died", [false])
 
-
 	var player_hearts: Array = $player_hearts.get_children()
 	player_hearts.invert()
 
@@ -73,6 +74,8 @@ func _ready() -> void:
 	var audio_dict = {"bus": "music", "choice": "battle", "loop": false}
 	Event.emit_signal("emit_audio", audio_dict)
 
+	__label_opponent_name.text = GameState.current_god
+
 	__game_loop()
 
 
@@ -89,6 +92,7 @@ func __controller_died(was_player: bool) -> void:
 	else:
 		__label_end_result.text = __RESULT_TEXT % "You"
 		__button_next.text = "Continue"
+		GameState.kill(GameState.current_god)
 
 
 func __game_loop() -> void:

@@ -54,6 +54,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/scenes/game/controllers/enemy_controller.gd"
 }, {
+"base": "Resource",
+"class": "GodData",
+"language": "GDScript",
+"path": "res://source/data/god_data.gd"
+}, {
+"base": "Resource",
+"class": "GodDataTable",
+"language": "GDScript",
+"path": "res://source/data/god_data_table.gd"
+}, {
 "base": "EditorPlugin",
 "class": "GodotReset",
 "language": "GDScript",
@@ -84,7 +94,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/scenes/game/controllers/player_turn_controller.gd"
 }, {
-"base": "Reference",
+"base": "Sprite",
 "class": "Plinth",
 "language": "GDScript",
 "path": "res://source/scenes/game/plinth.gd"
@@ -94,7 +104,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/scenes/game/rune.gd"
 }, {
-"base": "Reference",
+"base": "Node2D",
 "class": "Stack",
 "language": "GDScript",
 "path": "res://source/scenes/game/stack.gd"
@@ -129,6 +139,8 @@ _global_script_class_icons={
 "CurrentQueue": "",
 "Discard": "",
 "EnemyTurnController": "",
+"GodData": "",
+"GodDataTable": "",
 "GodotReset": "",
 "Hand": "",
 "Heart": "",
@@ -164,6 +176,7 @@ TaskManager="*res://source/autoloads/task_manager.gd"
 AudioManager="*res://source/autoloads/audio_manager.gd"
 InputManager="*res://source/autoloads/input_manager.gd"
 DebugManager="*res://source/autoloads/debug_manager.gd"
+GameState="*res://source/autoloads/game_state.gd"
 
 [display]
 
