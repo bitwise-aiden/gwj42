@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chicomecoat_statue.png-3234058b076b71e2798d9977f6380091.stex"
+path="res://.import/chicomecoatl_name.png-1d99b008e7d5741b9145b7a8a3538d6a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/opponents/chicomecoat_statue.png"
-dest_files=[ "res://.import/chicomecoat_statue.png-3234058b076b71e2798d9977f6380091.stex" ]
+source_file="res://assets/sprites/opponents/chicomecoatl_name.png"
+dest_files=[ "res://.import/chicomecoatl_name.png-1d99b008e7d5741b9145b7a8a3538d6a.stex" ]
 
 [params]
 
