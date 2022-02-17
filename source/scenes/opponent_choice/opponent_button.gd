@@ -19,7 +19,7 @@ func _init(var n):
 
 func _pressed():
 	popup.picture.texture = load("res://assets/sprites/opponents/"+ opponent_name + "_portrait.png")
-	popup.name_popup.texture = load("res://assets/sprites/opponents/"+ opponent_name + "_name.png")
+	popup.name_popup.set_text(opponent_name)
 	popup.description.set_text(opponent_description)
 	popup.opponent_name = opponent_name
 	popup.popup()
