@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://source/scenes/game/dust.gd" type="Script" id=1]
 [ext_resource path="res://assets/materials/gradients/dust_gradient.tres" type="Gradient" id=2]
+[ext_resource path="res://assets/sprites/dust/dust.png" type="Texture" id=3]
+[ext_resource path="res://assets/materials/dust_curve.tres" type="Curve" id=4]
 
 [node name="dust" type="Node2D"]
 script = ExtResource( 1 )
@@ -13,7 +15,9 @@ amount = 128
 lifetime = 1.5
 one_shot = true
 explosiveness = 1.0
+lifetime_randomness = 1.0
 local_coords = false
+texture = ExtResource( 3 )
 emission_shape = 2
 emission_rect_extents = Vector2( 55, 5 )
 direction = Vector2( 0, -1 )
@@ -22,8 +26,8 @@ initial_velocity = 400.0
 initial_velocity_random = 0.15
 linear_accel = -1500.0
 linear_accel_random = 0.1
-scale_amount = 2.0
 scale_amount_random = 1.0
+scale_amount_curve = ExtResource( 4 )
 color_ramp = ExtResource( 2 )
 hue_variation = 0.01
 hue_variation_random = 1.0
@@ -35,7 +39,9 @@ amount = 128
 lifetime = 1.5
 one_shot = true
 explosiveness = 1.0
+lifetime_randomness = 1.0
 local_coords = false
+texture = ExtResource( 3 )
 emission_shape = 2
 emission_rect_extents = Vector2( 5, 55 )
 gravity = Vector2( 0, -200 )
@@ -43,8 +49,8 @@ initial_velocity = 400.0
 initial_velocity_random = 0.3
 linear_accel = -1000.0
 linear_accel_random = 0.2
-scale_amount = 2.0
 scale_amount_random = 1.0
+scale_amount_curve = ExtResource( 4 )
 color_ramp = ExtResource( 2 )
 hue_variation = 0.01
 hue_variation_random = 1.0
@@ -56,7 +62,9 @@ amount = 128
 lifetime = 1.5
 one_shot = true
 explosiveness = 1.0
+lifetime_randomness = 1.0
 local_coords = false
+texture = ExtResource( 3 )
 emission_shape = 2
 emission_rect_extents = Vector2( 55, 5 )
 direction = Vector2( 0, 1 )
@@ -67,6 +75,7 @@ linear_accel = -1000.0
 linear_accel_random = 0.1
 scale_amount = 2.0
 scale_amount_random = 1.0
+scale_amount_curve = ExtResource( 4 )
 color_ramp = ExtResource( 2 )
 hue_variation = 0.01
 hue_variation_random = 1.0
@@ -78,7 +87,9 @@ amount = 128
 lifetime = 1.5
 one_shot = true
 explosiveness = 1.0
+lifetime_randomness = 1.0
 local_coords = false
+texture = ExtResource( 3 )
 emission_shape = 2
 emission_rect_extents = Vector2( 5, 55 )
 direction = Vector2( -1, 0 )
@@ -87,8 +98,8 @@ initial_velocity = 400.0
 initial_velocity_random = 0.3
 linear_accel = -1000.0
 linear_accel_random = 0.2
-scale_amount = 2.0
 scale_amount_random = 1.0
+scale_amount_curve = ExtResource( 4 )
 color_ramp = ExtResource( 2 )
 hue_variation = 0.01
 hue_variation_random = 1.0

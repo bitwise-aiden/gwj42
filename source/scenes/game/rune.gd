@@ -45,6 +45,7 @@ func attack(other: Rune) -> void:
 	var offset: Vector2 = (origin - other.position).normalized() * 50.0
 
 	yield(move(other.global_position + offset), "completed")
+	other.get_node("attack_particles").emitting = true
 	Event.emit_signal("add_shake", 0.4)
 	Event.emit_signal("emit_audio", {"bus": "effect", "choice": "rune_thud", "loop": false})
 	yield(move(origin), "completed")

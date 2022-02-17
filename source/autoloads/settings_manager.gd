@@ -19,7 +19,8 @@ var __settings_default: Dictionary = {
 	},
 	"gameplay":{
 		"Colorblind Shader": [],
-		"CRT Shader": true
+		"CRT Shader": true,
+		"Shake Intensity": 1.0
 	}
 }
 
@@ -29,12 +30,12 @@ func _ready() -> void:
 	self.connect("setting_changed", self, "__setting_changed")
 	self.__settings = self.__settings_default
 
-	if FileManager.file_exists(self.SETTINGS_PATH):
-		self.__settings = FileManager.load_json(self.SETTINGS_PATH)
-		Logger.info("Loading settings")
-	else:
-		FileManager.save_json(self.SETTINGS_PATH, self.__settings)
-		Logger.info("Creating settings")
+#	if FileManager.file_exists(self.SETTINGS_PATH):
+#		self.__settings = FileManager.load_json(self.SETTINGS_PATH)
+#		Logger.info("Loading settings")
+#	else:
+	FileManager.save_json(self.SETTINGS_PATH, self.__settings)
+	Logger.info("Creating settings")
 
 
 # Public methods
