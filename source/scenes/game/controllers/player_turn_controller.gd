@@ -55,7 +55,6 @@ func _process(delta: float) -> void:
 			var rune: Rune = __active_rune
 			__active_rune = null
 
-			rune.__is_hovering = false
 			yield(__active_plinth.add(rune), "completed")
 
 			emit_signal("rune_picked", PlayerState.new(_health, _plinths, _hand))

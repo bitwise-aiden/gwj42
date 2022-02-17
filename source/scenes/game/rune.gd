@@ -73,13 +73,14 @@ func hover_start() -> void:
 		0.2
 	)
 	__tween.start()
+	__tween.custom_multiplayer
 
 
 func hover_stop(origin: Vector2, override: bool = false) -> void:
 	if !__is_hovering && !override && !__is_following:
 		return
 
-	__tween.stop(self, "global_position")
+	__tween.remove_all()
 
 	__tween.interpolate_property(
 		self,
@@ -100,7 +101,7 @@ func move(incoming: Vector2, visible: bool = true) -> void:
 
 	z_index = 10
 
-	__tween.stop_all()
+	__tween.remove_all()
 
 	# Move up off stack
 	__tween.interpolate_property(
@@ -160,13 +161,12 @@ func move(incoming: Vector2, visible: bool = true) -> void:
 		yield(__tween, "tween_completed")
 
 	# Fall down to desired location
-	var vertical_position: Vector2 = incoming
 	__tween.interpolate_property(
 		self,
 		"global_position",
 		global_position,
 		incoming,
-		(global_position - vertical_position).length() / __SPEED_VERTICAL,
+		(global_position - incoming).length() / __SPEED_VERTICAL,
 		Tween.TRANS_EXPO,
 		Tween.EASE_IN
 	)
