@@ -14,8 +14,12 @@ var __settings_default: Dictionary = {
 	},
 	"input": {},
 	"graphics":{
-		"Particles": ["Low", "Medium", "High"],
-		"Fullscreen": [true, false]
+		"Particles": 1.0,
+		"Fullscreen": false
+	},
+	"gameplay":{
+		"Colorblind Shader": [],
+		"CRT Shader": true
 	}
 }
 
