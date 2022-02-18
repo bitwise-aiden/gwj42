@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gaia_portrait.png-753f631ab9a32108e793a88339cd835f.stex"
+path="res://.import/Gaia_portrait.png-29ed84a4737418f3d149819f3a4d10c3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/opponents/gaia_portrait.png"
-dest_files=[ "res://.import/gaia_portrait.png-753f631ab9a32108e793a88339cd835f.stex" ]
+source_file="res://assets/sprites/opponents/Gaia_portrait.png"
+dest_files=[ "res://.import/Gaia_portrait.png-29ed84a4737418f3d149819f3a4d10c3.stex" ]
 
 [params]
 
