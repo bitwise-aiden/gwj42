@@ -17,7 +17,8 @@ onready var __button_replay: Button = $ui/screen_end/buttons/button_replay
 onready var __screen_end: Control = $ui/screen_end
 onready var __screen_game: Control = $ui/screen_game
 onready var __screen_round: Control = $ui/screen_round
-
+onready var __speech_bubble: SpeechBubble = $ui/screen_game/speech_bubble
+onready var __texture_rect_opponent: TextureRect = $ui/screen_game/texture_rect_opponent
 
 var __enemy_controller: EnemyTurnController = null
 var __enemy_manager: CardManager = null
@@ -25,6 +26,7 @@ var __player_controller: PlayerTurnController = null
 var __player_manager: CardManager = null
 
 var __alive: bool = true
+var __god_data: GodData
 
 
 # Lifecycle methods
@@ -44,7 +46,6 @@ func _ready() -> void:
 
 	__enemy_manager = CardManager.new()
 	__enemy_controller.set_deck(__enemy_manager.deck)
-	__enemy_controller.heal()
 	__enemy_controller.connect("died", self, "__controller_died", [false])
 
 	var player_hearts: Array = $player_hearts.get_children()
@@ -61,7 +62,6 @@ func _ready() -> void:
 
 	__player_manager = CardManager.new()
 	__player_controller.set_deck(__player_manager.deck)
-	__player_controller.heal()
 	__player_controller.connect("died", self, "__controller_died", [true])
 
 	__player_controller.connect("rune_picked", __enemy_controller, "pick_rune")
@@ -74,7 +74,16 @@ func _ready() -> void:
 	var audio_dict = {"bus": "music", "choice": "battle", "loop": false}
 	Event.emit_signal("emit_audio", audio_dict)
 
-	__label_opponent_name.text = GameState.current_god
+	__god_data = GameState.current_god_data()
+	__label_opponent_name.text = __god_data.name
+	__texture_rect_opponent.texture = __god_data.texture()
+
+	yield(Transition.stop(), "completed")
+
+	__enemy_controller.heal()
+	__player_controller.heal()
+
+	__speech_bubble.show_text(__god_data.message("open_taunt"))
 
 	__game_loop()
 
@@ -89,9 +98,11 @@ func __controller_died(was_player: bool) -> void:
 	if was_player:
 		__label_end_result.text = __RESULT_TEXT % "The God" # Replace with god name
 		__button_next.text = "Back"
+		__speech_bubble.show_text(__god_data.message("game_win"))
 	else:
 		__label_end_result.text = __RESULT_TEXT % "You"
 		__button_next.text = "Continue"
+		__speech_bubble.show_text(__god_data.message("game_lose"))
 		GameState.kill(GameState.current_god)
 
 
@@ -112,7 +123,7 @@ func __game_loop() -> void:
 
 		yield(__score_round(), "completed")
 
-		__screen_round.visible = true && __alive
+#		__screen_round.visible = true && __alive
 
 		yield(get_tree().create_timer(0.5), "timeout")
 
@@ -121,7 +132,7 @@ func __game_loop() -> void:
 
 		yield(get_tree().create_timer(1.7), "timeout")
 
-		__screen_round.visible = false
+#		__screen_round.visible = false
 
 
 func __score_round() -> void:
@@ -144,15 +155,24 @@ func __score_round() -> void:
 				result += 1
 
 			_:
-				enemy_rune.move(enemy_rune.global_position)
-				yield(player_rune.move(player_rune.global_position), "completed")
+				enemy_rune.bounce()
+				yield(player_rune.bounce(), "completed")
 
 	match result:
 		1, 2:
 			__label_round_result.text = "Win"
 			__enemy_controller.damage(result)
+			if __enemy_controller._health > 0:
+				__speech_bubble.show_text(__god_data.message("round_lose"))
+			else:
+				__speech_bubble.show_text(__god_data.message("game_lose"))
 		-1, -2:
 			__label_round_result.text = "Loss"
 			__player_controller.damage(abs(result))
+			if __player_controller._health > 0:
+				__speech_bubble.show_text(__god_data.message("round_win"))
+			else:
+				__speech_bubble.show_text(__god_data.message("game_win"))
 		0:
 			__label_round_result.text = "Draw"
+			__speech_bubble.show_text(__god_data.message("round_draw"))

@@ -12,7 +12,7 @@ func add(rune: Rune, move: bool = true) -> void:
 	__runes.append(rune)
 
 	if move:
-		yield(rune.move(global_position, false), "completed")
+		yield(rune.move(global_position, false, z_index), "completed")
 
 
 func empty() -> bool:

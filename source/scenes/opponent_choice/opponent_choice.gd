@@ -15,6 +15,8 @@ func _ready():
 	var audio_dict = {"bus": "music", "choice": "menu", "loop": false}
 	Event.emit_signal("emit_audio", audio_dict)
 
+	Transition.stop()
+
 
 
 func add_opponents():

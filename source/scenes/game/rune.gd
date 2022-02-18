@@ -44,11 +44,15 @@ func attack(other: Rune) -> void:
 
 	var offset: Vector2 = (origin - other.position).normalized() * 50.0
 
-	yield(move(other.global_position + offset), "completed")
+	yield(move(other.global_position + offset, true, z_index), "completed")
 	other.get_node("attack_particles").emitting = true
 	Event.emit_signal("add_shake", 0.4)
 	Event.emit_signal("emit_audio", {"bus": "effect", "choice": "rune_thud", "loop": false})
-	yield(move(origin), "completed")
+	yield(move(origin, true, z_index), "completed")
+
+
+func bounce() -> void:
+	yield(move(global_position, true, z_index), "completed")
 
 
 func follow_start() -> void:
@@ -97,7 +101,7 @@ func hover_stop(origin: Vector2, override: bool = false) -> void:
 	__is_hovering = false
 
 
-func move(incoming: Vector2, visible: bool = true) -> void:
+func move(incoming: Vector2, visible: bool = true, final_z_index: int = 0) -> void:
 	__is_moving = true
 
 	z_index = 10
@@ -175,7 +179,7 @@ func move(incoming: Vector2, visible: bool = true) -> void:
 
 	yield(__tween,"tween_completed")
 
-	z_index = 0
+	z_index = final_z_index + 1
 	# Make thump sound only when on screen
 	if self.position.x > 0 and self.position.x < 1280:
 		Event.emit_signal("emit_audio", {"bus": "effect", "choice": "rune_drop", "loop": false})

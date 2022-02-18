@@ -14,8 +14,14 @@ func _ready() -> void:
 
 
 # Public methods
-func load_scene(name: String) -> void:
+func load_scene(name: String, handle_transition: bool = true) -> void:
 	if name in self.__scenes_by_name:
+		if handle_transition:
+			yield(Transition.start(), "completed")
+
 		self.get_tree().change_scene_to(self.__scenes_by_name[name])
+
+		if handle_transition:
+			yield(Transition.stop(), "completed")
 	else:
 		push_error("Could not load scene with name: %s" % name)
