@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://source/scenes/opponent_choice/opponent_choice.gd" type="Script" id=1]
 [ext_resource path="res://assets/backgrounds/opponent_choice_background.png" type="Texture" id=2]
 [ext_resource path="res://source/scenes/opponent_choice/popup_data.gd" type="Script" id=3]
+[ext_resource path="res://source/components/scroll.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/sprites/opponents/amon_ra_portrait.png" type="Texture" id=5]
 
 [node name="opponent_choice" type="Control"]
 anchor_right = 1.0
@@ -110,6 +112,90 @@ margin_right = 288.0
 margin_bottom = 336.0
 scroll_active = false
 
+[node name="scroll" parent="opponent_one_spot" instance=ExtResource( 4 )]
+position = Vector2( -136, -200 )
+
+[node name="content" type="Control" parent="opponent_one_spot/scroll"]
+margin_left = -221.0
+margin_top = 40.0
+margin_right = 222.0
+margin_bottom = 489.0
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="portrait" type="TextureRect" parent="opponent_one_spot/scroll/content"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -184.5
+margin_right = 128.0
+margin_bottom = 71.5
+rect_scale = Vector2( 0.5, 0.5 )
+rect_pivot_offset = Vector2( 128, 0 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="opponent_one_spot/scroll/content"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -33.0
+margin_top = -24.5
+margin_right = 33.0
+margin_bottom = 17.5
+grow_horizontal = 2
+text = "TEST"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="description" type="RichTextLabel" parent="opponent_one_spot/scroll/content"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -150.0
+margin_top = 39.5
+margin_right = 150.0
+margin_bottom = 139.5
+grow_horizontal = 2
+bbcode_enabled = true
+bbcode_text = "[center]test[/center]"
+text = "test"
+fit_content_height = true
+scroll_active = false
+
+[node name="button_back" type="Button" parent="opponent_one_spot/scroll/content"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+margin_top = -73.0
+margin_right = 147.0
+margin_bottom = -25.0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button_battle" type="Button" parent="opponent_one_spot/scroll/content"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -147.0
+margin_top = -73.0
+margin_right = -25.0
+margin_bottom = -25.0
+grow_horizontal = 0
+text = "Battle"
+
 [node name="opponent_two_spot" type="Control" parent="."]
 margin_left = 776.0
 margin_top = 300.0
@@ -202,6 +288,90 @@ margin_top = 304.0
 margin_right = 288.0
 margin_bottom = 336.0
 scroll_active = false
+
+[node name="scroll" parent="opponent_two_spot" instance=ExtResource( 4 )]
+position = Vector2( 204, -200 )
+
+[node name="content" type="Control" parent="opponent_two_spot/scroll"]
+margin_left = -221.0
+margin_top = 40.0
+margin_right = 222.0
+margin_bottom = 489.0
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="portrait" type="TextureRect" parent="opponent_two_spot/scroll/content"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -184.5
+margin_right = 128.0
+margin_bottom = 71.5
+rect_scale = Vector2( 0.5, 0.5 )
+rect_pivot_offset = Vector2( 128, 0 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="opponent_two_spot/scroll/content"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -33.0
+margin_top = -24.5
+margin_right = 33.0
+margin_bottom = 17.5
+grow_horizontal = 2
+text = "TEST"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="description" type="RichTextLabel" parent="opponent_two_spot/scroll/content"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -150.0
+margin_top = 39.5
+margin_right = 150.0
+margin_bottom = 139.5
+grow_horizontal = 2
+bbcode_enabled = true
+bbcode_text = "[center]test[/center]"
+text = "test"
+fit_content_height = true
+scroll_active = false
+
+[node name="button_back" type="Button" parent="opponent_two_spot/scroll/content"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+margin_top = -73.0
+margin_right = 147.0
+margin_bottom = -25.0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button_battle" type="Button" parent="opponent_two_spot/scroll/content"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -147.0
+margin_top = -73.0
+margin_right = -25.0
+margin_bottom = -25.0
+grow_horizontal = 0
+text = "Battle"
 
 [connection signal="pressed" from="opponent_one_spot/Popup/back_button" to="opponent_one_spot/Popup" method="_on_back_button_pressed"]
 [connection signal="pressed" from="opponent_one_spot/Popup/battle_button" to="opponent_one_spot/Popup" method="_on_battle_button_pressed"]

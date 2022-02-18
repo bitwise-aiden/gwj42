@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rune_water.png-de2c3fc3dd1fda8bade2e22e0deb6960.stex"
+path="res://.import/scroll.png-f004d16f53e93825231bed9748dfbf60.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/rune_water.png"
-dest_files=[ "res://.import/rune_water.png-de2c3fc3dd1fda8bade2e22e0deb6960.stex" ]
+source_file="res://assets/sprites/scroll.png"
+dest_files=[ "res://.import/scroll.png-f004d16f53e93825231bed9748dfbf60.stex" ]
 
 [params]
 
