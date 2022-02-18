@@ -17,9 +17,7 @@ func _on_battle_button_pressed():
 	# GONG
 	Event.emit_signal("emit_audio", {"bus": "effect", "choice": "GONG", "loop": false})
 
-	# Scene transition here! For now, wait.
-	yield(get_tree().create_timer(1.5), "timeout")
-
 	GameState.pick_opponent(opponent_name)
+	yield(Transition.start(true), "completed")
 
-	SceneManager.load_scene("game")
+	SceneManager.load_scene("game", false)

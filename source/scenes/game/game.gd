@@ -44,7 +44,6 @@ func _ready() -> void:
 
 	__enemy_manager = CardManager.new()
 	__enemy_controller.set_deck(__enemy_manager.deck)
-	__enemy_controller.heal()
 	__enemy_controller.connect("died", self, "__controller_died", [false])
 
 	var player_hearts: Array = $player_hearts.get_children()
@@ -61,7 +60,6 @@ func _ready() -> void:
 
 	__player_manager = CardManager.new()
 	__player_controller.set_deck(__player_manager.deck)
-	__player_controller.heal()
 	__player_controller.connect("died", self, "__controller_died", [true])
 
 	__player_controller.connect("rune_picked", __enemy_controller, "pick_rune")
@@ -76,6 +74,11 @@ func _ready() -> void:
 
 	__label_opponent_name.text = GameState.current_god
 	__texture_rect_opponent.texture = GameState.god_data[GameState.current_god].texture()
+
+	yield(Transition.stop(), "completed")
+
+	__enemy_controller.heal()
+	__player_controller.heal()
 
 	__game_loop()
 

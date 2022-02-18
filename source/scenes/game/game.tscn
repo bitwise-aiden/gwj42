@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://source/scenes/game/plinth.tscn" type="PackedScene" id=1]
 [ext_resource path="res://source/scenes/game/hand.tscn" type="PackedScene" id=2]
@@ -11,36 +11,7 @@
 [ext_resource path="res://assets/sprites/hearts_full.png" type="Texture" id=9]
 [ext_resource path="res://assets/sprites/hearts_empty.png" type="Texture" id=10]
 [ext_resource path="res://assets/sprites/opponents/chicomecoatl_portrait.png" type="Texture" id=11]
-
-[sub_resource type="Shader" id=1]
-code = "shader_type canvas_item;
-
-uniform vec4 border_color : hint_color;
-uniform float border_size: hint_range(0.0, 0.1); 
-
-void fragment() 
-{
-	vec4 color = vec4(0.0);
-	
-	
-	float dist = distance(UV, vec2(0.5));
-	if (dist < 0.5) 
-	{
-		color = border_color
-	}
-	
-	if (dist < 0.5 - border_size)
-	{
-		color = texture(TEXTURE, UV);
-	}
-	
-	COLOR = color;
-}"
-
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
-shader_param/border_color = Color( 0.384314, 0.333333, 0.396078, 1 )
-shader_param/border_size = 0.04
+[ext_resource path="res://assets/materials/portrait.material" type="Material" id=12]
 
 [node name="game" type="Node2D"]
 script = ExtResource( 5 )
@@ -254,7 +225,7 @@ __meta__ = {
 }
 
 [node name="texture_rect_opponent" type="TextureRect" parent="ui/screen_game"]
-material = SubResource( 2 )
+material = ExtResource( 12 )
 margin_left = 42.0
 margin_top = 110.0
 margin_right = 298.0
