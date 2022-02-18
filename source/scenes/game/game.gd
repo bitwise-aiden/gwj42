@@ -13,7 +13,12 @@ onready var __label_opponent_name: Label = $ui/screen_game/label_opponent_name
 onready var __button_menu: Button = $ui/scroll/scroll_body/content/screen_end/buttons/button_menu
 onready var __button_next: Button = $ui/scroll/scroll_body/content/screen_end/buttons/button_next
 onready var __button_replay: Button = $ui/scroll/scroll_body/content/screen_end/buttons/button_replay
+onready var __button_pause: Button = $ui/screen_game/button_pause
+onready var __button_pause_continue: Button = $ui/scroll/scroll_body/content/screen_pause/buttons/button_continue
+onready var __button_pause_restart: Button = $ui/scroll/scroll_body/content/screen_pause/buttons/button_restart
+onready var __button_pause_menu: Button = $ui/scroll/scroll_body/content/screen_pause/buttons/button_menu
 onready var __screen_end: Control = $ui/scroll/scroll_body/content/screen_end
+onready var __screen_pause: Control = $ui/scroll/scroll_body/content/screen_pause
 onready var __screen_game: Control = $ui/screen_game
 onready var __scroll: Scroll = $ui/scroll
 onready var __speech_bubble: SpeechBubble = $ui/screen_game/speech_bubble
@@ -78,6 +83,11 @@ func _ready() -> void:
 	__button_menu.connect("pressed", SceneManager, "load_scene", ["menu"])
 	__button_next.connect("pressed", SceneManager, "load_scene", ["opponent_choice"])
 	__button_replay.connect("pressed", SceneManager, "load_scene", ["game"])
+	__button_pause.connect("pressed", self, "__pause", [true])
+	__button_pause_continue.connect("pressed", self, "__pause", [false])
+	__button_pause_restart.connect("pressed", SceneManager, "load_scene", ["game"])
+	__button_pause_menu.connect("pressed", SceneManager, "load_scene", ["opponent_choice"])
+
 
 	# Play menu music
 	var audio_dict = {"bus": "music", "choice": "battle", "loop": false}
@@ -190,24 +200,37 @@ func __scroll_show() -> void:
 		"position:y",
 		__scroll.position.y,
 		__scroll_position_y,
-		0.5
+		0.3
 	)
 	__tween.start()
 
 	yield(__tween,"tween_all_completed")
-	yield(__scroll.unroll(), "completed")
+	yield(__scroll.unroll(0.3), "completed")
 
 
 func __scroll_hide() -> void:
-	yield(__scroll.roll(), "completed")
+	yield(__scroll.roll(0.3), "completed")
 
 	__tween.interpolate_property(
 		__scroll,
 		"position:y",
 		__scroll.position.y,
 		__scroll_position_y - 300.0,
-		0.5
+		0.3
 	)
 	__tween.start()
 
 	yield(__tween,"tween_all_completed")
+
+
+func __pause(paused: bool) -> void:
+	if paused:
+		__button_pause.visible = false
+		__screen_pause.visible = true
+
+		yield(__scroll_show(), "completed")
+	else:
+		yield(__scroll_hide(), "completed")
+
+		__button_pause.visible = true
+		__screen_pause.visible = false

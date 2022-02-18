@@ -251,6 +251,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="button_pause" type="Button" parent="ui/screen_game"]
+margin_left = 1147.0
+margin_top = 30.0
+margin_right = 1250.0
+margin_bottom = 78.0
+text = "PAUSE"
+
 [node name="scroll" parent="ui" instance=ExtResource( 16 )]
 position = Vector2( 640, 192 )
 
@@ -318,6 +325,67 @@ text = "Replay"
 
 [node name="button_menu" type="Button" parent="ui/scroll/content/screen_end/buttons"]
 visible = false
+margin_top = 104.0
+margin_right = 155.0
+margin_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "menu"
+
+[node name="screen_pause" type="Control" parent="ui/scroll/content"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label_result" type="Label" parent="ui/scroll/content/screen_pause"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -67.0
+margin_top = -104.0
+margin_right = 67.0
+margin_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Paused"
+align = 1
+
+[node name="buttons" type="VBoxContainer" parent="ui/scroll/content/screen_pause"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -77.5
+margin_top = -36.0
+margin_right = 77.5
+margin_bottom = 116.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button_continue" type="Button" parent="ui/scroll/content/screen_pause/buttons"]
+margin_right = 155.0
+margin_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button_restart" type="Button" parent="ui/scroll/content/screen_pause/buttons"]
+margin_top = 52.0
+margin_right = 155.0
+margin_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Replay"
+
+[node name="button_menu" type="Button" parent="ui/scroll/content/screen_pause/buttons"]
 margin_top = 104.0
 margin_right = 155.0
 margin_bottom = 152.0
