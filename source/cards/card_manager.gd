@@ -10,9 +10,9 @@ var element: int = Card.Elements.NORMAL
 
 # Lifecycle methods
 
-func _init(element: int = Card.Elements.NORMAL) -> void:
+func _init(deck: Array = [3, 3, 3], element: int = Card.Elements.NORMAL) -> void:
 	self.deck = CardDeck.new()
-	self.pool = CardPool.new(element)
+	self.pool = CardPool.new(deck, element)
 	self.element = element
 
 	for card_state in pool.cards:

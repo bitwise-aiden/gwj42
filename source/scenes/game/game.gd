@@ -32,8 +32,10 @@ var __god_data: GodData
 # Lifecycle methods
 
 func _ready() -> void:
-	Globals.plinth_check_polygon = $plinth_check_polygon.polygon
 	randomize()
+	Globals.plinth_check_polygon = $plinth_check_polygon.polygon
+
+	__god_data = GameState.current_god_data()
 
 	__enemy_controller = EnemyTurnController.new(
 		$enemy_discard,
@@ -44,7 +46,7 @@ func _ready() -> void:
 	)
 	add_child(__enemy_controller)
 
-	__enemy_manager = CardManager.new()
+	__enemy_manager = CardManager.new(__god_data.deck)
 	__enemy_controller.set_deck(__enemy_manager.deck)
 	__enemy_controller.connect("died", self, "__controller_died", [false])
 
@@ -74,7 +76,6 @@ func _ready() -> void:
 	var audio_dict = {"bus": "music", "choice": "battle", "loop": false}
 	Event.emit_signal("emit_audio", audio_dict)
 
-	__god_data = GameState.current_god_data()
 	__label_opponent_name.text = __god_data.name
 	__texture_rect_opponent.texture = __god_data.texture()
 
@@ -94,7 +95,7 @@ func __controller_died(was_player: bool) -> void:
 	__alive = false
 
 	__screen_end.visible = true
-	
+
 	var audio_dict = {"bus": "music", "choice": "battle_end", "loop": false}
 	Event.emit_signal("emit_audio", audio_dict)
 

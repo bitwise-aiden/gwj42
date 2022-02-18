@@ -3,7 +3,6 @@ class_name CardPool
 
 # Private constants
 
-const __CARD_COUNT_PER_TYPE: int = 3
 const __CARD_COUNT_PER_ELEMENT: int = 1
 
 
@@ -14,19 +13,21 @@ var cards: Array = []
 
 # Lifecycle methods
 
-func _init(element: int = Card.Elements.NORMAL) -> void:
-	for i in __CARD_COUNT_PER_TYPE:
-		var card_element: int = Card.Elements.NORMAL
-		if i < __CARD_COUNT_PER_ELEMENT:
-			card_element = element
+func _init(deck: Array = [3, 3, 3], element: int = Card.Elements.NORMAL) -> void:
 
-		for type in Card.Types.size():
+	for type in Card.Types.size():
+		for i in deck[type]:
+			var card_element: int = Card.Elements.NORMAL
+			if i < __CARD_COUNT_PER_ELEMENT:
+				card_element = element
+
 			var card: Card = Card.new(
 				type,
 				card_element
 			)
 
 			add(card)
+
 
 
 # Public methods

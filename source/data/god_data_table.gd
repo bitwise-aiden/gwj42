@@ -24,7 +24,8 @@ var data = {
 			"round_win": ["I've got you now!", "Another step closer to victory!", "Calculated."],
 			"game_lose": ["How is that possible?"],
 			"game_win": ["Hahaha, I didn't doubt it for a second!"],
-		}
+		},
+		[9, 0, 0]
 	),
 	"chicomecoatl": GodData.new(
 		"chicomecoatl",
