@@ -31,8 +31,6 @@ func _ready() -> void:
 # Public methods
 
 func roll() -> void:
-	__prevent_mouse.visible = false
-
 	__tween.interpolate_property(
 		__scroll_bottom,
 		"rect_position:y",
@@ -49,9 +47,19 @@ func roll() -> void:
 		0.5
 	)
 
+	__tween.interpolate_property(
+		__prevent_mouse,
+		"color:a",
+		0.4,
+		0.0,
+		0.2
+	)
+
 	__tween.start()
 
 	yield(__tween,"tween_all_completed")
+
+	__prevent_mouse.visible = false
 
 
 func unroll() -> void:
@@ -59,6 +67,7 @@ func unroll() -> void:
 	if __content:
 		size = __content.rect_size.y
 
+	__prevent_mouse.visible = true
 
 	__tween.interpolate_property(
 		__scroll_bottom,
@@ -76,11 +85,17 @@ func unroll() -> void:
 		0.5
 	)
 
+	__tween.interpolate_property(
+		__prevent_mouse,
+		"color:a",
+		0.0,
+		0.4,
+		0.2
+	)
+
 	__tween.start()
 
 	yield(__tween,"tween_all_completed")
-
-	__prevent_mouse.visible = true
 
 
 # Private methods
