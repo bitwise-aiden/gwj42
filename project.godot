@@ -94,7 +94,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/scenes/game/controllers/player_turn_controller.gd"
 }, {
-"base": "Reference",
+"base": "Sprite",
 "class": "Plinth",
 "language": "GDScript",
 "path": "res://source/scenes/game/plinth.gd"
@@ -104,7 +104,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/scenes/game/rune.gd"
 }, {
-"base": "Reference",
+"base": "Node2D",
 "class": "Stack",
 "language": "GDScript",
 "path": "res://source/scenes/game/stack.gd"

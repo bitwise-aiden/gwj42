@@ -18,7 +18,7 @@ func _init(var n):
 	set_normal_texture(picture_statue)
 
 func _pressed():
-	popup.picture.texture = load("res://assets/sprites/opponents/"+ opponent_name + "_portrait.png")
+	popup.picture.texture = GameState.god_data[opponent_name].texture()
 	popup.name_popup.set_text(opponent_name)
 	popup.description.set_text(opponent_description)
 	popup.opponent_name = opponent_name

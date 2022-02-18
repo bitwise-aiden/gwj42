@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://source/scenes/game/plinth.tscn" type="PackedScene" id=1]
 [ext_resource path="res://source/scenes/game/hand.tscn" type="PackedScene" id=2]
@@ -10,6 +10,37 @@
 [ext_resource path="res://source/scenes/game/heart.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/sprites/hearts_full.png" type="Texture" id=9]
 [ext_resource path="res://assets/sprites/hearts_empty.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/opponents/chicomecoatl_portrait.png" type="Texture" id=11]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec4 border_color : hint_color;
+uniform float border_size: hint_range(0.0, 0.1); 
+
+void fragment() 
+{
+	vec4 color = vec4(0.0);
+	
+	
+	float dist = distance(UV, vec2(0.5));
+	if (dist < 0.5) 
+	{
+		color = border_color
+	}
+	
+	if (dist < 0.5 - border_size)
+	{
+		color = texture(TEXTURE, UV);
+	}
+	
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/border_color = Color( 0.384314, 0.333333, 0.396078, 1 )
+shader_param/border_size = 0.04
 
 [node name="game" type="Node2D"]
 script = ExtResource( 5 )
@@ -213,12 +244,23 @@ __meta__ = {
 }
 
 [node name="label_opponent_name" type="Label" parent="ui/screen_game"]
-margin_left = 1210.0
-margin_top = 38.0
-margin_right = 1250.0
-margin_bottom = 80.0
-grow_horizontal = 0
+margin_left = 194.0
+margin_top = 110.0
+margin_right = 260.0
+margin_bottom = 152.0
 text = "TEST"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="texture_rect_opponent" type="TextureRect" parent="ui/screen_game"]
+material = SubResource( 2 )
+margin_left = 42.0
+margin_top = 110.0
+margin_right = 298.0
+margin_bottom = 366.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

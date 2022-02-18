@@ -11,3 +11,7 @@ var description
 func _init(g_name = "", g_description = ""):
 	name = g_name
 	description = g_description
+
+
+func texture() -> Texture:
+	return load("res://assets/sprites/opponents/"+ name + "_portrait.png") as Texture

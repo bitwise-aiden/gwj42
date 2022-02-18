@@ -17,7 +17,7 @@ onready var __button_replay: Button = $ui/screen_end/buttons/button_replay
 onready var __screen_end: Control = $ui/screen_end
 onready var __screen_game: Control = $ui/screen_game
 onready var __screen_round: Control = $ui/screen_round
-
+onready var __texture_rect_opponent: TextureRect = $ui/screen_game/texture_rect_opponent
 
 var __enemy_controller: EnemyTurnController = null
 var __enemy_manager: CardManager = null
@@ -75,6 +75,7 @@ func _ready() -> void:
 	Event.emit_signal("emit_audio", audio_dict)
 
 	__label_opponent_name.text = GameState.current_god
+	__texture_rect_opponent.texture = GameState.god_data[GameState.current_god].texture()
 
 	__game_loop()
 
