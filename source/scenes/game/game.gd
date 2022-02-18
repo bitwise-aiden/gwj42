@@ -8,17 +8,18 @@ const __RESULT_TEXT = "%s won!"
 
 # Private variables
 
-onready var __label_end_result: Label = $ui/screen_end/label_result
-onready var __label_round_result: Label = $ui/screen_round/label_result
+onready var __label_end_result: Label = $ui/scroll/scroll_body/content/screen_end/label_result
 onready var __label_opponent_name: Label = $ui/screen_game/label_opponent_name
-onready var __button_menu: Button = $ui/screen_end/buttons/button_menu
-onready var __button_next: Button = $ui/screen_end/buttons/button_next
-onready var __button_replay: Button = $ui/screen_end/buttons/button_replay
-onready var __screen_end: Control = $ui/screen_end
+onready var __button_menu: Button = $ui/scroll/scroll_body/content/screen_end/buttons/button_menu
+onready var __button_next: Button = $ui/scroll/scroll_body/content/screen_end/buttons/button_next
+onready var __button_replay: Button = $ui/scroll/scroll_body/content/screen_end/buttons/button_replay
+onready var __screen_end: Control = $ui/scroll/scroll_body/content/screen_end
 onready var __screen_game: Control = $ui/screen_game
-onready var __screen_round: Control = $ui/screen_round
+onready var __scroll: Scroll = $ui/scroll
 onready var __speech_bubble: SpeechBubble = $ui/screen_game/speech_bubble
 onready var __texture_rect_opponent: TextureRect = $ui/screen_game/texture_rect_opponent
+
+onready var __scroll_position_y: float = __scroll.position.y
 
 var __enemy_controller: EnemyTurnController = null
 var __enemy_manager: CardManager = null
@@ -28,10 +29,16 @@ var __player_manager: CardManager = null
 var __alive: bool = true
 var __god_data: GodData
 
+var __tween: Tween = Tween.new()
+
 
 # Lifecycle methods
 
 func _ready() -> void:
+	add_child(__tween)
+
+	__scroll.position.y -= 300.0
+
 	randomize()
 	Globals.plinth_check_polygon = $plinth_check_polygon.polygon
 
@@ -94,8 +101,6 @@ func _ready() -> void:
 func __controller_died(was_player: bool) -> void:
 	__alive = false
 
-	__screen_end.visible = true
-
 	var audio_dict = {"bus": "music", "choice": "battle_end", "loop": false}
 	Event.emit_signal("emit_audio", audio_dict)
 
@@ -109,6 +114,9 @@ func __controller_died(was_player: bool) -> void:
 		__speech_bubble.show_text(__god_data.message("game_lose"))
 		GameState.kill(GameState.current_god)
 
+	__screen_end.visible = true
+
+	yield(__scroll_show(), "completed")
 
 func __game_loop() -> void:
 	while __alive:
@@ -127,8 +135,6 @@ func __game_loop() -> void:
 
 		yield(__score_round(), "completed")
 
-#		__screen_round.visible = true && __alive
-
 		yield(get_tree().create_timer(0.5), "timeout")
 
 		__enemy_controller.discard()
@@ -136,7 +142,6 @@ func __game_loop() -> void:
 
 		yield(get_tree().create_timer(1.7), "timeout")
 
-#		__screen_round.visible = false
 
 
 func __score_round() -> void:
@@ -164,19 +169,45 @@ func __score_round() -> void:
 
 	match result:
 		1, 2:
-			__label_round_result.text = "Win"
 			__enemy_controller.damage(result)
 			if __enemy_controller._health > 0:
 				__speech_bubble.show_text(__god_data.message("round_lose"))
 			else:
 				__speech_bubble.show_text(__god_data.message("game_lose"))
 		-1, -2:
-			__label_round_result.text = "Loss"
 			__player_controller.damage(abs(result))
 			if __player_controller._health > 0:
 				__speech_bubble.show_text(__god_data.message("round_win"))
 			else:
 				__speech_bubble.show_text(__god_data.message("game_win"))
 		0:
-			__label_round_result.text = "Draw"
 			__speech_bubble.show_text(__god_data.message("round_draw"))
+
+
+func __scroll_show() -> void:
+	__tween.interpolate_property(
+		__scroll,
+		"position:y",
+		__scroll.position.y,
+		__scroll_position_y,
+		0.5
+	)
+	__tween.start()
+
+	yield(__tween,"tween_all_completed")
+	yield(__scroll.unroll(), "completed")
+
+
+func __scroll_hide() -> void:
+	yield(__scroll.roll(), "completed")
+
+	__tween.interpolate_property(
+		__scroll,
+		"position:y",
+		__scroll.position.y,
+		__scroll_position_y - 300.0,
+		0.5
+	)
+	__tween.start()
+
+	yield(__tween,"tween_all_completed")
