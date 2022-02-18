@@ -40,7 +40,7 @@ func add(rune: Rune) -> void:
 		if __runes[i] == null:
 			__runes[i] = rune
 
-			yield(rune.move(__positions[i].global_position, can_interact), "completed")
+			yield(rune.move(__positions[i].global_position, can_interact, z_index), "completed")
 
 			break
 

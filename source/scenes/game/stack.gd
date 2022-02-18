@@ -16,7 +16,7 @@ func add(rune: Rune) -> void:
 
 	__runes.append(rune)
 
-	yield(rune.move(rune_position, false), "completed")
+	yield(rune.move(rune_position, false, z_index), "completed")
 
 
 func empty() -> bool:

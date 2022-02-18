@@ -11,10 +11,11 @@ texture = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="hover_area" type="Area2D" parent="."]
+position = Vector2( 0, -15 )
 
 [node name="bounds" type="CollisionShape2D" parent="hover_area"]
 position = Vector2( 0, -11 )
 shape = SubResource( 1 )
 
 [node name="rune_position" type="Position2D" parent="."]
-position = Vector2( 0, -20 )
+position = Vector2( 0, -35 )

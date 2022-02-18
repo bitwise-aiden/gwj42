@@ -123,7 +123,7 @@ func __game_loop() -> void:
 
 		yield(__score_round(), "completed")
 
-		__screen_round.visible = true && __alive
+#		__screen_round.visible = true && __alive
 
 		yield(get_tree().create_timer(0.5), "timeout")
 
@@ -132,7 +132,7 @@ func __game_loop() -> void:
 
 		yield(get_tree().create_timer(1.7), "timeout")
 
-		__screen_round.visible = false
+#		__screen_round.visible = false
 
 
 func __score_round() -> void:
@@ -155,8 +155,8 @@ func __score_round() -> void:
 				result += 1
 
 			_:
-				enemy_rune.move(enemy_rune.global_position)
-				yield(player_rune.move(player_rune.global_position), "completed")
+				enemy_rune.bounce()
+				yield(player_rune.bounce(), "completed")
 
 	match result:
 		1, 2:

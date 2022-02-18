@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://source/scenes/game/plinth.tscn" type="PackedScene" id=1]
 [ext_resource path="res://source/scenes/game/hand.tscn" type="PackedScene" id=2]
@@ -14,9 +14,14 @@
 [ext_resource path="res://assets/materials/portrait.material" type="Material" id=12]
 [ext_resource path="res://assets/sprites/speech.png" type="Texture" id=13]
 [ext_resource path="res://source/scenes/game/speech_bubble.gd" type="Script" id=14]
+[ext_resource path="res://assets/backgrounds/game_background.png" type="Texture" id=15]
 
 [node name="game" type="Node2D"]
 script = ExtResource( 5 )
+
+[node name="background" type="Sprite" parent="."]
+position = Vector2( 640, 360 )
+texture = ExtResource( 15 )
 
 [node name="text" type="Label" parent="."]
 visible = false
@@ -41,9 +46,11 @@ position = Vector2( 980, 136 )
 
 [node name="plinth_0" parent="enemy_plinths" instance=ExtResource( 1 )]
 position = Vector2( 540, 294 )
+z_index = 2
 
 [node name="plinth_1" parent="enemy_plinths" instance=ExtResource( 1 )]
 position = Vector2( 739, 294 )
+z_index = 2
 
 [node name="enemy_hand" parent="." instance=ExtResource( 2 )]
 position = Vector2( 510, 136 )
@@ -88,15 +95,19 @@ position = Vector2( 1380, -84 )
 position = Vector2( 300, 620 )
 
 [node name="player_plinths" type="Node2D" parent="."]
+z_index = 1
 
 [node name="plinth_0" parent="player_plinths" instance=ExtResource( 1 )]
 position = Vector2( 540, 453 )
+z_index = 2
 
 [node name="plinth_1" parent="player_plinths" instance=ExtResource( 1 )]
 position = Vector2( 739, 453 )
+z_index = 2
 
 [node name="player_hand" parent="." instance=ExtResource( 2 )]
 position = Vector2( 510, 620 )
+z_index = 3
 
 [node name="player_hearts" type="Node2D" parent="."]
 position = Vector2( 954, 650 )
@@ -221,6 +232,7 @@ margin_left = 194.0
 margin_top = 110.0
 margin_right = 260.0
 margin_bottom = 152.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "TEST"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -238,7 +250,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="label_opponent_player" type="Label" parent="ui/screen_game"]
+margin_left = 1019.0
+margin_top = 564.0
+margin_right = 1085.0
+margin_bottom = 606.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "YOU"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="texture_rect_player" type="TextureRect" parent="ui/screen_game"]
+material = ExtResource( 12 )
+margin_left = 1108.0
+margin_top = 477.0
+margin_right = 1364.0
+margin_bottom = 733.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="speech_bubble" type="NinePatchRect" parent="ui/screen_game"]
+visible = false
 margin_left = 160.0
 margin_top = 211.0
 margin_right = 424.0

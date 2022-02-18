@@ -18,7 +18,7 @@ var __rune: Rune = null
 func add(rune: Rune) -> void:
 	__rune = rune
 
-	yield(rune.move(__rune_position.global_position, false), "completed")
+	yield(rune.move(__rune_position.global_position, false, z_index), "completed")
 
 
 func can_add() -> bool:
@@ -26,7 +26,7 @@ func can_add() -> bool:
 
 
 func flip() -> void:
-	yield(__rune.move(__rune_position.global_position, true), "completed")
+	yield(__rune.move(__rune_position.global_position, true, z_index), "completed")
 
 
 func get_rune() -> Rune:
