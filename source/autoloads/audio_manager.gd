@@ -76,6 +76,9 @@ func __play_music(choice: String, loop: bool) -> void:
 			else:
 				new_player.audio_path = "res://assets/audio/music/battle_loop.ogg"
 			new_player.choice = "battle"
+		"battle_end":
+			new_player.audio_path = "res://assets/audio/music/battle_end.ogg"
+		
 	# Delete last music player, if one exists
 	if active_music_players.size() > 0:
 		active_music_players[0].queue_free()

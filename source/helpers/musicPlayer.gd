@@ -13,5 +13,7 @@ func _enter_tree() -> void:
 
 
 func _on_musicPlayer_finished() -> void:
+	if !choice:
+		queue_free()
 	var audio_dict = {"bus": "music", "choice": choice, "loop": true}
 	Event.emit_signal("emit_audio", audio_dict)

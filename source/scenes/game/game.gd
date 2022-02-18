@@ -94,6 +94,9 @@ func __controller_died(was_player: bool) -> void:
 	__alive = false
 
 	__screen_end.visible = true
+	
+	var audio_dict = {"bus": "music", "choice": "battle_end", "loop": false}
+	Event.emit_signal("emit_audio", audio_dict)
 
 	if was_player:
 		__label_end_result.text = __RESULT_TEXT % "The God" # Replace with god name
