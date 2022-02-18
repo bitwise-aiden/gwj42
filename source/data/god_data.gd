@@ -15,7 +15,6 @@ func _init(g_name = "", g_description = "", g_messages = {}, g_deck = [3, 3, 3])
 	description = g_description
 	messages = g_messages
 	deck = g_deck
-	print(name, deck)
 
 
 func message(type: String) -> String:
