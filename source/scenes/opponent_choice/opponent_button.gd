@@ -4,6 +4,7 @@ class_name opponent_button
 
 onready var popup = get_parent().get_node("Popup")
 
+var closed_statue = load("res://assets/sprites/opponents/statue_closed.png")
 var picture_statue
 var opponent_name
 var opponent_description
@@ -15,7 +16,8 @@ func _init(var n):
 	opponent_name = n
 	opponent_description = GameState.god_data[n].description
 	picture_statue = load("res://assets/sprites/opponents/"+ opponent_name + "_statue.png")
-	set_normal_texture(picture_statue)
+	set_normal_texture(closed_statue)
+	set_hover_texture(picture_statue)
 
 func _pressed():
 	popup.picture.texture = GameState.god_data[opponent_name].texture()

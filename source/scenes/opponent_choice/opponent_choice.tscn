@@ -21,17 +21,16 @@ __meta__ = {
 }
 
 [node name="opponent_one_spot" type="Control" parent="."]
-margin_left = 480.0
-margin_top = 400.0
-margin_right = 528.0
-margin_bottom = 492.0
+margin_left = 436.0
+margin_top = 300.0
+margin_right = 556.0
+margin_bottom = 512.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Popup" type="Popup" parent="opponent_one_spot"]
 pause_mode = 2
-visible = true
 margin_left = 60.0
 margin_top = 60.0
 margin_right = 460.0
@@ -55,6 +54,9 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -50.0
 margin_right = 120.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="opponent_one_spot/Popup/back_button"]
 anchor_right = 1.0
@@ -109,17 +111,16 @@ margin_bottom = 336.0
 scroll_active = false
 
 [node name="opponent_two_spot" type="Control" parent="."]
-margin_left = 808.0
-margin_top = 400.0
-margin_right = 856.0
-margin_bottom = 492.0
+margin_left = 776.0
+margin_top = 300.0
+margin_right = 896.0
+margin_bottom = 512.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Popup" type="Popup" parent="opponent_two_spot"]
 pause_mode = 2
-visible = true
 margin_left = 820.0
 margin_top = 60.0
 margin_right = 1220.0

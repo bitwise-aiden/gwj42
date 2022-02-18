@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gaia_portrait.png-753f631ab9a32108e793a88339cd835f.stex"
+path="res://.import/dionysus_statue.png-8b643b7b9d717ee37bb485b1f3b27691.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/opponents/gaia_portrait.png"
-dest_files=[ "res://.import/gaia_portrait.png-753f631ab9a32108e793a88339cd835f.stex" ]
+source_file="res://assets/sprites/opponents/dionysus_statue.png"
+dest_files=[ "res://.import/dionysus_statue.png-8b643b7b9d717ee37bb485b1f3b27691.stex" ]
 
 [params]
 

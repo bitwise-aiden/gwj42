@@ -50,30 +50,30 @@ var data = {
 			"game_win": ["Hahaha, I didn't doubt it for a second!"],
 		}
 	),
-#	"poseidon": GodData.new(
-#		"poseidon",
-#		"The God of the Seas",
-#		{
-#			"open_taunt": ["Hahaha, you dare challenge me!?"],
-#			"round_draw": ["Hmmm...", "Ugh..."],
-#			"round_lose": ["No!", "Ouch!", "Grrr..."],
-#			"round_win": ["I've got you now!", "Another step closer to victory!", "Calculated."],
-#			"game_lose": ["How is that possible?"],
-#			"game_win": ["Hahaha, I didn't doubt it for a second!"],
-#		}
-#	),
-#	"dionysus": GodData.new(
-#		"dionysus",
-#		"The God of Wine",
-#		{
-#			"open_taunt": ["Hahaha, you dare challenge me!?"],
-#			"round_draw": ["Hmmm...", "Ugh..."],
-#			"round_lose": ["No!", "Ouch!", "Grrr..."],
-#			"round_win": ["I've got you now!", "Another step closer to victory!", "Calculated."],
-#			"game_lose": ["How is that possible?"],
-#			"game_win": ["Hahaha, I didn't doubt it for a second!"],
-#		}
-#	),
+	"poseidon": GodData.new(
+		"poseidon",
+		"The God of the Seas",
+		{
+			"open_taunt": ["Hahaha, you dare challenge me!?"],
+			"round_draw": ["Hmmm...", "Ugh..."],
+			"round_lose": ["No!", "Ouch!", "Grrr..."],
+			"round_win": ["I've got you now!", "Another step closer to victory!", "Calculated."],
+			"game_lose": ["How is that possible?"],
+			"game_win": ["Hahaha, I didn't doubt it for a second!"],
+		}
+	),
+	"dionysus": GodData.new(
+		"dionysus",
+		"The God of Wine",
+		{
+			"open_taunt": ["Hahaha, you dare challenge me!?"],
+			"round_draw": ["Hmmm...", "Ugh..."],
+			"round_lose": ["No!", "Ouch!", "Grrr..."],
+			"round_win": ["I've got you now!", "Another step closer to victory!", "Calculated."],
+			"game_lose": ["How is that possible?"],
+			"game_win": ["Hahaha, I didn't doubt it for a second!"],
+		}
+	),
 	"hades": GodData.new(
 		"hades",
 		"The God of the Underworld",
