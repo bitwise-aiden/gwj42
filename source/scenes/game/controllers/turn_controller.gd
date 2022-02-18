@@ -18,15 +18,11 @@ const __INITIAL_HEALTH: int = 5
 var _deck: CardDeck = null
 var _discard: Discard = null
 var _hand: Hand = null
+var _health: int = __INITIAL_HEALTH
 var _hearts: Array = []
 var _interact: bool = false
 var _plinths: Array = []
 var _stack: Stack = null
-
-
-# Private variables
-
-var _health: int = __INITIAL_HEALTH
 
 
 # Lifecycle methods

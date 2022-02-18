@@ -104,6 +104,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/scenes/game/rune.gd"
 }, {
+"base": "NinePatchRect",
+"class": "SpeechBubble",
+"language": "GDScript",
+"path": "res://source/scenes/game/speech_bubble.gd"
+}, {
 "base": "Node2D",
 "class": "Stack",
 "language": "GDScript",
@@ -149,6 +154,7 @@ _global_script_class_icons={
 "PlayerTurnController": "",
 "Plinth": "",
 "Rune": "",
+"SpeechBubble": "",
 "Stack": "",
 "Task": "",
 "TaskQueue": "",

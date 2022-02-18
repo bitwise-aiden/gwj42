@@ -36,6 +36,10 @@ func initialize() -> void:
 	opponents_current.append("zeus")
 
 
+func current_god_data() -> GodData:
+	return god_data[current_god]
+
+
 func kill(opponent: String) -> void:
 	opponents_previous.append(opponent)
 
