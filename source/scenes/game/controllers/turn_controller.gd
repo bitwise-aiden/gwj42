@@ -63,15 +63,14 @@ func discard() -> void:
 
 func draw() -> void:
 	while _hand.can_add():
-		if _stack.empty():
-			yield(__shuffle_discard(), "completed")
-			yield(get_tree().create_timer(0.5), "timeout")
-
 		var rune: Rune = _stack.pop()
 
 		_hand.add(rune)
 
 		yield(get_tree().create_timer(0.7), "timeout")
+
+	refill_stack()
+
 
 
 func flip() -> void:
@@ -84,6 +83,12 @@ func heal() -> void:
 		heart.set_full(true)
 
 		yield(get_tree().create_timer(0.1), "timeout")
+
+
+func refill_stack() -> void:
+	if _stack.empty():
+		yield(__shuffle_discard(), "completed")
+		yield(get_tree().create_timer(0.5), "timeout")
 
 
 func set_deck(deck: CardDeck) -> void:

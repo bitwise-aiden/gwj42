@@ -126,9 +126,14 @@ func __controller_died(was_player: bool) -> void:
 
 	__screen_end.visible = true
 
+	yield(get_tree().create_timer(1.0), "timeout")
 	yield(__scroll_show(), "completed")
 
+
 func __game_loop() -> void:
+	__enemy_controller.refill_stack()
+	yield(__player_controller.refill_stack(), "completed")
+
 	while __alive:
 		__enemy_controller.draw()
 		yield(__player_controller.draw(), "completed")
