@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Dionysus_portrait.png-121678aa6c697faa124c5a2b368f79cc.stex"
+path="res://.import/adionysus_portrait.png-8986b58b0b044569721d2adb999f332b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/opponents/Dionysus_portrait.png"
-dest_files=[ "res://.import/Dionysus_portrait.png-121678aa6c697faa124c5a2b368f79cc.stex" ]
+source_file="res://assets/sprites/opponents/adionysus_portrait.png"
+dest_files=[ "res://.import/adionysus_portrait.png-8986b58b0b044569721d2adb999f332b.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
