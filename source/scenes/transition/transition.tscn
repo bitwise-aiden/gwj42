@@ -154,6 +154,7 @@ margin_bottom = 256.0
 rect_scale = Vector2( 0.781, 0.781 )
 mouse_filter = 2
 texture = ExtResource( 2 )
+flip_h = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

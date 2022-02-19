@@ -314,6 +314,7 @@ margin_bottom = 71.5
 rect_scale = Vector2( 0.5, 0.5 )
 rect_pivot_offset = Vector2( 128, 0 )
 texture = ExtResource( 5 )
+flip_h = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

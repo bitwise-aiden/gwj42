@@ -216,6 +216,7 @@ margin_right = 1364.0
 margin_bottom = 733.0
 rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 11 )
+flip_h = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
