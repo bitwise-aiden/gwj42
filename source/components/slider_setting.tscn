@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://source/components/slider_setting.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/font_24pt.tres" type="DynamicFont" id=2]
+
+[node name="slider_settings" type="HSlider"]
+margin_left = 0.25
+margin_top = 20.0
+margin_right = 250.25
+margin_bottom = 16.0
+rect_min_size = Vector2( 250, 16 )
+max_value = 1.0
+step = 0.1
+value = 1.0
+tick_count = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="Label" parent="."]
+margin_top = -24.0
+margin_right = 120.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 2 )
+text = "Setting"
+__meta__ = {
+"_edit_use_anchors_": false
+}

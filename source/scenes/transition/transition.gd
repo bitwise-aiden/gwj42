@@ -23,6 +23,7 @@ func _ready() -> void:
 func start(show_profiles: bool = false) -> void:
 	if show_profiles:
 		__texture_opponent.texture = GameState.god_data[GameState.current_god].texture()
+		__texture_player.texture = GameState.player_profile
 
 		__tween.interpolate_property(
 			__color_opponent,

@@ -17,10 +17,6 @@ class InputKey:
 var input: Dictionary = {
 	# key: String, name of action
 	# value: InputKey
-	"up": InputKey.new(KEY_W),
-	"down": InputKey.new(KEY_S),
-	"left": InputKey.new(KEY_A),
-	"right": InputKey.new(KEY_D)
 }
 
 var __used_keys: Dictionary  = {

@@ -12,6 +12,9 @@ var opponents_previous: Array = []
 var opponent_option_0: String
 var opponent_option_1: String
 
+var player_profile: Texture
+var player_name: String
+
 
 # Lifecycle methods
 
@@ -34,6 +37,20 @@ func initialize() -> void:
 	opponents_current.shuffle()
 
 	opponents_current.append("zeus")
+
+	match randi() % 4:
+		0:
+			player_profile = load("res://assets/sprites/player/liioni_portrait.png")
+			player_name = "Lil'Oni"
+		1:
+			player_profile = load("res://assets/sprites/player/dave_portrait.png")
+			player_name = "Dave"
+		2:
+			player_profile = load("res://assets/sprites/player/orbit_portrait.png")
+			player_name = "Orbit"
+		3:
+			player_profile = load("res://assets/sprites/player/velop_portrait.png")
+			player_name = "velop"
 
 
 func current_god_data() -> GodData:

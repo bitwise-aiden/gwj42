@@ -10,6 +10,7 @@ const __RESULT_TEXT = "%s won!"
 
 onready var __label_end_result: Label = $ui/scroll/scroll_body/content/screen_end/label_result
 onready var __label_opponent_name: Label = $ui/screen_game/label_opponent_name
+onready var __label_player_name: Label = $ui/screen_game/label_player_name
 onready var __button_menu: Button = $ui/scroll/scroll_body/content/screen_end/buttons/button_menu
 onready var __button_next: Button = $ui/scroll/scroll_body/content/screen_end/buttons/button_next
 onready var __button_replay: Button = $ui/scroll/scroll_body/content/screen_end/buttons/button_replay
@@ -23,6 +24,7 @@ onready var __screen_game: Control = $ui/screen_game
 onready var __scroll: Scroll = $ui/scroll
 onready var __speech_bubble: SpeechBubble = $ui/screen_game/speech_bubble
 onready var __texture_rect_opponent: TextureRect = $ui/screen_game/texture_rect_opponent
+onready var __texture_rect_player: TextureRect = $ui/screen_game/texture_rect_player
 
 onready var __scroll_position_y: float = __scroll.position.y
 
@@ -94,7 +96,9 @@ func _ready() -> void:
 	Event.emit_signal("emit_audio", audio_dict)
 
 	__label_opponent_name.text = __god_data.name
+	__label_player_name.text = GameState.player_name
 	__texture_rect_opponent.texture = __god_data.texture()
+	__texture_rect_player.texture = GameState.player_profile
 
 	yield(Transition.stop(), "completed")
 
@@ -115,7 +119,7 @@ func __controller_died(was_player: bool) -> void:
 	Event.emit_signal("emit_audio", audio_dict)
 
 	if was_player:
-		__label_end_result.text = __RESULT_TEXT % "The God" # Replace with god name
+		__label_end_result.text = __RESULT_TEXT % __god_data.name # Replace with god name
 		__button_next.text = "Back"
 		__speech_bubble.show_text(__god_data.message("game_win"))
 	else:

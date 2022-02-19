@@ -208,7 +208,7 @@ enabled=PoolStringArray( "res://addons/godot_reset/plugin.cfg" )
 [gui]
 
 theme/custom="res://assets/themes/game.theme"
-theme/custom_font="res://assets/fonts/Gelio Greek Diner.tres"
+theme/custom_font="res://assets/fonts/font_40pt.tres"
 
 [rendering]
 
