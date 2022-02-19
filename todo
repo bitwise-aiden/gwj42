@@ -51,7 +51,7 @@
 - [ ] Add going to fight hades 
 - [ ] Remove ability to go back to opponent choice from hades
 - [ ] Have hades go to game over screen on loss
-- [ ] Flip portraits on opponent choice 2 
+- [x] Flip portraits on opponent choice 2 
 - [ ] itch.io page
-    - [ ] Try use CSS to make it a scroll that unravels on page load
+    - [x] Try use CSS to make it a scroll that unravels on page load
 
