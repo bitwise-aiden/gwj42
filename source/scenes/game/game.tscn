@@ -274,10 +274,13 @@ margin_top = -130.0
 margin_right = 119.0
 margin_bottom = -74.0
 grow_horizontal = 2
-grow_vertical = 2
 custom_fonts/font = ExtResource( 3 )
-text = "You win!"
+text = "You
+win!"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="buttons" type="VBoxContainer" parent="ui/scroll/content/screen_end"]
 anchor_left = 0.5
@@ -285,9 +288,8 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -100.0
-margin_top = -40.0
 margin_right = 100.0
-margin_bottom = 112.0
+margin_bottom = 152.0
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
