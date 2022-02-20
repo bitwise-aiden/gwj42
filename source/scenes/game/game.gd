@@ -95,8 +95,8 @@ func _ready() -> void:
 	var audio_dict = {"bus": "music", "choice": "battle", "loop": false}
 	Event.emit_signal("emit_audio", audio_dict)
 
-	__label_opponent_name.text = __god_data.name
-	__label_player_name.text = GameState.player_name
+	__label_opponent_name.text = __god_data.name.to_upper()
+	__label_player_name.text = GameState.player_name.to_upper()
 	__texture_rect_opponent.texture = __god_data.texture()
 	__texture_rect_player.texture = GameState.player_profile
 
@@ -120,11 +120,11 @@ func __controller_died(was_player: bool) -> void:
 
 	if was_player:
 		__label_end_result.text = __RESULT_TEXT % __god_data.name # Replace with god name
-		__button_next.text = "Back"
+		__button_next.text = "BACK"
 		__speech_bubble.show_text(__god_data.message("game_win"))
 	else:
 		__label_end_result.text = __RESULT_TEXT % "You"
-		__button_next.text = "Continue"
+		__button_next.text = "CONTINUE"
 		__speech_bubble.show_text(__god_data.message("game_lose"))
 		GameState.kill(GameState.current_god)
 
