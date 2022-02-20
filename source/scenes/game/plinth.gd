@@ -1,4 +1,4 @@
-class_name Plinth extends Sprite
+class_name Plinth extends Node2D
 
 
 # Public varaibles

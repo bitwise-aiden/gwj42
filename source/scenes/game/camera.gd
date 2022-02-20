@@ -18,7 +18,7 @@ func _ready() -> void:
 	noise.octaves = 2
 
 func add_shake(amount):
-	shake = min((shake + amount) * SettingsManager.get_setting("gameplay")["Shake Intensity"], 1.0)
+	shake = min((shake + amount) * SettingsManager.get_setting("gameplay/Shake Intensity", 1.0), 1.0)
 
 func _process(delta: float) -> void:
 	if shake:
