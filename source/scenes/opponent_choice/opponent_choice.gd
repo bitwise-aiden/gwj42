@@ -67,6 +67,7 @@ func add_opponents():
 	opponent_two_spot.add_child(__opponent_button_2)
 
 	if GameState.zeus_active && __opponent_button_1.opponent_name == "" && __opponent_button_2.opponent_name == "":
+		GameState.playing = false
 		yield(__open_menu("won"), "completed")
 
 
@@ -126,9 +127,6 @@ func __change_menu(menu_name: String) -> void:
 			__screen_won.visible = menu_name == "won"
 
 			yield(__scroll.unroll(), "completed")
-
-	if menu_name == "won":
-		GameState.playing = false
 
 
 func __open_menu(menu_name: String) -> void:

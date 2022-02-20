@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://source/scenes/opponent_choice/opponent_choice.gd" type="Script" id=1]
 [ext_resource path="res://assets/backgrounds/opponent_choice_background.png" type="Texture" id=2]
@@ -34,6 +34,23 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "zeus_arrives"
+length = 3.0
+step = 0.125
+tracks/0/type = "value"
+tracks/0/path = NodePath("zeus_arrives/lightning:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 1, 1.75, 1.875 ),
+"transitions": PoolRealArray( 0.0291573, 34.0684, 0.133972, 25.9921, 10.9283, 0.0544094 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.266667 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [node name="opponent_choice" type="Control"]
@@ -914,6 +931,7 @@ position = Vector2( 572, -385 )
 
 [node name="zeus_arrives" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )
+anims/zeus_arrives = SubResource( 3 )
 script = ExtResource( 23 )
 
 [node name="lightning" type="Sprite" parent="zeus_arrives"]
