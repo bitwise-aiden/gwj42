@@ -76,6 +76,8 @@ func add_opponents():
 # Private methods
 
 func __change_menu(menu_name: String) -> void:
+	var audio_dict = {"bus": "effect", "choice": "menu_select", "loop": false}
+	Event.emit_signal("emit_audio", audio_dict)
 	yield(__scroll.roll(), "completed")
 
 	match menu_name:

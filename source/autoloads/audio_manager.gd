@@ -22,7 +22,7 @@ func _ready() -> void:
 		var value: float = lerp(self.__volume_min, self.__volume_max[key], levels[key])
 		AudioServer.set_bus_volume_db(index, value)
 	
-	Event.connect("emit_audio", self, "__play_audio")
+	Event.connect("emit_audio", self, "play_audio")
 
 
 # Public methods
@@ -50,7 +50,7 @@ func set_volume(name: String, value: float) -> void:
 func __get_bus_index(name: String) -> int:
 	return AudioServer.get_bus_index(name)
 
-func __play_audio(options: Dictionary) -> void:
+func play_audio(options: Dictionary) -> void:
 	var bus = options["bus"]
 	var choice = options["choice"]
 	var loop = options["loop"]
@@ -117,5 +117,13 @@ func __play_effect(choice: String) -> void:
 		"GONG":
 			new_player.pitch_scale = rand_range(0.7, 1.0)
 			new_player.audio_path = "res://assets/audio/effects/god_select/GONG.ogg"
+		"menu_select":
+			new_player.pitch_scale = rand_range(0.85, 1.15)
+			var randChoice = randi() % 2
+			match randChoice:
+				0:
+					new_player.audio_path = "res://assets/audio/effects/menu_select/menu_select-00.ogg"
+				1:
+					new_player.audio_path = "res://assets/audio/effects/menu_select/menu_select-01.ogg"
 	
 	self.add_child(new_player)

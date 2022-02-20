@@ -89,10 +89,19 @@ func _ready() -> void:
 	__button_pause_continue.connect("pressed", self, "__pause", [false])
 	__button_pause_restart.connect("pressed", SceneManager, "load_scene", ["game"])
 	__button_pause_menu.connect("pressed", SceneManager, "load_scene", ["opponent_choice"])
+	
+	var audio_dict = {"bus": "effect", "choice": "menu_select", "loop": false}
+	__button_menu.connect("button_down", AudioManager, "play_audio", [audio_dict])
+	__button_next.connect("button_down", AudioManager, "play_audio", [audio_dict])
+	__button_replay.connect("button_down", AudioManager, "play_audio", [audio_dict])
+	__button_pause.connect("button_down", AudioManager, "play_audio", [audio_dict])
+	__button_pause_continue.connect("button_down", AudioManager, "play_audio", [audio_dict])
+	__button_pause_restart.connect("button_down", AudioManager, "play_audio", [audio_dict])
+	__button_pause_menu.connect("button_down", AudioManager, "play_audio", [audio_dict])
 
 
-	# Play menu music
-	var audio_dict = {"bus": "music", "choice": "battle", "loop": false}
+	# Play battle music
+	audio_dict = {"bus": "music", "choice": "battle", "loop": false}
 	Event.emit_signal("emit_audio", audio_dict)
 
 	__label_opponent_name.text = __god_data.name.to_upper()
