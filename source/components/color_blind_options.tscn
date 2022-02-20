@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/fonts/font_24pt.tres" type="DynamicFont" id=1]
+[ext_resource path="res://source/components/color_blind_options.gd" type="Script" id=2]
+
+[node name="color_blind_options" type="Control"]
+margin_right = 166.0
+rect_min_size = Vector2( 324, 50 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label_text" type="Label" parent="."]
+margin_top = -25.0
+margin_right = 302.0
+margin_bottom = 7.0
+custom_fonts/font = ExtResource( 1 )
+text = "COLORBLINDNESS CORRECTION"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="options" type="GridContainer" parent="."]
+margin_right = 324.0
+margin_bottom = 60.0
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="check_none" type="CheckBox" parent="options"]
+margin_right = 166.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 1 )
+text = "NONE"
+
+[node name="check_protanopia" type="CheckBox" parent="options"]
+margin_left = 170.0
+margin_right = 324.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 1 )
+text = "PROTANOPIA"
+
+[node name="check_deutranopia" type="CheckBox" parent="options"]
+margin_top = 32.0
+margin_right = 166.0
+margin_bottom = 60.0
+custom_fonts/font = ExtResource( 1 )
+text = "DEUTRANOPIA"
+
+[node name="check_tritanopia" type="CheckBox" parent="options"]
+margin_left = 170.0
+margin_top = 32.0
+margin_right = 324.0
+margin_bottom = 60.0
+custom_fonts/font = ExtResource( 1 )
+text = "TRITANOPIA"

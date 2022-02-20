@@ -8,6 +8,7 @@ z_index = 50
 script = ExtResource( 2 )
 
 [node name="prevent_mouse" type="ColorRect" parent="."]
+pause_mode = 1
 visible = false
 margin_left = -1280.0
 margin_top = -720.0
