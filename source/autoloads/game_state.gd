@@ -3,14 +3,16 @@ extends Node
 
 # Public methods
 
+var playing: bool = false
+
 var current_god: String
 var god_data: Dictionary = {}
 
 var opponents_current: Array = []
 var opponents_previous: Array = []
 
-var opponent_option_0: String
-var opponent_option_1: String
+var opponent_option_0: String = ""
+var opponent_option_1: String = ""
 
 var player_profile: Texture
 var player_name: String
@@ -25,6 +27,11 @@ func _ready() -> void:
 # Public methods
 
 func initialize() -> void:
+	playing = true
+
+	opponents_current.clear()
+	opponents_previous.clear()
+
 	var gods: GodDataTable = GodDataTable.new()
 	god_data = gods.get_data()
 
@@ -71,6 +78,9 @@ func pick_opponent(opponent: String) -> void:
 
 
 func randomize_opponents() -> void:
+	if !playing:
+		return
+
 	# This is for infinite loop
 	if opponents_current.size() < 2:
 		opponents_current.empty()

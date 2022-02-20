@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://source/scenes/opponent_choice/opponent_choice.gd" type="Script" id=1]
 [ext_resource path="res://assets/backgrounds/opponent_choice_background.png" type="Texture" id=2]
@@ -11,10 +11,12 @@
 [ext_resource path="res://assets/fonts/font_72pt.tres" type="DynamicFont" id=9]
 [ext_resource path="res://source/scenes/opponent_choice/screen_title.gd" type="Script" id=10]
 [ext_resource path="res://source/scenes/opponent_choice/screen_options.gd" type="Script" id=11]
+[ext_resource path="res://assets/themes/game.theme" type="Theme" id=12]
 
 [node name="opponent_choice" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 12 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -157,6 +159,7 @@ margin_top = -24.5
 margin_right = 33.0
 margin_bottom = 17.5
 grow_horizontal = 2
+custom_fonts/font = ExtResource( 9 )
 text = "TEST"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -335,6 +338,7 @@ margin_top = -24.5
 margin_right = 33.0
 margin_bottom = 17.5
 grow_horizontal = 2
+custom_fonts/font = ExtResource( 9 )
 text = "TEST"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -431,25 +435,29 @@ __meta__ = {
 
 [node name="button_play" type="Button" parent="scroll/content/screen_title/buttons"]
 margin_right = 180.0
-margin_bottom = 32.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
 text = "PLAY"
 
 [node name="button_tutorial" type="Button" parent="scroll/content/screen_title/buttons"]
-margin_top = 36.0
+margin_top = 44.0
 margin_right = 180.0
-margin_bottom = 68.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 0, 40 )
 text = "TUTORIAL"
 
 [node name="button_options" type="Button" parent="scroll/content/screen_title/buttons"]
-margin_top = 72.0
+margin_top = 88.0
 margin_right = 180.0
-margin_bottom = 104.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 0, 40 )
 text = "OPTIONS"
 
 [node name="button_quit" type="Button" parent="scroll/content/screen_title/buttons"]
-margin_top = 108.0
+margin_top = 132.0
 margin_right = 180.0
-margin_bottom = 140.0
+margin_bottom = 172.0
+rect_min_size = Vector2( 0, 40 )
 text = "QUIT"
 
 [node name="screen_tutorial" type="Control" parent="scroll/content"]

@@ -1,9 +1,9 @@
 - [ ] title/tutorial/option scene
-    - [ ] background: pantheon scene
-    - [ ] scroll in middle of screen
-    - [ ] screen title
-        - [ ] title: God of Gaming (Is this what we want, or Gamer God. Not sure I saw a response to my question yesterday)
-        - [ ] buttons: Battle, Tutorial, Options, Quit
+    - [x] background: pantheon scene
+    - [x] scroll in middle of screen
+    - [x] screen title
+        - [x] title: God of Gaming (Is this what we want, or Gamer God. Not sure I saw a response to my question yesterday)
+        - [x] buttons: Battle, Tutorial, Options, Quit
     - [ ] screen tutorial
         - [ ] Text (Please edit as seen fit, this is just an outline): 
             -- Page 1
@@ -39,11 +39,10 @@
             Good luck on your conquest! May you be declared the God of Gaming!
         - [ ] Forward/back button to go through pages
         - [ ] Skip button to close returning back to main
-    - [ ] screen option
-        - [ ] Control sound
-        - [ ] Select which button is used for clicking???
-        - [ ] Menu button
-    - [ ] Transition between scenes by the scroll rolling up, changing visibility of scene and unrolling. (Same goes for changing page of tutorial)
+    - [x] screen option
+        - [x] Control sound
+        - [x] Menu button
+    - [x] Transition between scenes by the scroll rolling up, changing visibility of scene and unrolling. (Same goes for changing page of tutorial)
 - [ ] Add optional index to gods to signal when they should be shown, -1 for special (hades and zeus)
 - [ ] Add pause menu to opponent screen for returning to main menu
 - [ ] Add ability to reset the game when transitioning from main to opponent choice scene
