@@ -823,7 +823,6 @@ __meta__ = {
 }
 
 [node name="screen_options" type="Control" parent="scroll/content"]
-visible = false
 script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -834,10 +833,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 122.5
-margin_top = -448.0
-margin_right = 213.5
-margin_bottom = -400.0
+margin_left = 320.0
+margin_top = -2.0
+margin_right = 411.0
+margin_bottom = 46.0
 text = "Back"
 
 [node name="settings" type="VBoxContainer" parent="scroll/content/screen_options"]
