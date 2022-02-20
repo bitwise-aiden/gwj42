@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://source/scenes/opponent_choice/opponent_choice.gd" type="Script" id=1]
 [ext_resource path="res://assets/backgrounds/opponent_choice_background.png" type="Texture" id=2]
@@ -19,6 +19,8 @@
 [ext_resource path="res://assets/sprites/action_arrow.png" type="Texture" id=17]
 [ext_resource path="res://assets/sprites/rune-parchment.png" type="Texture" id=18]
 [ext_resource path="res://source/components/color_blind_options.tscn" type="PackedScene" id=19]
+[ext_resource path="res://source/scenes/opponent_choice/screen_won.gd" type="Script" id=20]
+[ext_resource path="res://assets/sprites/portrait_border.png" type="Texture" id=21]
 
 [sub_resource type="Environment" id=1]
 glow_enabled = true
@@ -216,6 +218,11 @@ margin_bottom = -25.0
 grow_horizontal = 0
 text = "Battle"
 
+[node name="border" type="Sprite" parent="opponent_one_spot/scroll/content"]
+position = Vector2( 222, 104 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 21 )
+
 [node name="opponent_two_spot" type="Control" parent="."]
 margin_left = 776.0
 margin_top = 300.0
@@ -395,6 +402,11 @@ margin_bottom = -25.0
 grow_horizontal = 0
 text = "Battle"
 
+[node name="border" type="Sprite" parent="opponent_two_spot/scroll/content"]
+position = Vector2( 222, 104 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 21 )
+
 [node name="scroll" parent="." instance=ExtResource( 4 )]
 position = Vector2( 640, 100 )
 
@@ -409,6 +421,7 @@ __meta__ = {
 }
 
 [node name="screen_title" type="Control" parent="scroll/content"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 10 )
@@ -942,7 +955,70 @@ margin_bottom = 238.0
 display_name = "INTENSITY"
 setting_name = "gameplay/Colorblind Shader/Intensity"
 
+[node name="screen_won" type="Control" parent="scroll/content"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label_title" type="Label" parent="scroll/content/screen_won"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -205.0
+margin_top = 40.0
+margin_right = 205.0
+margin_bottom = 96.0
+custom_fonts/font = ExtResource( 9 )
+text = "YOU WON!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label_message" type="Label" parent="scroll/content/screen_won"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -205.0
+margin_top = -73.0
+margin_right = 205.0
+margin_bottom = 29.0
+text = "You are now declared
+the official
+
+GOD OF GAMING!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buttons" type="VBoxContainer" parent="scroll/content/screen_won"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -99.5
+margin_top = 35.5
+margin_right = 120.5
+margin_bottom = 275.5
+custom_constants/separation = 10
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button_play" type="Button" parent="scroll/content/screen_won/buttons"]
+margin_top = 95.0
+margin_right = 220.0
+margin_bottom = 145.0
+rect_min_size = Vector2( 220, 50 )
+text = "PLAY AGAIN"
+
 [node name="screen_space" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1, 17 )
 
 [node name="for_glow" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
