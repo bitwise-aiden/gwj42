@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/sprites/opponents/statues/shadows/amon_ra.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/opponents/statues/statues/amon_ra.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/opponents/amon_ra_statue.png" type="Texture" id=4]
+[ext_resource path="res://source/scenes/game/statue.gd" type="Script" id=5]
+
+[node name="statue" type="TextureRect"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 120, 212 )
+texture = ExtResource( 3 )
+expand = true
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+show_behind_parent = true
+margin_right = 120.0
+margin_bottom = 212.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shadow" type="TextureRect" parent="."]
+margin_right = 120.0
+margin_bottom = 212.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="mouse_entered" from="." to="." method="_on_statue_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_statue_mouse_exited"]

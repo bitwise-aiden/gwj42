@@ -20,6 +20,10 @@
 [ext_resource path="res://assets/sprites/rune-parchment.png" type="Texture" id=18]
 [ext_resource path="res://source/components/color_blind_options.tscn" type="PackedScene" id=19]
 
+[sub_resource type="Environment" id=1]
+glow_enabled = true
+glow_bloom = 0.5
+
 [node name="opponent_choice" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -935,6 +939,9 @@ display_name = "INTENSITY"
 setting_name = "gameplay/Colorblind Shader/Intensity"
 
 [node name="screen_space" parent="." instance=ExtResource( 13 )]
+
+[node name="for_glow" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
 
 [connection signal="pressed" from="opponent_one_spot/Popup/back_button" to="opponent_one_spot/Popup" method="_on_back_button_pressed"]
 [connection signal="pressed" from="opponent_one_spot/Popup/battle_button" to="opponent_one_spot/Popup" method="_on_battle_button_pressed"]
