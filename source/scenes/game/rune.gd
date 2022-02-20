@@ -14,7 +14,10 @@ export(Texture) var sprite_shears: Texture = null
 export(Texture) var sprite_stone: Texture = null
 export(Resource) var dust_scene : Resource
 
+export(int, 0, 128) var num_particles: int = 32
+
 var card_state: CardState = null setget __card_state_set, __card_state_get
+
 
 
 # Private variables
@@ -35,6 +38,7 @@ func _ready() -> void:
 	__ready = true
 
 	self.card_state = card_state
+	$attack_particles.amount = max(floor(num_particles * SettingsManager.get_setting("graphics/Particles")), 4)
 
 
 # Public methods

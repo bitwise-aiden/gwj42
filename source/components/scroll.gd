@@ -32,7 +32,7 @@ func _ready() -> void:
 
 # Public methods
 
-func roll(duration: float = 0.5) -> void:
+func roll(duration: float = 0.3) -> void:
 	__tween.interpolate_property(
 		__scroll_bottom,
 		"rect_position:y",

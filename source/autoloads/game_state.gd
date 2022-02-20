@@ -81,14 +81,8 @@ func randomize_opponents() -> void:
 	if !playing:
 		return
 
-	# This is for infinite loop
-	if opponents_current.size() < 2:
-		opponents_current.empty()
-		initialize()
-
 	if !opponent_option_0:
 		opponent_option_0 = opponents_current.pop_front()
 
 	if !opponent_option_1:
 		opponent_option_1 = opponents_current.pop_front()
-
