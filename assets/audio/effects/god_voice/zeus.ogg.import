@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/zeus.ogg-1b7f7714d9fea878457e0eb87d4a98c3.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/effects/god_voice/zeus.ogg"
+dest_files=[ "res://.import/zeus.ogg-1b7f7714d9fea878457e0eb87d4a98c3.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

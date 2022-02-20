@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/hades.ogg-1eeaec531e03ad3279d598a6d504feb3.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/effects/god_voice/hades.ogg"
+dest_files=[ "res://.import/hades.ogg-1eeaec531e03ad3279d598a6d504feb3.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/dionysus.ogg-f8a6249123e8980748cf16263d2057ce.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/effects/god_voice/dionysus.ogg"
+dest_files=[ "res://.import/dionysus.ogg-f8a6249123e8980748cf16263d2057ce.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

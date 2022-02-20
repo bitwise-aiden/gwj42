@@ -5,6 +5,8 @@ extends Node2D
 
 const __RESULT_TEXT = "%s won!"
 
+# Public variables
+var god_data: GodData
 
 # Private variables
 
@@ -34,7 +36,6 @@ var __player_controller: PlayerTurnController = null
 var __player_manager: CardManager = null
 
 var __alive: bool = true
-var __god_data: GodData
 
 var __tween: Tween = Tween.new()
 
@@ -49,7 +50,7 @@ func _ready() -> void:
 	randomize()
 	Globals.plinth_check_polygon = $plinth_check_polygon.polygon
 
-	__god_data = GameState.current_god_data()
+	god_data = GameState.current_god_data()
 
 	__enemy_controller = EnemyTurnController.new(
 		$enemy_discard,
@@ -60,7 +61,7 @@ func _ready() -> void:
 	)
 	add_child(__enemy_controller)
 
-	__enemy_manager = CardManager.new(__god_data.deck)
+	__enemy_manager = CardManager.new(god_data.deck)
 	__enemy_controller.set_deck(__enemy_manager.deck)
 	__enemy_controller.connect("died", self, "__controller_died", [false])
 
@@ -104,9 +105,9 @@ func _ready() -> void:
 	audio_dict = {"bus": "music", "choice": "battle", "loop": false}
 	Event.emit_signal("emit_audio", audio_dict)
 
-	__label_opponent_name.text = __god_data.name.to_upper()
+	__label_opponent_name.text = god_data.name.to_upper()
 	__label_player_name.text = GameState.player_name.to_upper()
-	__texture_rect_opponent.texture = __god_data.texture()
+	__texture_rect_opponent.texture = god_data.texture()
 	__texture_rect_player.texture = GameState.player_profile
 
 	yield(Transition.stop(), "completed")
@@ -114,7 +115,7 @@ func _ready() -> void:
 	__enemy_controller.heal()
 	__player_controller.heal()
 
-	__speech_bubble.show_text(__god_data.message("open_taunt"))
+	__speech_bubble.show_text(god_data.message("open_taunt"))
 
 	__game_loop()
 
@@ -128,13 +129,13 @@ func __controller_died(was_player: bool) -> void:
 	Event.emit_signal("emit_audio", audio_dict)
 
 	if was_player:
-		__label_end_result.text = __RESULT_TEXT % __god_data.name # Replace with god name
+		__label_end_result.text = __RESULT_TEXT % god_data.name # Replace with god name
 		__button_next.text = "BACK"
-		__speech_bubble.show_text(__god_data.message("game_win"))
+		__speech_bubble.show_text(god_data.message("game_win"))
 	else:
 		__label_end_result.text = __RESULT_TEXT % "You"
 		__button_next.text = "CONTINUE"
-		__speech_bubble.show_text(__god_data.message("game_lose"))
+		__speech_bubble.show_text(god_data.message("game_lose"))
 		GameState.kill(GameState.current_god)
 
 	__screen_end.visible = true
@@ -199,17 +200,17 @@ func __score_round() -> void:
 		1, 2:
 			__enemy_controller.damage(result)
 			if __enemy_controller._health > 0:
-				__speech_bubble.show_text(__god_data.message("round_lose"))
+				__speech_bubble.show_text(god_data.message("round_lose"))
 			else:
-				__speech_bubble.show_text(__god_data.message("game_lose"))
+				__speech_bubble.show_text(god_data.message("game_lose"))
 		-1, -2:
 			__player_controller.damage(abs(result))
 			if __player_controller._health > 0:
-				__speech_bubble.show_text(__god_data.message("round_win"))
+				__speech_bubble.show_text(god_data.message("round_win"))
 			else:
-				__speech_bubble.show_text(__god_data.message("game_win"))
+				__speech_bubble.show_text(god_data.message("game_win"))
 		0:
-			__speech_bubble.show_text(__god_data.message("round_draw"))
+			__speech_bubble.show_text(god_data.message("round_draw"))
 
 
 func __scroll_show() -> void:
