@@ -67,8 +67,8 @@ var data = {
 		"dionysus",
 		"The God of Wine",
 		{
-			"open_taunt": ["A new drinking buddy!? What joy!", "Who are you calling a drunk?"],
-			"round_draw": ["Great minds drink alike!", "Anyone for another round?", "huh? What am I drawing?"],
+			"open_taunt": ["A new drinking buddy!? What joy!", "Who are you calling a drunk?", "I love this drinking game"],
+			"round_draw": ["Great minds drink alike!", "Anyone for another round?", "huh? What am I drawing?", "Draw? take a shot!"],
 			"round_lose": ["I have made some pour decisions.", "Another round! Waiter!!"],
 			"round_win": ["It must be wine o'clock!", "oooh, what year is this bottle??", "No need to wine about it."],
 			"game_lose": ["I think I'm going to be sick."],
