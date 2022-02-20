@@ -1,16 +1,14 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://source/scenes/opponent_choice/opponent_choice.gd" type="Script" id=1]
 [ext_resource path="res://assets/backgrounds/opponent_choice_background.png" type="Texture" id=2]
 [ext_resource path="res://source/scenes/opponent_choice/popup_data.gd" type="Script" id=3]
 [ext_resource path="res://source/components/scroll.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/sprites/opponents/amon_ra_portrait.png" type="Texture" id=5]
-[ext_resource path="res://source/components/slider_volume.tscn" type="PackedScene" id=6]
+[ext_resource path="res://source/components/screen_options.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/fonts/font_24pt.tres" type="DynamicFont" id=7]
-[ext_resource path="res://source/components/slider_setting.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/fonts/font_72pt.tres" type="DynamicFont" id=9]
 [ext_resource path="res://source/scenes/opponent_choice/screen_title.gd" type="Script" id=10]
-[ext_resource path="res://source/scenes/opponent_choice/screen_options.gd" type="Script" id=11]
 [ext_resource path="res://assets/themes/game.theme" type="Theme" id=12]
 [ext_resource path="res://source/helpers/screen_space.tscn" type="PackedScene" id=13]
 [ext_resource path="res://source/scenes/opponent_choice/screen_tutorial.gd" type="Script" id=14]
@@ -18,7 +16,6 @@
 [ext_resource path="res://assets/sprites/rune-stone.png" type="Texture" id=16]
 [ext_resource path="res://assets/sprites/action_arrow.png" type="Texture" id=17]
 [ext_resource path="res://assets/sprites/rune-parchment.png" type="Texture" id=18]
-[ext_resource path="res://source/components/color_blind_options.tscn" type="PackedScene" id=19]
 [ext_resource path="res://source/scenes/opponent_choice/screen_won.gd" type="Script" id=20]
 [ext_resource path="res://assets/sprites/portrait_border.png" type="Texture" id=21]
 [ext_resource path="res://assets/sprites/lightning.png" type="Texture" id=22]
@@ -37,23 +34,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
-}
-
-[sub_resource type="Animation" id=1]
-resource_name = "zeus_arrives"
-length = 3.0
-step = 0.25
-tracks/0/type = "value"
-tracks/0/path = NodePath("zeus_arrives/lightning:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 1, 1.75, 3 ),
-"transitions": PoolRealArray( -0.5, -0.5, 2, -0.5, 0.5, 0.5 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.32549 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.0470588 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [node name="opponent_choice" type="Control"]
@@ -864,152 +844,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="screen_options" type="Control" parent="scroll/content"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TabContainer" type="TabContainer" parent="scroll/content/screen_options"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Audio" type="Tabs" parent="scroll/content/screen_options/TabContainer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 53.0
-
-[node name="volumes" type="VBoxContainer" parent="scroll/content/screen_options/TabContainer/Audio"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -162.0
-margin_top = -132.0
-margin_right = 162.0
-margin_bottom = 72.0
-custom_constants/separation = 30
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="label_volume" type="Label" parent="scroll/content/screen_options/TabContainer/Audio/volumes"]
-margin_right = 324.0
-margin_bottom = 20.0
-custom_fonts/font = ExtResource( 7 )
-text = "VOLUME"
-align = 1
-
-[node name="slider_master" parent="scroll/content/screen_options/TabContainer/Audio/volumes" instance=ExtResource( 6 )]
-margin_left = 0.0
-margin_top = 50.0
-margin_right = 324.0
-margin_bottom = 66.0
-display_name = "MASTER"
-controlled_bus = "Master"
-
-[node name="slider_music" parent="scroll/content/screen_options/TabContainer/Audio/volumes" instance=ExtResource( 6 )]
-margin_left = 0.0
-margin_top = 96.0
-margin_right = 324.0
-margin_bottom = 112.0
-display_name = "MUSIC"
-controlled_bus = "Music"
-
-[node name="slider_sound_effects" parent="scroll/content/screen_options/TabContainer/Audio/volumes" instance=ExtResource( 6 )]
-margin_left = 0.0
-margin_top = 142.0
-margin_right = 324.0
-margin_bottom = 158.0
-display_name = "SOUND EFFECTS"
-controlled_bus = "Sound Effects"
-
-[node name="slider_sound_voices" parent="scroll/content/screen_options/TabContainer/Audio/volumes" instance=ExtResource( 6 )]
-margin_left = 0.0
-margin_top = 188.0
-margin_right = 324.0
-margin_bottom = 204.0
-display_name = "VOICES"
-controlled_bus = "Voices"
-
-[node name="Gameplay" type="Tabs" parent="scroll/content/screen_options/TabContainer"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 50.0
-margin_right = -4.0
-margin_bottom = -4.0
-
-[node name="gameplay" type="VBoxContainer" parent="scroll/content/screen_options/TabContainer/Gameplay"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -162.0
-margin_top = -147.5
-margin_right = 162.0
-margin_bottom = 90.5
-custom_constants/separation = 35
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="label_gameplay" type="Label" parent="scroll/content/screen_options/TabContainer/Gameplay/gameplay"]
-margin_right = 324.0
-margin_bottom = 20.0
-custom_fonts/font = ExtResource( 7 )
-text = "VISUALS"
-align = 1
-
-[node name="slider_shake_intensity" parent="scroll/content/screen_options/TabContainer/Gameplay/gameplay" instance=ExtResource( 8 )]
-margin_left = 0.0
-margin_top = 55.0
-margin_right = 324.0
-margin_bottom = 71.0
-display_name = "SCREEN SHAKE"
-setting_name = "gameplay/Shake Intensity"
-
-[node name="slider_particles" parent="scroll/content/screen_options/TabContainer/Gameplay/gameplay" instance=ExtResource( 8 )]
-margin_left = 0.0
-margin_top = 106.0
-margin_right = 324.0
-margin_bottom = 122.0
-display_name = "PARTICLES"
-setting_name = "graphics/Particles"
-
-[node name="color_blind_options" parent="scroll/content/screen_options/TabContainer/Gameplay/gameplay" instance=ExtResource( 19 )]
-margin_top = 157.0
-margin_right = 324.0
-margin_bottom = 207.0
-
-[node name="slider_color_intensity" parent="scroll/content/screen_options/TabContainer/Gameplay/gameplay" instance=ExtResource( 8 )]
-margin_left = 0.0
-margin_top = 242.0
-margin_right = 324.0
-margin_bottom = 258.0
-display_name = "CORRECTION INTENSITY"
-setting_name = "gameplay/Colorblind Shader/Intensity"
-
-[node name="button_back" type="Button" parent="scroll/content/screen_options"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -45.5
-margin_top = -68.0
-margin_right = 45.5
-margin_bottom = -20.0
-text = "Back"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="screen_options" parent="scroll/content" instance=ExtResource( 6 )]
 
 [node name="screen_won" type="Control" parent="scroll/content"]
 visible = false
@@ -1079,13 +914,25 @@ position = Vector2( 572, -385 )
 
 [node name="zeus_arrives" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )
-anims/zeus_arrives = SubResource( 1 )
 script = ExtResource( 23 )
 
 [node name="lightning" type="Sprite" parent="zeus_arrives"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 640, 360 )
 texture = ExtResource( 22 )
+
+[node name="button_settings" type="Button" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = -70.0
+margin_right = 220.0
+margin_bottom = -20.0
+grow_vertical = 0
+text = "SETTINGS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="opponent_one_spot/Popup/back_button" to="opponent_one_spot/Popup" method="_on_back_button_pressed"]
 [connection signal="pressed" from="opponent_one_spot/Popup/battle_button" to="opponent_one_spot/Popup" method="_on_battle_button_pressed"]

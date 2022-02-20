@@ -1,0 +1,221 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://source/components/color_blind_options.tscn" type="PackedScene" id=1]
+[ext_resource path="res://source/components/slider_setting.tscn" type="PackedScene" id=2]
+[ext_resource path="res://source/components/slider_volume.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/fonts/font_24pt.tres" type="DynamicFont" id=4]
+[ext_resource path="res://source/components/slider_volume.gd" type="Script" id=5]
+[ext_resource path="res://source/scenes/opponent_choice/screen_options.gd" type="Script" id=6]
+[ext_resource path="res://source/components/slider_setting.gd" type="Script" id=7]
+[ext_resource path="res://source/components/color_blind_options.gd" type="Script" id=8]
+
+[node name="screen_options" type="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Audio" type="Tabs" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 50.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="volumes" type="VBoxContainer" parent="TabContainer/Audio"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -162.0
+margin_top = -132.0
+margin_right = 162.0
+margin_bottom = 72.0
+custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label_volume" type="Label" parent="TabContainer/Audio/volumes"]
+margin_right = 324.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 4 )
+text = "VOLUME"
+align = 1
+
+[node name="slider_master" type="HSlider" parent="TabContainer/Audio/volumes" instance=ExtResource( 3 )]
+margin_top = 50.0
+margin_right = 324.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 250, 16 )
+max_value = 1.0
+step = 0.1
+value = 1.0
+tick_count = 3
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+display_name = "MASTER"
+controlled_bus = "Master"
+
+[node name="slider_music" type="HSlider" parent="TabContainer/Audio/volumes" instance=ExtResource( 3 )]
+margin_top = 96.0
+margin_right = 324.0
+margin_bottom = 112.0
+rect_min_size = Vector2( 250, 16 )
+max_value = 1.0
+step = 0.1
+value = 1.0
+tick_count = 3
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+display_name = "MUSIC"
+controlled_bus = "Music"
+
+[node name="slider_sound_effects" type="HSlider" parent="TabContainer/Audio/volumes" instance=ExtResource( 3 )]
+margin_top = 142.0
+margin_right = 324.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 250, 16 )
+max_value = 1.0
+step = 0.1
+value = 1.0
+tick_count = 3
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+display_name = "SOUND EFFECTS"
+controlled_bus = "Sound Effects"
+
+[node name="slider_sound_voices" type="HSlider" parent="TabContainer/Audio/volumes" instance=ExtResource( 3 )]
+margin_top = 188.0
+margin_right = 324.0
+margin_bottom = 204.0
+rect_min_size = Vector2( 250, 16 )
+max_value = 1.0
+step = 0.1
+value = 1.0
+tick_count = 3
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+display_name = "VOICES"
+controlled_bus = "Voices"
+
+[node name="Gameplay" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 50.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="gameplay" type="VBoxContainer" parent="TabContainer/Gameplay"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -162.0
+margin_top = -147.5
+margin_right = 162.0
+margin_bottom = 90.5
+custom_constants/separation = 35
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label_gameplay" type="Label" parent="TabContainer/Gameplay/gameplay"]
+margin_right = 324.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 4 )
+text = "VISUALS"
+align = 1
+
+[node name="slider_shake_intensity" type="HSlider" parent="TabContainer/Gameplay/gameplay" instance=ExtResource( 2 )]
+margin_top = 55.0
+margin_right = 324.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 250, 16 )
+max_value = 1.0
+step = 0.1
+value = 1.0
+tick_count = 3
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+display_name = "SCREEN SHAKE"
+setting_name = "gameplay/Shake Intensity"
+
+[node name="slider_particles" type="HSlider" parent="TabContainer/Gameplay/gameplay" instance=ExtResource( 2 )]
+margin_top = 106.0
+margin_right = 324.0
+margin_bottom = 122.0
+rect_min_size = Vector2( 250, 16 )
+max_value = 1.0
+step = 0.1
+value = 1.0
+tick_count = 3
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+display_name = "PARTICLES"
+setting_name = "graphics/Particles"
+
+[node name="color_blind_options" type="Control" parent="TabContainer/Gameplay/gameplay" instance=ExtResource( 1 )]
+margin_top = 157.0
+margin_right = 324.0
+margin_bottom = 207.0
+rect_min_size = Vector2( 324, 50 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="slider_color_intensity" type="HSlider" parent="TabContainer/Gameplay/gameplay" instance=ExtResource( 2 )]
+margin_top = 242.0
+margin_right = 324.0
+margin_bottom = 258.0
+rect_min_size = Vector2( 250, 16 )
+max_value = 1.0
+step = 0.1
+value = 1.0
+tick_count = 3
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+display_name = "CORRECTION INTENSITY"
+setting_name = "gameplay/Colorblind Shader/Intensity"
+
+[node name="button_back" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -45.5
+margin_top = -68.0
+margin_right = 45.5
+margin_bottom = -20.0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}

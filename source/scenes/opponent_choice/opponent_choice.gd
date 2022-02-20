@@ -10,6 +10,7 @@ var gods
 
 # Private variables
 
+onready var __button_settings: Button = $button_settings
 onready var __scroll: Scroll = $scroll
 onready var __screen_title: Control = $scroll/scroll_body/content/screen_title
 onready var __screen_tutorial: Control = $scroll/scroll_body/content/screen_tutorial
@@ -34,6 +35,7 @@ func _ready():
 	__scroll.position.y -= 300.0
 
 	Event.connect("change_menu", self, "__change_menu")
+	__button_settings.connect("pressed", self, "__open_menu", ["options"])
 
 	# Play menu music
 	var audio_dict = {"bus": "music", "choice": "menu", "loop": false}
@@ -42,17 +44,8 @@ func _ready():
 	yield(Transition.stop(), "completed")
 
 	if !GameState.playing:
-		__tween.interpolate_property(
-			__scroll,
-			"position:y",
-			__scroll.position.y,
-			__scroll_position_y,
-			0.5
-		)
-		__tween.start()
+		yield(__open_menu("main"), "completed")
 
-		yield(__tween,"tween_all_completed")
-		yield(__scroll.unroll(), "completed")
 
 
 
@@ -74,23 +67,28 @@ func add_opponents():
 	opponent_two_spot.add_child(__opponent_button_2)
 
 	if GameState.zeus_active && __opponent_button_1.opponent_name == "" && __opponent_button_2.opponent_name == "":
-		__tween.interpolate_property(
-			__scroll,
-			"position:y",
-			__scroll.position.y,
-			__scroll_position_y,
-			0.5
-		)
-		__tween.start()
-
-		yield(__tween,"tween_all_completed")
-		yield(__change_menu("won"), "completed")
+		GameState.playing = false
+		yield(__open_menu("won"), "completed")
 
 
 # Private methods
 
 func __change_menu(menu_name: String) -> void:
 	yield(__scroll.roll(), "completed")
+
+	if GameState.playing && !menu_name in ["options", "won"]:
+		__tween.interpolate_property(
+			__scroll,
+			"position:y",
+			__scroll.position.y,
+			__scroll.position.y - 300.0,
+			0.5
+		)
+
+		__tween.start()
+
+		yield(__tween, "tween_all_completed")
+		return
 
 	match menu_name:
 		"game":
@@ -129,3 +127,17 @@ func __change_menu(menu_name: String) -> void:
 			__screen_won.visible = menu_name == "won"
 
 			yield(__scroll.unroll(), "completed")
+
+
+func __open_menu(menu_name: String) -> void:
+	__tween.interpolate_property(
+		__scroll,
+		"position:y",
+		__scroll.position.y,
+		__scroll_position_y,
+		0.5
+	)
+	__tween.start()
+
+	yield(__tween, "tween_all_completed")
+	yield(__change_menu(menu_name), "completed")
