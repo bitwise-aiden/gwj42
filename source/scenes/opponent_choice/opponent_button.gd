@@ -4,6 +4,7 @@ class_name opponent_button
 
 onready var popup = get_parent().get_node("Popup")
 
+var pick_particles = preload("res://source/scenes/game/pick_particles.tscn")
 var closed_statue = load("res://assets/sprites/opponents/statue_closed.png")
 var picture_statue
 var opponent_name
@@ -26,14 +27,22 @@ onready var __scroll_offscreen_position_y: float = __scroll_position_y - 300.0
 
 var __tween: Tween = Tween.new()
 
+var particles
+
 
 func _ready():
 	add_child(__tween)
 
 	__scroll.position.y = __scroll_offscreen_position_y
 
+	self.connect("mouse_entered", self, "__mouse_entered")
+	self.connect("mouse_exited", self, "__mouse_exited")
 	__button_back.connect("pressed", self, "__button_back_pressed")
 	__button_battle.connect("pressed", self, "__button_battle_pressed")
+	
+	particles = pick_particles.instance()
+	
+	self.call_deferred("add_child", particles)
 
 
 func _init(var n = ""):
@@ -93,3 +102,9 @@ func __button_battle_pressed() -> void:
 	yield(Transition.start(true), "completed")
 
 	SceneManager.load_scene("game", false)
+
+func __mouse_entered() -> void:
+	particles.emitting = false
+
+func __mouse_exited() -> void:
+	particles.emitting = true
