@@ -10,7 +10,7 @@ var data = {
 			"round_draw": ["It is of no matter...", "AGAIN!"],
 			"round_lose": ["No!", "Hm!", "Oh, for heaven's sake!"],
 			"round_win": ["Heaven help you!", "Prayers alone cannot help you now!", "Finally a round worthy of my name!", "...and the Lord taketh away!"],
-			"game_lose": ["Defeated by a mortal!? IMPOSSIBLE!", "Blasphemy!!"],
+			"game_lose": ["Defeated by a mortal!? IMPOSSIBLE!", "Blasphemy!!", "Me damnit!"],
 			"game_win": ["It is as I ordained.", "It was written in the heavens"],
 		}
 	),
@@ -56,7 +56,7 @@ var data = {
 		"The God of the Seas",
 		{
 			"open_taunt": ["Hahaha, you dare challenge me!?"],
-			"round_draw": ["Blub, blub, blooob...", "*bubble noises*", "Let's H2Go again!"],
+			"round_draw": ["Blub, blub, blooob...", "*bubble noises*", "Let's H2Go again!", "hmmm..."],
 			"round_lose": ["Cod you let me win one?", "You sun of a beach!", "This is giving me emoceans!"],
 			"round_win": ["Look at you, floundering around!", "Let the waves of defeat wash over you.", "Yeah, buoy!!"],
 			"game_lose": ["I got lost at sea!"],
@@ -68,7 +68,7 @@ var data = {
 		"The God of Wine",
 		{
 			"open_taunt": ["A new drinking buddy!? What joy!", "Who are you calling a drunk?"],
-			"round_draw": ["Great minds drink alike!", "Anyone for another round?"],
+			"round_draw": ["Great minds drink alike!", "Anyone for another round?", "huh? What am I drawing?"],
 			"round_lose": ["I have made some pour decisions.", "Another round! Waiter!!"],
 			"round_win": ["It must be wine o'clock!", "oooh, what year is this bottle??", "No need to wine about it."],
 			"game_lose": ["I think I'm going to be sick."],
