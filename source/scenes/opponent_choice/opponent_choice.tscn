@@ -558,7 +558,7 @@ margin_bottom = 101.5
 mouse_filter = 2
 bbcode_enabled = true
 bbcode_text = "[center]TO BE DECLARED THE VICTOR, YOU MUST DEFEATE A NUMBER OF ANCIENT GODS FROM ACROSS THE MYTHOSPHERE."
-text = "TO BE DECLARED THE VICTOR, YOU MUST DEFEATE A NUMBER OF ANCIENT GODS FROM ACROSS THE MYTHOSPHERE."
+text = "TO BE DECLARED THE VICTOR, YOU MUST DEFEAT A NUMBER OF ANCIENT GODS FROM ACROSS THE MYTHOSPHERE."
 
 [node name="page_2" type="Control" parent="scroll/content/screen_tutorial/pages"]
 pause_mode = 1
@@ -580,7 +580,7 @@ margin_bottom = 47.5
 mouse_filter = 2
 bbcode_enabled = true
 bbcode_text = "[center]EACH COMPETITOR WILL HAVE A DECK OF 9 STONES COMPRISING OF THE FOLLIWNG RUNES."
-text = "EACH COMPETITOR WILL HAVE A DECK OF 9 STONES COMPRISING OF THE FOLLIWNG RUNES."
+text = "EACH COMPETITOR WILL HAVE A DECK OF 9 STONES COMPRISING OF THE FOLLOWING RUNES."
 __meta__ = {
 "_edit_use_anchors_": false
 }
