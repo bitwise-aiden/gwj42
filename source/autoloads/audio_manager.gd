@@ -119,6 +119,7 @@ func __play_effect(choice: String) -> void:
 			new_player.audio_path = "res://assets/audio/effects/god_select/GONG.ogg"
 		"menu_select":
 			new_player.pitch_scale = rand_range(0.85, 1.15)
+			new_player.volume_db = 3
 			var randChoice = randi() % 2
 			match randChoice:
 				0:
@@ -127,6 +128,7 @@ func __play_effect(choice: String) -> void:
 					new_player.audio_path = "res://assets/audio/effects/menu_select/menu_select-01.ogg"
 		"paper":
 			new_player.pitch_scale = rand_range(0.85, 1.15)
+			new_player.volume_db = -3
 			var randChoice = randi() % 3
 			match randChoice:
 				0:

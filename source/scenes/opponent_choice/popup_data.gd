@@ -10,6 +10,7 @@ func _ready():
 	pass
 
 func _on_back_button_pressed():
+	Event.emit_signal("emit_audio", {"bus": "effect", "choice": "menu_select", "loop": false})
 	hide()
 
 

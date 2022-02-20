@@ -18,6 +18,11 @@ func _ready() -> void:
 	__button_back.connect("pressed", self, "__change_page", [-1])
 	__button_next.connect("pressed", self, "__change_page", [+1])
 	__button_skip.connect("pressed", Event, "emit_signal", ["change_menu", "main"])
+	
+	var audio_dict = {"bus": "effect", "choice": "menu_select", "loop": false}
+	__button_back.connect("button_down", AudioManager, "play_audio", [audio_dict])
+	__button_next.connect("button_down", AudioManager, "play_audio", [audio_dict])
+	__button_skip.connect("button_down", AudioManager, "play_audio", [audio_dict])
 
 	__change_page(0)
 
