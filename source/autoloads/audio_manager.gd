@@ -146,7 +146,13 @@ func __play_voice(choice: String) -> void:
 	match choice:
 		"zeus":
 			new_player.audio_path = "res://assets/audio/effects/god_voice/zeus.ogg"
-		"amon_ra":
+		"amon_ra_scissors":
+			new_player.pitch_scale = rand_range(0.55, 0.85)
+			new_player.audio_path = "res://assets/audio/effects/god_voice/amon_ra.ogg"
+		"amon_ra_rock":
+			new_player.pitch_scale = rand_range(0.55, 0.85)
+			new_player.audio_path = "res://assets/audio/effects/god_voice/amon_ra.ogg"
+		"amon_ra_paper":
 			new_player.pitch_scale = rand_range(0.55, 0.85)
 			new_player.audio_path = "res://assets/audio/effects/god_voice/amon_ra.ogg"
 		"chicomecoatl":
