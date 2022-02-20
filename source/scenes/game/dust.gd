@@ -18,7 +18,7 @@ func _ready() -> void:
 func _enter_tree() -> void:
 	for child in self.get_children():
 		child.lifetime = lifetime
-		child.amount = num_particles
+		child.amount = max(floor(num_particles * SettingsManager.get_setting("graphics/Particles")), 4)
 		child.emitting = true
 
 func __life_timer_timeout() -> void:
