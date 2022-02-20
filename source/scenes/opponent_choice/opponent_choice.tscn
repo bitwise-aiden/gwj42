@@ -421,7 +421,6 @@ __meta__ = {
 }
 
 [node name="screen_title" type="Control" parent="scroll/content"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 10 )
@@ -836,6 +835,7 @@ __meta__ = {
 }
 
 [node name="screen_options" type="Control" parent="scroll/content"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 11 )
