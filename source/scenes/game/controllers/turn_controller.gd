@@ -10,7 +10,7 @@ signal died()
 # Private constants
 
 const __RUNE_SCENE: PackedScene = preload("res://source/scenes/game/rune.tscn")
-const __INITIAL_HEALTH: int = 1
+const __INITIAL_HEALTH: int = 5
 
 
 # Protected variables
