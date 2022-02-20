@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://source/scenes/opponent_choice/opponent_choice.gd" type="Script" id=1]
 [ext_resource path="res://assets/backgrounds/opponent_choice_background.png" type="Texture" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://assets/sprites/rune-parchment.png" type="Texture" id=18]
 [ext_resource path="res://source/components/color_blind_options.tscn" type="PackedScene" id=19]
 [ext_resource path="res://source/scenes/opponent_choice/screen_won.gd" type="Script" id=20]
+[ext_resource path="res://assets/sprites/portrait_border.png" type="Texture" id=21]
 
 [sub_resource type="Environment" id=1]
 glow_enabled = true
@@ -217,6 +218,11 @@ margin_bottom = -25.0
 grow_horizontal = 0
 text = "Battle"
 
+[node name="border" type="Sprite" parent="opponent_one_spot/scroll/content"]
+position = Vector2( 222, 104 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 21 )
+
 [node name="opponent_two_spot" type="Control" parent="."]
 margin_left = 776.0
 margin_top = 300.0
@@ -395,6 +401,11 @@ margin_right = -25.0
 margin_bottom = -25.0
 grow_horizontal = 0
 text = "Battle"
+
+[node name="border" type="Sprite" parent="opponent_two_spot/scroll/content"]
+position = Vector2( 222, 104 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 21 )
 
 [node name="scroll" parent="." instance=ExtResource( 4 )]
 position = Vector2( 640, 100 )

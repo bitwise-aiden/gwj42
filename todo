@@ -52,17 +52,35 @@
 - [x] Ensure profile persists the game
 - [x] Add color blind options (PROTANOPIA, DEUTRANOPIA, TRITANOPIA)
 - [x] Add credits: https://godotshaders.com/shader/colorblindness-correction-shader/
-- [ ] itch banner
+- [x] itch banner
 - [ ] Add message to loading screen if it takes too long
 - [x] Remove quit button when game is HTML
 - [x] Add half curtains
 - [x] Add error handling for out of date settings
-- [ ] Add optional index to gods to signal when they should be shown, -1 for special (hades and zeus)
+- [x] Add optional index to gods to signal when they should be shown, -1 for special (hades and zeus)
+- [x] Add game won scroll
+- [x] Add potrait border for gods
+ 
 - [ ] Add pause menu to opponent screen for returning to main menu
-- [ ] Add game won scroll
-- [ ] Add potrait border for gods 
 - [ ] Fix menu mess
     - [ ] Add ability to reset the game when transitioning from main to opponent choice scene
 - [ ] Update volume sliders graphics
 - [ ] Make settings page use tabs 
+
+
+
+random 
+random 
+
+if either != amon && last != amon
+    amon
+
+amon 
+random
+amon
+random 
+amon
+
+zeus
+
 
