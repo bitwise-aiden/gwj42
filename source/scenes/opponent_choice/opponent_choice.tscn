@@ -421,7 +421,6 @@ __meta__ = {
 }
 
 [node name="screen_title" type="Control" parent="scroll/content"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 10 )
@@ -956,6 +955,7 @@ display_name = "INTENSITY"
 setting_name = "gameplay/Colorblind Shader/Intensity"
 
 [node name="screen_won" type="Control" parent="scroll/content"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 20 )

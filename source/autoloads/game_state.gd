@@ -100,7 +100,6 @@ func __get_next_god() -> String:
 	if opponents_previous.empty():
 		return opponents_current.pop_front()
 
-
 	if !opponents_current.empty():
 		if opponent_option_0.begins_with("amon") || opponent_option_1.begins_with("amon"):
 			return opponents_current.pop_front()

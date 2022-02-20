@@ -74,7 +74,17 @@ func add_opponents():
 	opponent_two_spot.add_child(__opponent_button_2)
 
 	if GameState.zeus_active && __opponent_button_1.opponent_name == "" && __opponent_button_2.opponent_name == "":
-		pass
+		__tween.interpolate_property(
+			__scroll,
+			"position:y",
+			__scroll.position.y,
+			__scroll_position_y,
+			0.5
+		)
+		__tween.start()
+
+		yield(__tween,"tween_all_completed")
+		yield(__change_menu("won"), "completed")
 
 
 # Private methods

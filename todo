@@ -60,12 +60,14 @@
 - [x] Add optional index to gods to signal when they should be shown, -1 for special (hades and zeus)
 - [x] Add game won scroll
 - [x] Add potrait border for gods
- 
+
 - [ ] Add pause menu to opponent screen for returning to main menu
 - [ ] Fix menu mess
     - [ ] Add ability to reset the game when transitioning from main to opponent choice scene
+    - [ ] Game should pause
 - [ ] Update volume sliders graphics
 - [ ] Make settings page use tabs 
+- [ ] remove 1 health
 
 
 
