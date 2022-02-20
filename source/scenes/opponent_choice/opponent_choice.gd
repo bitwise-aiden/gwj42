@@ -127,8 +127,8 @@ func __change_menu(menu_name: String) -> void:
 
 			yield(__scroll.unroll(), "completed")
 
-		if menu_name == "won":
-			GameState.playing = false
+	if menu_name == "won":
+		GameState.playing = false
 
 
 func __open_menu(menu_name: String) -> void:
