@@ -19,7 +19,6 @@ onready var __button_replay: Button = $ui/scroll/scroll_body/content/screen_end/
 onready var __button_pause: Button = $ui/screen_game/button_pause
 onready var __button_pause_continue: Button = $ui/scroll/scroll_body/content/screen_pause/buttons/button_continue
 onready var __button_pause_restart: Button = $ui/scroll/scroll_body/content/screen_pause/buttons/button_restart
-onready var __button_pause_menu: Button = $ui/scroll/scroll_body/content/screen_pause/buttons/button_menu
 onready var __screen_end: Control = $ui/scroll/scroll_body/content/screen_end
 onready var __screen_pause: Control = $ui/scroll/scroll_body/content/screen_pause
 onready var __screen_game: Control = $ui/screen_game
@@ -89,7 +88,6 @@ func _ready() -> void:
 	__button_pause.connect("pressed", self, "__pause", [true])
 	__button_pause_continue.connect("pressed", self, "__pause", [false])
 	__button_pause_restart.connect("pressed", SceneManager, "load_scene", ["game"])
-	__button_pause_menu.connect("pressed", SceneManager, "load_scene", ["opponent_choice"])
 
 	var audio_dict = {"bus": "effect", "choice": "menu_select", "loop": false}
 	__button_menu.connect("button_down", AudioManager, "play_audio", [audio_dict])
@@ -98,7 +96,6 @@ func _ready() -> void:
 	__button_pause.connect("button_down", AudioManager, "play_audio", [audio_dict])
 	__button_pause_continue.connect("button_down", AudioManager, "play_audio", [audio_dict])
 	__button_pause_restart.connect("button_down", AudioManager, "play_audio", [audio_dict])
-	__button_pause_menu.connect("button_down", AudioManager, "play_audio", [audio_dict])
 
 
 	# Play battle music

@@ -382,13 +382,4 @@ grow_vertical = 2
 rect_min_size = Vector2( 200, 40 )
 text = "RESTART"
 
-[node name="button_menu" type="Button" parent="ui/scroll/content/screen_pause/buttons"]
-margin_top = 120.0
-margin_right = 200.0
-margin_bottom = 160.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 200, 40 )
-text = "MENU"
-
 [node name="screen_space" parent="." instance=ExtResource( 18 )]
