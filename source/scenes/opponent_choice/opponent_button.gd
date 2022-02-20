@@ -64,7 +64,7 @@ func _pressed():
 		return
 
 	__texture_portrait.texture = GameState.god_data[opponent_name].texture()
-	__label_name.text = opponent_name
+	__label_name.text = GameState.god_data[opponent_name].name
 	__label_description.bbcode_text = "[center]%s[/center]" % opponent_description
 
 	__tween.interpolate_property(
@@ -105,7 +105,9 @@ func __button_battle_pressed() -> void:
 	SceneManager.load_scene("game", false)
 
 func __mouse_entered() -> void:
-	particles.emitting = false
+	if particles:
+		particles.emitting = false
 
 func __mouse_exited() -> void:
-	particles.emitting = true
+	if particles:
+		particles.emitting = true

@@ -55,7 +55,7 @@
 - [ ] itch banner
 - [ ] Add message to loading screen if it takes too long
 - [x] Remove quit button when game is HTML
-- [ ] Add half curtains
+- [x] Add half curtains
 - [x] Add error handling for out of date settings
 - [ ] Add optional index to gods to signal when they should be shown, -1 for special (hades and zeus)
 - [ ] Add pause menu to opponent screen for returning to main menu

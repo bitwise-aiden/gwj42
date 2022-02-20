@@ -4,6 +4,7 @@ class_name GodDataTable extends Resource
 var data = {
 	"zeus": GodData.new(
 		"zeus",
+		"zeus",
 		"The King of the gods",
 		{
 			"open_taunt": ["You are mere moments away from heaven now!", "By Hades or by might, your fate is sealed!"],
@@ -14,8 +15,9 @@ var data = {
 			"game_win": ["It is as I ordained.", "It was written in the heavens"],
 		}
 	),
-	"amon_ra": GodData.new(
-		"amon_ra",
+	"amon_ra_paper": GodData.new(
+		"amon_ra_paper",
+		"amon ra",
 		"Egyptian Sun God",
 		{
 			"open_taunt": ["Such a stupid mortal. You will never best my strategy!", "You cannot outsmart me!"],
@@ -27,7 +29,36 @@ var data = {
 		},
 		[9, 0, 0]
 	),
+	"amon_ra_scissors": GodData.new(
+		"amon_ra_scissors",
+		"amon ra",
+		"Egyptian Sun God",
+		{
+			"open_taunt": ["Such a stupid mortal. You will never best my strategy!", "You cannot outsmart me!"],
+			"round_draw": ["Matching my strategy? You will surely lose the next one.", "let me try that one again."],
+			"round_lose": ["Humph", "I'll just have to change things up a bit!", "You cannot possibly understand my strategy!"],
+			"round_win": ["How can you ever expect to win!?", "Another step closer to victory!", "Calculated."],
+			"game_lose": ["But I executed the plan!??", "Next time I'll outsmart you!"],
+			"game_win": ["I knew I had the winning strategy!"],
+		},
+		[0, 9, 0]
+	),
+	"amon_ra_rock": GodData.new(
+		"amon_ra_rock",
+		"amon ra",
+		"Egyptian Sun God",
+		{
+			"open_taunt": ["Such a stupid mortal. You will never best my strategy!", "You cannot outsmart me!"],
+			"round_draw": ["Matching my strategy? You will surely lose the next one.", "let me try that one again."],
+			"round_lose": ["Humph", "I'll just have to change things up a bit!", "You cannot possibly understand my strategy!"],
+			"round_win": ["How can you ever expect to win!?", "Another step closer to victory!", "Calculated."],
+			"game_lose": ["But I executed the plan!??", "Next time I'll outsmart you!"],
+			"game_win": ["I knew I had the winning strategy!"],
+		},
+		[0, 0, 9]
+	),
 	"chicomecoatl": GodData.new(
+		"chicomecoatl",
 		"chicomecoatl",
 		"Goddess of agriculture",
 		{
@@ -41,6 +72,7 @@ var data = {
 	),
 	"gaia": GodData.new(
 		"gaia",
+		"gaia",
 		"The Earth Goddess",
 		{
 			"open_taunt": ["I will rock you to your core!"],
@@ -52,6 +84,7 @@ var data = {
 		}
 	),
 	"poseidon": GodData.new(
+		"poseidon",
 		"poseidon",
 		"The God of the Seas",
 		{
@@ -65,6 +98,7 @@ var data = {
 	),
 	"dionysus": GodData.new(
 		"dionysus",
+		"dionysus",
 		"The God of Wine",
 		{
 			"open_taunt": ["A new drinking buddy!? What joy!", "Who are you calling a drunk?", "I love this drinking game"],
@@ -76,6 +110,7 @@ var data = {
 		}
 	),
 	"hades": GodData.new(
+		"hades",
 		"hades",
 		"The God of the Underworld",
 		{
