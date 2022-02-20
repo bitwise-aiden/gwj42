@@ -21,7 +21,8 @@ onready var __scroll: Scroll = $"../scroll" # For Dave <3
 onready var __texture_portrait: TextureRect = $"../scroll/scroll_body/content/portrait"
 
 
-onready var __scroll_position_y: float = __scroll.position.y
+onready var __scroll_position_y: float = -200
+onready var __scroll_offscreen_position_y: float = __scroll_position_y - 300.0
 
 var __tween: Tween = Tween.new()
 
@@ -29,20 +30,29 @@ var __tween: Tween = Tween.new()
 func _ready():
 	add_child(__tween)
 
-	__scroll.position.y -= 300.0
+	__scroll.position.y = __scroll_offscreen_position_y
 
 	__button_back.connect("pressed", self, "__button_back_pressed")
 	__button_battle.connect("pressed", self, "__button_battle_pressed")
 
-func _init(var n):
+
+func _init(var n = ""):
 	opponent_name = n
-	opponent_description = GameState.god_data[n].description
-	picture_statue = load("res://assets/sprites/opponents/"+ opponent_name + "_statue.png")
-	set_normal_texture(closed_statue)
-	set_hover_texture(picture_statue)
+
+	if opponent_name != "":
+		opponent_description = GameState.god_data[n].description
+		picture_statue = load("res://assets/sprites/opponents/"+ opponent_name + "_statue.png")
+		set_hover_texture(picture_statue)
+		set_normal_texture(closed_statue)
+	else:
+		set_hover_texture(closed_statue)
+		set_normal_texture(closed_statue)
 
 
 func _pressed():
+	if opponent_name == "":
+		return
+
 	__texture_portrait.texture = GameState.god_data[opponent_name].texture()
 	__label_name.text = opponent_name
 	__label_description.bbcode_text = "[center]%s[/center]" % opponent_description
@@ -50,7 +60,7 @@ func _pressed():
 	__tween.interpolate_property(
 		__scroll,
 		"position:y",
-		__scroll.position.y,
+		__scroll_offscreen_position_y,
 		__scroll_position_y,
 		0.5
 	)
@@ -67,8 +77,8 @@ func __button_back_pressed() -> void:
 	__tween.interpolate_property(
 		__scroll,
 		"position:y",
-		__scroll.position.y,
-		__scroll_position_y - 300.0,
+		__scroll_position_y,
+		__scroll_offscreen_position_y,
 		0.5
 	)
 	__tween.start()
