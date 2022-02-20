@@ -7,7 +7,7 @@ func _ready() -> void:
 	set_shader(["Type", SettingsManager.get_setting("gameplay/Colorblind Shader/Type")])
 
 func set_shader(details: Array) -> void:
-	if details[0] == "Type":
+	if details[0] in ["gameplay/Colorblind Shader/Type", "Type"]:
 		$ss_shaders.material.set_shader_param("mode", details[1])
-	if details[0] == "Intensity":
+	if details[0] in ["gameplay/Colorblind Shader/Intensity", "Intensity"]:
 		$ss_shaders.material.set_shader_param("intensity", details[1])
