@@ -4,10 +4,12 @@ extends Node
 # Public methods
 
 var playing: bool = false
+var zeus_active: bool = false
 
 var current_god: String
 var god_data: Dictionary = {}
 
+var opponents_amon: Array = []
 var opponents_current: Array = []
 var opponents_previous: Array = []
 
@@ -28,7 +30,9 @@ func _ready() -> void:
 
 func initialize() -> void:
 	playing = true
+	zeus_active = false
 
+	opponents_amon.clear()
 	opponents_current.clear()
 	opponents_previous.clear()
 
@@ -36,14 +40,15 @@ func initialize() -> void:
 	god_data = gods.get_data()
 
 	for god in god_data:
-		if god in ["zeus", "hades"]:
+		if god in ["amon_ra_paper", "amon_ra_scissors", "amon_ra_rock"]:
+			opponents_amon.append(god)
+		elif god in ["zeus", "hades"]:
 			pass
 		else:
-			opponents_current.append(god)
+			opponents_current.append(god_data[god].id)
 
+	opponents_amon.shuffle()
 	opponents_current.shuffle()
-
-	opponents_current.append("zeus")
 
 	match randi() % 4:
 		0:
@@ -82,7 +87,35 @@ func randomize_opponents() -> void:
 		return
 
 	if !opponent_option_0:
-		opponent_option_0 = opponents_current.pop_front()
+		opponent_option_0 = __get_next_god()
 
 	if !opponent_option_1:
-		opponent_option_1 = opponents_current.pop_front()
+		opponent_option_1 = __get_next_god()
+
+
+# Private method
+
+func __get_next_god() -> String:
+	# Start of the game case
+	if opponents_previous.empty():
+		return opponents_current.pop_front()
+
+
+	if !opponents_current.empty():
+		if opponent_option_0.begins_with("amon") || opponent_option_1.begins_with("amon"):
+			return opponents_current.pop_front()
+
+		if opponents_previous[-1].begins_with("amon"):
+			return opponents_current.pop_front()
+
+	if !opponents_amon.empty():
+		return opponents_amon.pop_front()
+
+	if opponents_current.empty() && opponents_amon.empty():
+		zeus_active = true
+		return "zeus"
+
+	return ""
+
+
+

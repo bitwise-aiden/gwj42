@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://source/scenes/transition/transition.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprites/opponents/amon_ra_portrait_rock.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/opponents/amon_ra_rock_portrait.png" type="Texture" id=2]
 [ext_resource path="res://assets/materials/portrait.material" type="Material" id=3]
 [ext_resource path="res://assets/sprites/opponents/chicomecoatl_portrait.png" type="Texture" id=4]
 

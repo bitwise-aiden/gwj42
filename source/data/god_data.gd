@@ -1,6 +1,7 @@
 #god_data.gd
 class_name GodData extends Resource
 
+var id
 var name
 var description
 var messages
@@ -10,7 +11,8 @@ var deck
 # Make sure that every parameter has a default value.
 # Otherwise, there will be problems with creating and editing
 # your resource via the inspector.
-func _init(g_name = "", g_description = "", g_messages = {}, g_deck = [3, 3, 3]):
+func _init(g_id = "", g_name = "", g_description = "", g_messages = {}, g_deck = [3, 3, 3]):
+	id = g_id
 	name = g_name
 	description = g_description
 	messages = g_messages
@@ -25,4 +27,4 @@ func message(type: String) -> String:
 
 
 func texture() -> Texture:
-	return load("res://assets/sprites/opponents/"+ name + "_portrait.png") as Texture
+	return load("res://assets/sprites/opponents/"+ id + "_portrait.png") as Texture

@@ -3,7 +3,7 @@ extends Node2D
 
 # Private constants
 
-const __RESULT_TEXT = "%s won!"
+const __RESULT_TEXT = "%s\nwon!"
 
 # Public variables
 var god_data: GodData

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/amon_ra_portrait_paper.png-fdd20bf011aff1a73baf14fc81fac081.stex"
+path="res://.import/amon_ra_paper_statue.png-76bb80a3e10330642c01cdc4b4597e20.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/opponents/amon_ra_portrait_paper.png"
-dest_files=[ "res://.import/amon_ra_portrait_paper.png-fdd20bf011aff1a73baf14fc81fac081.stex" ]
+source_file="res://assets/sprites/opponents/amon_ra_paper_statue.png"
+dest_files=[ "res://.import/amon_ra_paper_statue.png-76bb80a3e10330642c01cdc4b4597e20.stex" ]
 
 [params]
 
