@@ -112,6 +112,7 @@ func __get_next_god() -> String:
 
 	if !zeus_active && !opponent_option_0 && !opponent_option_1:
 		zeus_active = true
+		Event.emit_signal("zeus")
 		return "zeus"
 
 	return ""

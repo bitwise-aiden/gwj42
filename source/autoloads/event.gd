@@ -6,3 +6,6 @@ signal add_shake(shake_amount)
 signal setting_changed(setting_details) # When a setting is changed, this is emitted!
 # This way I can have screen space shaders, etc, update on the fly!
 signal change_menu(menu_name)
+
+# Zeus has arrived!
+signal zeus()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://source/scenes/opponent_choice/opponent_choice.gd" type="Script" id=1]
 [ext_resource path="res://assets/backgrounds/opponent_choice_background.png" type="Texture" id=2]
@@ -21,10 +21,40 @@
 [ext_resource path="res://source/components/color_blind_options.tscn" type="PackedScene" id=19]
 [ext_resource path="res://source/scenes/opponent_choice/screen_won.gd" type="Script" id=20]
 [ext_resource path="res://assets/sprites/portrait_border.png" type="Texture" id=21]
+[ext_resource path="res://assets/sprites/lightning.png" type="Texture" id=22]
+[ext_resource path="res://source/scenes/opponent_choice/zeus_arrives.gd" type="Script" id=23]
 
-[sub_resource type="Environment" id=1]
-glow_enabled = true
-glow_bloom = 0.5
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("zeus_arrives/lightning:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "zeus_arrives"
+length = 3.0
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("zeus_arrives/lightning:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 1, 1.75, 3 ),
+"transitions": PoolRealArray( -0.5, -0.5, 2, -0.5, 0.5, 0.5 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.32549 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.0470588 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="opponent_choice" type="Control"]
 anchor_right = 1.0
@@ -1018,12 +1048,20 @@ rect_min_size = Vector2( 220, 50 )
 text = "PLAY AGAIN"
 
 [node name="screen_space" parent="." instance=ExtResource( 13 )]
-position = Vector2( 1, 17 )
+position = Vector2( 572, -385 )
 
-[node name="for_glow" type="WorldEnvironment" parent="."]
-environment = SubResource( 1 )
+[node name="zeus_arrives" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/zeus_arrives = SubResource( 1 )
+script = ExtResource( 23 )
+
+[node name="lightning" type="Sprite" parent="zeus_arrives"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 640, 360 )
+texture = ExtResource( 22 )
 
 [connection signal="pressed" from="opponent_one_spot/Popup/back_button" to="opponent_one_spot/Popup" method="_on_back_button_pressed"]
 [connection signal="pressed" from="opponent_one_spot/Popup/battle_button" to="opponent_one_spot/Popup" method="_on_battle_button_pressed"]
 [connection signal="pressed" from="opponent_two_spot/Popup/back_button" to="opponent_two_spot/Popup" method="_on_back_button_pressed"]
 [connection signal="pressed" from="opponent_two_spot/Popup/battle_button" to="opponent_two_spot/Popup" method="_on_battle_button_pressed"]
+[connection signal="animation_finished" from="zeus_arrives" to="zeus_arrives" method="_on_zeus_arrives_animation_finished"]

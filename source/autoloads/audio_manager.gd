@@ -94,6 +94,8 @@ func __play_effect(choice: String) -> void:
 	var new_player = effect_player.instance()
 	new_player.pitch_scale = rand_range(0.9, 1.1)
 	match choice:
+		"thunder":
+			new_player.audio_path = "res://assets/audio/effects/zeus/thunder.ogg"
 		"rune_thud":
 			var randChoice = randi() % 2
 			match randChoice:

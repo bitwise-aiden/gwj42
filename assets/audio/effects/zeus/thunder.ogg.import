@@ -11,5 +11,5 @@ dest_files=[ "res://.import/thunder.ogg-9b9d089901a8743e434e3f492c56a947.oggstr"
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
