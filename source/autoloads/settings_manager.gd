@@ -36,10 +36,19 @@ func _ready() -> void:
 
 	if FileManager.file_exists(self.SETTINGS_PATH):
 		self.__settings = FileManager.load_json(self.SETTINGS_PATH)
+		merge_settings(__settings, __settings_default)
 		Logger.info("Loading settings")
 	else:
 		FileManager.save_json(self.SETTINGS_PATH, self.__settings)
 		Logger.info("Creating settings")
+
+
+func merge_settings(a: Dictionary, b: Dictionary) -> void:
+	for key in b:
+		if !a.has(key) || typeof(a[key]) != typeof(b[key]):
+			a[key] = b[key]
+		elif b[key] is Dictionary:  # Lil'Oni should stop writing here and actually do some art stuff.... - Lil'Oni
+			merge_settings(a[key], b[key])
 
 
 # Public methods

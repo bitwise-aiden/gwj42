@@ -6,6 +6,7 @@ onready var popup = get_parent().get_node("Popup")
 
 var pick_particles = preload("res://source/scenes/game/pick_particles.tscn")
 var closed_statue = load("res://assets/sprites/opponents/statue_closed.png")
+var peek_statue = load("res://assets/sprites/opponents/statue_peek.png")
 var picture_statue
 var opponent_name
 var opponent_description
@@ -39,10 +40,10 @@ func _ready():
 	self.connect("mouse_exited", self, "__mouse_exited")
 	__button_back.connect("pressed", self, "__button_back_pressed")
 	__button_battle.connect("pressed", self, "__button_battle_pressed")
-	
-	particles = pick_particles.instance()
-	
-	self.call_deferred("add_child", particles)
+
+	if opponent_name != "":
+		particles = pick_particles.instance()
+		self.call_deferred("add_child", particles)
 
 
 func _init(var n = ""):
@@ -52,7 +53,7 @@ func _init(var n = ""):
 		opponent_description = GameState.god_data[n].description
 		picture_statue = load("res://assets/sprites/opponents/"+ opponent_name + "_statue.png")
 		set_hover_texture(picture_statue)
-		set_normal_texture(closed_statue)
+		set_normal_texture(peek_statue)
 	else:
 		set_hover_texture(closed_statue)
 		set_normal_texture(closed_statue)

@@ -22,3 +22,6 @@ func _ready() -> void:
 	__button_play.connect("button_down", AudioManager, "play_audio", [audio_dict])
 	__button_quit.connect("button_down", AudioManager, "play_audio", [audio_dict])
 	__button_tutorial.connect("button_down", AudioManager, "play_audio", [audio_dict])
+
+	if OS.has_feature("HTML5"):
+		__button_quit.queue_free()

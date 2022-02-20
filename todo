@@ -44,22 +44,25 @@
         - [x] Control sound
         - [x] Menu button
     - [x] Transition between scenes by the scroll rolling up, changing visibility of scene and unrolling. (Same goes for changing page of tutorial)
-- [ ] Add optional index to gods to signal when they should be shown, -1 for special (hades and zeus)
-- [ ] Add pause menu to opponent screen for returning to main menu
-- [ ] Add ability to reset the game when transitioning from main to opponent choice scene
 - [x] Flip portraits on opponent choice 2 
-- [ ] itch.io page
+- [x] itch.io page
     - [x] Try use CSS to make it a scroll that unravels on page load
-- [ ] Remove quit button when game is HTML
 - [x] Speech text needs to be darker
 - [x] Unroll scroll needs to be faster
 - [x] Ensure profile persists the game
-- [ ] Add game won scroll
-- [ ] Update volume sliders
 - [x] Add color blind options (PROTANOPIA, DEUTRANOPIA, TRITANOPIA)
-- [ ] Make settings page use tabs 
-- [ ] Add potrait border for gods 
+- [x] Add credits: https://godotshaders.com/shader/colorblindness-correction-shader/
+- [ ] itch banner
+- [ ] Add message to loading screen if it takes too long
+- [x] Remove quit button when game is HTML
 - [ ] Add half curtains
-
-
+- [x] Add error handling for out of date settings
+- [ ] Add optional index to gods to signal when they should be shown, -1 for special (hades and zeus)
+- [ ] Add pause menu to opponent screen for returning to main menu
+- [ ] Add game won scroll
+- [ ] Add potrait border for gods 
+- [ ] Fix menu mess
+    - [ ] Add ability to reset the game when transitioning from main to opponent choice scene
+- [ ] Update volume sliders graphics
+- [ ] Make settings page use tabs 
 
