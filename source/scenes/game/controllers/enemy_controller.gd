@@ -9,6 +9,7 @@ const __MATCH_MAPPING: Dictionary = {
 	Card.Types.STONE: [Card.Types.PARCHMENT, Card.Types.STONE, Card.Types.SHEARS]
 }
 
+
 # Lifecycle methods
 
 func _init(
@@ -72,22 +73,74 @@ func __pick_rune_easy(opponent: PlayerState) -> void:
 
 
 func __generate_options(opponent: PlayerState) -> void:
-#	var opponent_options: Array = []
-#
-#	for plinth in opponent.plinths:
-#		if plinth == null:
-#			opponent_options.append(opponent.hand)
-#		else:
-#			opponent_options.append(plinth)
 	var state: PlayerState = PlayerState.new(_health, _plinths, _hand)
-	var opponent_options: Dictionary = {}
 
-	var null_index: int = opponent.plinths.has(null)
-	if null_index == -1:
-		opponent_options[opponent.plinths] = null
-	else:
-		for type in opponent.hand:
-			var plinths: Array = opponent.plinths.duplicate()
-			plinths[null_index] = type
+	var options: Array = __generate(state.hand, state.plinths)
+	var opponent_options: Array = __generate(opponent.hand, opponent.plinths)
 
-			opponent_options[plinths] = null
+	var potential_results: Dictionary = {
+		-1: [],
+		+0: [],
+		+1: []
+	}
+
+	for opponent_option in opponent_options:
+		for option in options:
+			var score: int = __score(option, opponent_option)
+			potential_results[score].append(option)
+
+
+	var option: Array = []
+
+	while option.empty():
+		pass
+		match 1:
+			1:
+				pass # find option with 100% lose chance
+			2:
+				pass # find option with 100% not win chance
+			3:
+				pass # find option with 100% draw chance
+			4:
+				pass # find option with potential win chance
+			5:
+				pass # find option with 100% win chance
+
+
+func __generate(cards: Array, plinths: Array) -> Array:
+	if !plinths.has(null):
+		return [plinths]
+
+	var options: Dictionary = {}
+
+	for i in plinths.size():
+		if plinths[i] == null:
+			for card in cards:
+				var plinths_copy: Array = plinths.duplicate()
+				plinths_copy[i] = card
+
+				if plinths_copy.has(null):
+					var cards_copy: Array = cards.duplicate()
+					var card_index: int = cards_copy.find(card)
+					cards_copy.remove(card_index)
+
+					for option in __generate(cards_copy, plinths_copy):
+						options[option] = null
+				elif !options.has(plinths_copy):
+					options[plinths_copy] = null
+
+	return options.keys()
+
+
+func __score(a: Array, b: Array) -> int:
+	var result: int = 0
+
+	for i in a.size():
+		match [a[i], b[i]]:
+			[0, 1], [1, 2], [2, 0]:
+				result -= 1
+
+			[1, 0], [2, 1], [0, 2]:
+				result += 1
+
+	return int(sign(float(result)))
