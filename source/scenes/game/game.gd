@@ -90,7 +90,7 @@ func _ready() -> void:
 	__button_pause_continue.connect("pressed", self, "__pause", [false])
 	__button_pause_restart.connect("pressed", SceneManager, "load_scene", ["game"])
 	__button_pause_menu.connect("pressed", SceneManager, "load_scene", ["opponent_choice"])
-	
+
 	var audio_dict = {"bus": "effect", "choice": "menu_select", "loop": false}
 	__button_menu.connect("button_down", AudioManager, "play_audio", [audio_dict])
 	__button_next.connect("button_down", AudioManager, "play_audio", [audio_dict])

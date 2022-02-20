@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://source/scenes/opponent_choice/opponent_choice.gd" type="Script" id=1]
 [ext_resource path="res://assets/backgrounds/opponent_choice_background.png" type="Texture" id=2]
@@ -13,6 +13,11 @@
 [ext_resource path="res://source/scenes/opponent_choice/screen_options.gd" type="Script" id=11]
 [ext_resource path="res://assets/themes/game.theme" type="Theme" id=12]
 [ext_resource path="res://source/helpers/screen_space.tscn" type="PackedScene" id=13]
+[ext_resource path="res://source/scenes/opponent_choice/screen_tutorial.gd" type="Script" id=14]
+[ext_resource path="res://assets/sprites/rune-shears.png" type="Texture" id=15]
+[ext_resource path="res://assets/sprites/rune-stone.png" type="Texture" id=16]
+[ext_resource path="res://assets/sprites/action_arrow.png" type="Texture" id=17]
+[ext_resource path="res://assets/sprites/rune-parchment.png" type="Texture" id=18]
 
 [node name="opponent_choice" type="Control"]
 anchor_right = 1.0
@@ -426,45 +431,391 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -90.0
-margin_top = -1.5
-margin_right = 90.0
-margin_bottom = 202.5
+margin_left = -100.0
+margin_top = -37.0
+margin_right = 100.0
+margin_bottom = 203.0
+custom_constants/separation = 10
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="button_play" type="Button" parent="scroll/content/screen_title/buttons"]
-margin_right = 180.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 0, 40 )
+margin_top = 15.0
+margin_right = 200.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 200, 45 )
 text = "PLAY"
 
 [node name="button_tutorial" type="Button" parent="scroll/content/screen_title/buttons"]
-margin_top = 44.0
-margin_right = 180.0
-margin_bottom = 84.0
-rect_min_size = Vector2( 0, 40 )
+margin_top = 70.0
+margin_right = 200.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 200, 45 )
 text = "TUTORIAL"
 
 [node name="button_options" type="Button" parent="scroll/content/screen_title/buttons"]
-margin_top = 88.0
-margin_right = 180.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 0, 40 )
+margin_top = 125.0
+margin_right = 200.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 200, 45 )
 text = "OPTIONS"
 
 [node name="button_quit" type="Button" parent="scroll/content/screen_title/buttons"]
-margin_top = 132.0
-margin_right = 180.0
-margin_bottom = 172.0
-rect_min_size = Vector2( 0, 40 )
+margin_top = 180.0
+margin_right = 200.0
+margin_bottom = 225.0
+rect_min_size = Vector2( 200, 45 )
 text = "QUIT"
 
 [node name="screen_tutorial" type="Control" parent="scroll/content"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 14 )
+
+[node name="button_next" type="Button" parent="scroll/content/screen_tutorial"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -130.0
+margin_top = -50.0
+margin_right = -10.0
+margin_bottom = -10.0
+text = "NEXT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button_back" type="Button" parent="scroll/content/screen_tutorial"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -50.0
+margin_right = 130.0
+margin_bottom = -10.0
+text = "BACK"
+
+[node name="button_skip" type="Button" parent="scroll/content/screen_tutorial"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -130.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = 50.0
+text = "SKIP"
+
+[node name="pages" type="Control" parent="scroll/content/screen_tutorial"]
+pause_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="page_0" type="Control" parent="scroll/content/screen_tutorial/pages"]
+pause_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="scroll/content/screen_tutorial/pages/page_0"]
+pause_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -84.5
+margin_right = 200.0
+margin_bottom = 84.5
+mouse_filter = 2
+bbcode_enabled = true
+bbcode_text = "[center]TAKE PART IN THE ULTIMATE BATTLE OF THE GODS TO HELP DETERMINE THE ONE TRUE GOD OF GAMING!"
+text = "TAKE PART IN THE ULTIMATE BATTLE OF THE GODS TO HELP DETERMINE THE ONE TRUE GOD OF GAMING!"
+
+[node name="page_1" type="Control" parent="scroll/content/screen_tutorial/pages"]
+pause_mode = 1
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="scroll/content/screen_tutorial/pages/page_1"]
+pause_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -101.5
+margin_right = 200.0
+margin_bottom = 101.5
+mouse_filter = 2
+bbcode_enabled = true
+bbcode_text = "[center]TO BE DECLARED THE VICTOR, YOU MUST DEFEATE A NUMBER OF ANCIENT GODS FROM ACROSS THE MYTHOSPHERE."
+text = "TO BE DECLARED THE VICTOR, YOU MUST DEFEATE A NUMBER OF ANCIENT GODS FROM ACROSS THE MYTHOSPHERE."
+
+[node name="page_2" type="Control" parent="scroll/content/screen_tutorial/pages"]
+pause_mode = 1
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="scroll/content/screen_tutorial/pages/page_2"]
+pause_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -155.5
+margin_right = 200.0
+margin_bottom = 47.5
+mouse_filter = 2
+bbcode_enabled = true
+bbcode_text = "[center]EACH COMPETITOR WILL HAVE A DECK OF 9 STONES COMPRISING OF THE FOLLIWNG RUNES."
+text = "EACH COMPETITOR WILL HAVE A DECK OF 9 STONES COMPRISING OF THE FOLLIWNG RUNES."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rune-stone" type="Sprite" parent="scroll/content/screen_tutorial/pages/page_2"]
+position = Vector2( 330, 334 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 16 )
+
+[node name="Rune-stone2" type="Sprite" parent="scroll/content/screen_tutorial/pages/page_2"]
+position = Vector2( 330, 320 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 16 )
+
+[node name="Rune-stone3" type="Sprite" parent="scroll/content/screen_tutorial/pages/page_2"]
+position = Vector2( 332, 307 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 16 )
+
+[node name="Rune-shears" type="Sprite" parent="scroll/content/screen_tutorial/pages/page_2"]
+position = Vector2( 221, 334 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 15 )
+
+[node name="Rune-shears2" type="Sprite" parent="scroll/content/screen_tutorial/pages/page_2"]
+position = Vector2( 222, 322 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 15 )
+
+[node name="Rune-shears3" type="Sprite" parent="scroll/content/screen_tutorial/pages/page_2"]
+position = Vector2( 222, 306 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 15 )
+
+[node name="Rune-parchment" type="Sprite" parent="scroll/content/screen_tutorial/pages/page_2"]
+position = Vector2( 117, 336 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 18 )
+
+[node name="Rune-parchment2" type="Sprite" parent="scroll/content/screen_tutorial/pages/page_2"]
+position = Vector2( 118, 323 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 18 )
+
+[node name="Rune-parchment3" type="Sprite" parent="scroll/content/screen_tutorial/pages/page_2"]
+position = Vector2( 120, 310 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 18 )
+
+[node name="page_3" type="Control" parent="scroll/content/screen_tutorial/pages"]
+pause_mode = 1
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="scroll/content/screen_tutorial/pages/page_3"]
+pause_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -121.0
+margin_right = 200.0
+margin_bottom = 121.0
+mouse_filter = 2
+bbcode_enabled = true
+bbcode_text = "[center]THERE ARE SOME TRICKY GODS THAT HAVE CHANGED UP THEIR DECK OF RUNES, SO KEEP AN EYE OUT FOR THEIR MASTER STRATEGY."
+text = "THERE ARE SOME TRICKY GODS THAT HAVE CHANGED UP THEIR DECK OF RUNES, SO KEEP AN EYE OUT FOR THEIR MASTER STRATEGY."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="page_4" type="Control" parent="scroll/content/screen_tutorial/pages"]
+pause_mode = 1
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="scroll/content/screen_tutorial/pages/page_4"]
+pause_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -121.0
+margin_right = 200.0
+margin_bottom = 121.0
+mouse_filter = 2
+bbcode_enabled = true
+bbcode_text = "[center]DURING A BATTLE YOU MUST MOVE YOUR RUNES ONTO YOUR TWO PLINTHS. ONCE ALL ARE FILLED, THEY WILL BE FLIPPED AND THE BATTLE BEGINS."
+text = "DURING A BATTLE YOU MUST MOVE YOUR RUNES ONTO YOUR TWO PLINTHS. ONCE ALL ARE FILLED, THEY WILL BE FLIPPED AND THE BATTLE BEGINS."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="page_5" type="Control" parent="scroll/content/screen_tutorial/pages"]
+pause_mode = 1
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="scroll/content/screen_tutorial/pages/page_5"]
+pause_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -197.5
+margin_top = 19.5
+margin_right = 202.5
+margin_bottom = 162.5
+mouse_filter = 2
+bbcode_enabled = true
+bbcode_text = "[center]RUNES WILL BATTLE BASED ON THE PLINTH DIRECTLY IN FRONT OF THEM."
+text = "RUNES WILL BATTLE BASED ON THE PLINTH DIRECTLY IN FRONT OF THEM."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rune-stone" type="Sprite" parent="scroll/content/screen_tutorial/pages/page_5"]
+position = Vector2( 140, 171 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 16 )
+
+[node name="Rune-shears" type="Sprite" parent="scroll/content/screen_tutorial/pages/page_5"]
+position = Vector2( 306, 167 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 15 )
+
+[node name="Rune-parchment" type="Sprite" parent="scroll/content/screen_tutorial/pages/page_5"]
+position = Vector2( 222, 74 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 18 )
+
+[node name="ActionArrow" type="Sprite" parent="scroll/content/screen_tutorial/pages/page_5"]
+position = Vector2( 154, 109 )
+texture = ExtResource( 17 )
+
+[node name="ActionArrow2" type="Sprite" parent="scroll/content/screen_tutorial/pages/page_5"]
+position = Vector2( 291, 111 )
+rotation = 1.58526
+texture = ExtResource( 17 )
+
+[node name="ActionArrow3" type="Sprite" parent="scroll/content/screen_tutorial/pages/page_5"]
+position = Vector2( 220, 214 )
+rotation = 3.89722
+texture = ExtResource( 17 )
+
+[node name="page_6" type="Control" parent="scroll/content/screen_tutorial/pages"]
+pause_mode = 1
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="scroll/content/screen_tutorial/pages/page_6"]
+pause_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -138.0
+margin_right = 200.0
+margin_bottom = 138.0
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 7 )
+bbcode_enabled = true
+bbcode_text = "[center]GET YOUR OPPONENT'S HP TO 0 TO WIN!
+
+SCORING IS THE SUM OF BOTH BATTLES:
+2 WINS IS 2 DAMAGE
+
+1 WIN AND 1 DRAW IS 1 DAMAGE
+
+1 WIN 1 LOSS NO DAMAGE
+
+2 DRAWS NO DAMAGE
+"
+text = "GET YOUR OPPONENT'S HP TO 0 TO WIN!
+
+SCORING IS THE SUM OF BOTH BATTLES:
+2 WINS IS 2 DAMAGE
+
+1 WIN AND 1 DRAW IS 1 DAMAGE
+
+1 WIN 1 LOSS NO DAMAGE
+
+2 DRAWS NO DAMAGE
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="page_7" type="Control" parent="scroll/content/screen_tutorial/pages"]
+pause_mode = 1
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="scroll/content/screen_tutorial/pages/page_7"]
+pause_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -83.0
+margin_right = 200.0
+margin_bottom = 83.0
+mouse_filter = 2
+bbcode_enabled = true
+bbcode_text = "[center]GOOD LUCK ON YOUR CONQUEST.
+
+MAY YOU BE DECLARED THE GOD OF GAMING!"
+text = "GOOD LUCK ON YOUR CONQUEST.
+
+MAY YOU BE DECLARED THE GOD OF GAMING!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="screen_options" type="Control" parent="scroll/content"]
 visible = false
