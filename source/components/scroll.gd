@@ -13,6 +13,8 @@ onready var __content: Control = $content
 onready var __start_position_y: float = __scroll_bottom.rect_position.y
 onready var __start_size_y: float = __scroll_body.rect_size.y
 
+onready var __audio_dict: Dictionary = {"bus": "effect", "choice": "paper", "loop": false}
+
 var __tween: Tween = Tween.new()
 
 
@@ -56,7 +58,7 @@ func roll(duration: float = 0.5) -> void:
 	)
 
 	__tween.start()
-
+	Event.emit_signal("emit_audio", __audio_dict)
 	yield(__tween,"tween_all_completed")
 
 	__prevent_mouse.visible = false
@@ -93,6 +95,7 @@ func unroll(duration: float = 0.5) -> void:
 		0.2
 	)
 
+	Event.emit_signal("emit_audio", __audio_dict)
 	__tween.start()
 
 	yield(__tween,"tween_all_completed")
