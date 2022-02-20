@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/chicomecoatl.ogg-e1b027a71509d4c1ad30c95c018918d6.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/effects/god_voice/chicomecoatl.ogg"
+dest_files=[ "res://.import/chicomecoatl.ogg-e1b027a71509d4c1ad30c95c018918d6.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
