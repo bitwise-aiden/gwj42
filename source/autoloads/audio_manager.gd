@@ -137,26 +137,25 @@ func __play_effect(choice: String) -> void:
 					new_player.audio_path = "res://assets/audio/effects/paper/2.ogg"
 				2:
 					new_player.audio_path = "res://assets/audio/effects/paper/3.ogg"
+	
+	self.add_child(new_player)
+
+func __play_voice(choice: String) -> void:
+	var new_player = effect_player.instance()
+	new_player.pitch_scale = rand_range(0.85, 1.15)
+	match choice:
 		"zeus":
-			new_player.pitch_scale = rand_range(0.85, 1.15)
 			new_player.audio_path = "res://assets/audio/effects/god_voice/zeus.ogg"
 		"amon_ra":
 			new_player.pitch_scale = rand_range(0.55, 0.85)
 			new_player.audio_path = "res://assets/audio/effects/god_voice/amon_ra.ogg"
 		"chicomecoatl":
-			new_player.pitch_scale = rand_range(0.85, 1.15)
 			new_player.audio_path = "res://assets/audio/effects/god_voice/chicomecoatl.ogg"
 		"gaia":
-			new_player.pitch_scale = rand_range(0.85, 1.15)
 			new_player.audio_path = "res://assets/audio/effects/god_voice/Gaia.ogg"
 		"poseidon":
-			new_player.pitch_scale = rand_range(0.85, 1.15)
 			new_player.audio_path = "res://assets/audio/effects/god_voice/poseidon.ogg"
 		"dionysus":
-			new_player.pitch_scale = rand_range(0.85, 1.15)
 			new_player.audio_path = "res://assets/audio/effects/god_voice/dionysus.ogg"
 		"hades":
-			new_player.pitch_scale = rand_range(0.85, 1.15)
 			new_player.audio_path = "res://assets/audio/effects/god_voice/hades.ogg"
-	
-	self.add_child(new_player)
