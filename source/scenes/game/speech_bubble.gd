@@ -66,7 +66,7 @@ func __show_text(percentage: float) -> void:
 	rect_size.y = __text_speech.rect_size.y + __PADDING
 
 func __get_god_data() -> void:
-	__audio_dict = {"bus": "effect", "choice":__game_node.god_data.name, "loop": false}
+	__audio_dict = {"bus": "voice", "choice":__game_node.god_data.name, "loop": false}
 
 func __speak() -> void:
 	__is_speaking = true

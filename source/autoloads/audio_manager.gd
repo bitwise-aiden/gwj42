@@ -2,6 +2,7 @@ extends Node
 
 var effect_player = preload("res://source/helpers/soundEffectPlayer.tscn")
 var music_player = preload("res://source/helpers/musicPlayer.tscn")
+var voice_player = preload("res://source/helpers/voicePlayer.tscn")
 
 var active_music_players : Array = []
 
@@ -58,6 +59,8 @@ func play_audio(options: Dictionary) -> void:
 		__play_music(choice, loop)
 	elif bus == "effect":
 		__play_effect(choice)
+	elif bus == "voice":
+		__play_voice(choice)
 	else:
 		__play_effect("error")
 
@@ -141,7 +144,7 @@ func __play_effect(choice: String) -> void:
 	self.add_child(new_player)
 
 func __play_voice(choice: String) -> void:
-	var new_player = effect_player.instance()
+	var new_player = voice_player.instance()
 	new_player.pitch_scale = rand_range(0.85, 1.15)
 	match choice:
 		"zeus":
@@ -165,3 +168,4 @@ func __play_voice(choice: String) -> void:
 			new_player.audio_path = "res://assets/audio/effects/god_voice/dionysus.ogg"
 		"hades":
 			new_player.audio_path = "res://assets/audio/effects/god_voice/hades.ogg"
+	self.add_child(new_player)

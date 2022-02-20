@@ -21,6 +21,7 @@ shader_type canvas_item;
 uniform int mode : hint_range(0, 3) = 0;
 
 uniform float intensity : hint_range(0.0, 1.0) = 1.0;
+uniform bool lightning = false;
 
 void fragment()
 {
@@ -65,8 +66,11 @@ void fragment()
 	correction = tex + correction;
 	correction.a = tex.a * intensity;
 	
-	
-	if (mode == 0) // Correction off 
+	if (lightning == true) {
+		vec4 color = tex - vec4(sin(TIME * 3.14159265));
+		COLOR = color;
+	}
+	else if (mode == 0) // Correction off 
 	{
 		COLOR = tex;
 	} else 
