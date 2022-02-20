@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/materials/screen_space_shader.tres" type="Material" id=1]
+[ext_resource path="res://source/helpers/screen_space.gd" type="Script" id=2]
+
+[node name="screen_space" type="Node2D"]
+z_index = 4096
+script = ExtResource( 2 )
+
+[node name="ss_shaders" type="ColorRect" parent="."]
+material = ExtResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1280.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 1280, 720 )
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

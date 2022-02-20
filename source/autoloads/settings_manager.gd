@@ -4,6 +4,7 @@ extends Node
 signal setting_changed(name, value)
 
 const SETTINGS_PATH = "settings.json"
+enum COLORBLIND_SETTINGS {NONE, PROTANOPIA, DEUTRANOPIA, TRITANOPIA}
 
 var __settings: Dictionary = {}
 var __settings_default: Dictionary = {
@@ -18,7 +19,10 @@ var __settings_default: Dictionary = {
 		"Fullscreen": false
 	},
 	"gameplay":{
-		"Colorblind Shader": [],
+		"Colorblind Shader": {
+			"Type": 0,
+			"Intensity": 1.0
+			},
 		"CRT Shader": true,
 		"Shake Intensity": 1.0
 	}
@@ -87,6 +91,7 @@ func __setting_changed(name: String, value) -> void:
 	var setting_name: String = path[path.size() - 1]
 	if location.has(setting_name):
 		location[setting_name] = value
+		Event.emit_signal("setting_changed", [name, value])
 	else:
 		Logger.warn("Could not update setting '%s'" % name)
 		return

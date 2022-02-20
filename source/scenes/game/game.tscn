@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://source/scenes/game/plinth.tscn" type="PackedScene" id=1]
 [ext_resource path="res://source/scenes/game/hand.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://assets/backgrounds/game_background.png" type="Texture" id=15]
 [ext_resource path="res://source/components/scroll.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/themes/game.theme" type="Theme" id=17]
+[ext_resource path="res://source/helpers/screen_space.tscn" type="PackedScene" id=18]
 
 [node name="game" type="Node2D"]
 script = ExtResource( 5 )
@@ -387,3 +388,5 @@ grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 200, 40 )
 text = "MENU"
+
+[node name="screen_space" parent="." instance=ExtResource( 18 )]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://source/scenes/opponent_choice/opponent_choice.gd" type="Script" id=1]
 [ext_resource path="res://assets/backgrounds/opponent_choice_background.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://source/scenes/opponent_choice/screen_title.gd" type="Script" id=10]
 [ext_resource path="res://source/scenes/opponent_choice/screen_options.gd" type="Script" id=11]
 [ext_resource path="res://assets/themes/game.theme" type="Theme" id=12]
+[ext_resource path="res://source/helpers/screen_space.tscn" type="PackedScene" id=13]
 
 [node name="opponent_choice" type="Control"]
 anchor_right = 1.0
@@ -579,6 +580,8 @@ margin_right = 250.0
 margin_bottom = 112.0
 display_name = "PARTICLES"
 setting_name = "graphics/Particles"
+
+[node name="screen_space" parent="." instance=ExtResource( 13 )]
 
 [connection signal="pressed" from="opponent_one_spot/Popup/back_button" to="opponent_one_spot/Popup" method="_on_back_button_pressed"]
 [connection signal="pressed" from="opponent_one_spot/Popup/battle_button" to="opponent_one_spot/Popup" method="_on_battle_button_pressed"]
