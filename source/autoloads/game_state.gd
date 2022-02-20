@@ -111,7 +111,7 @@ func __get_next_god() -> String:
 	if !opponents_amon.empty():
 		return opponents_amon.pop_front()
 
-	if opponents_current.empty() && opponents_amon.empty():
+	if !zeus_active && !opponent_option_0 && !opponent_option_1:
 		zeus_active = true
 		return "zeus"
 

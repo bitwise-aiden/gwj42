@@ -14,6 +14,7 @@ onready var __scroll: Scroll = $scroll
 onready var __screen_title: Control = $scroll/scroll_body/content/screen_title
 onready var __screen_tutorial: Control = $scroll/scroll_body/content/screen_tutorial
 onready var __screen_options: Control = $scroll/scroll_body/content/screen_options
+onready var __screen_won: Control = $scroll/scroll_body/content/screen_won
 
 onready var __scroll_position_y: float = __scroll.position.y
 
@@ -72,6 +73,9 @@ func add_opponents():
 	__opponent_button_2 = opponent_button.new(GameState.opponent_option_1)
 	opponent_two_spot.add_child(__opponent_button_2)
 
+	if GameState.zeus_active && __opponent_button_1.opponent_name == "" && __opponent_button_2.opponent_name == "":
+		pass
+
 
 # Private methods
 
@@ -112,5 +116,6 @@ func __change_menu(menu_name: String) -> void:
 			__screen_title.visible = menu_name == "main"
 			__screen_tutorial.visible = menu_name == "tutorial"
 			__screen_options.visible = menu_name == "options"
+			__screen_won.visible = menu_name == "won"
 
 			yield(__scroll.unroll(), "completed")
