@@ -866,48 +866,47 @@ __meta__ = {
 
 [node name="screen_options" type="Control" parent="scroll/content"]
 visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="button_back" type="Button" parent="scroll/content/screen_options"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+[node name="TabContainer" type="TabContainer" parent="scroll/content/screen_options"]
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 320.0
-margin_top = -2.0
-margin_right = 411.0
-margin_bottom = 46.0
-text = "Back"
-
-[node name="settings" type="VBoxContainer" parent="scroll/content/screen_options"]
-margin_left = 59.0
-margin_top = 10.0
-margin_right = 383.0
-margin_bottom = 472.0
-custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="volumes" type="VBoxContainer" parent="scroll/content/screen_options/settings"]
-margin_right = 324.0
-margin_bottom = 204.0
+[node name="Audio" type="Tabs" parent="scroll/content/screen_options/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 53.0
+
+[node name="volumes" type="VBoxContainer" parent="scroll/content/screen_options/TabContainer/Audio"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -162.0
+margin_top = -132.0
+margin_right = 162.0
+margin_bottom = 72.0
 custom_constants/separation = 30
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="label_volume" type="Label" parent="scroll/content/screen_options/settings/volumes"]
+[node name="label_volume" type="Label" parent="scroll/content/screen_options/TabContainer/Audio/volumes"]
 margin_right = 324.0
 margin_bottom = 20.0
 custom_fonts/font = ExtResource( 7 )
 text = "VOLUME"
 align = 1
 
-[node name="slider_master" parent="scroll/content/screen_options/settings/volumes" instance=ExtResource( 6 )]
+[node name="slider_master" parent="scroll/content/screen_options/TabContainer/Audio/volumes" instance=ExtResource( 6 )]
 margin_left = 0.0
 margin_top = 50.0
 margin_right = 324.0
@@ -915,7 +914,7 @@ margin_bottom = 66.0
 display_name = "MASTER"
 controlled_bus = "Master"
 
-[node name="slider_music" parent="scroll/content/screen_options/settings/volumes" instance=ExtResource( 6 )]
+[node name="slider_music" parent="scroll/content/screen_options/TabContainer/Audio/volumes" instance=ExtResource( 6 )]
 margin_left = 0.0
 margin_top = 96.0
 margin_right = 324.0
@@ -923,7 +922,7 @@ margin_bottom = 112.0
 display_name = "MUSIC"
 controlled_bus = "Music"
 
-[node name="slider_sound_effects" parent="scroll/content/screen_options/settings/volumes" instance=ExtResource( 6 )]
+[node name="slider_sound_effects" parent="scroll/content/screen_options/TabContainer/Audio/volumes" instance=ExtResource( 6 )]
 margin_left = 0.0
 margin_top = 142.0
 margin_right = 324.0
@@ -931,7 +930,7 @@ margin_bottom = 158.0
 display_name = "SOUND EFFECTS"
 controlled_bus = "Sound Effects"
 
-[node name="slider_sound_voices" parent="scroll/content/screen_options/settings/volumes" instance=ExtResource( 6 )]
+[node name="slider_sound_voices" parent="scroll/content/screen_options/TabContainer/Audio/volumes" instance=ExtResource( 6 )]
 margin_left = 0.0
 margin_top = 188.0
 margin_right = 324.0
@@ -939,50 +938,78 @@ margin_bottom = 204.0
 display_name = "VOICES"
 controlled_bus = "Voices"
 
-[node name="gameplay" type="VBoxContainer" parent="scroll/content/screen_options/settings"]
-margin_top = 224.0
-margin_right = 324.0
-margin_bottom = 462.0
-custom_constants/separation = 30
+[node name="Gameplay" type="Tabs" parent="scroll/content/screen_options/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 50.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="gameplay" type="VBoxContainer" parent="scroll/content/screen_options/TabContainer/Gameplay"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -162.0
+margin_top = -147.5
+margin_right = 162.0
+margin_bottom = 90.5
+custom_constants/separation = 35
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="label_gameplay" type="Label" parent="scroll/content/screen_options/settings/gameplay"]
+[node name="label_gameplay" type="Label" parent="scroll/content/screen_options/TabContainer/Gameplay/gameplay"]
 margin_right = 324.0
 margin_bottom = 20.0
 custom_fonts/font = ExtResource( 7 )
 text = "VISUALS"
 align = 1
 
-[node name="slider_shake_intensity" parent="scroll/content/screen_options/settings/gameplay" instance=ExtResource( 8 )]
+[node name="slider_shake_intensity" parent="scroll/content/screen_options/TabContainer/Gameplay/gameplay" instance=ExtResource( 8 )]
 margin_left = 0.0
-margin_top = 50.0
+margin_top = 55.0
 margin_right = 324.0
-margin_bottom = 66.0
+margin_bottom = 71.0
 display_name = "SCREEN SHAKE"
 setting_name = "gameplay/Shake Intensity"
 
-[node name="slider_particles" parent="scroll/content/screen_options/settings/gameplay" instance=ExtResource( 8 )]
+[node name="slider_particles" parent="scroll/content/screen_options/TabContainer/Gameplay/gameplay" instance=ExtResource( 8 )]
 margin_left = 0.0
-margin_top = 96.0
+margin_top = 106.0
 margin_right = 324.0
-margin_bottom = 112.0
+margin_bottom = 122.0
 display_name = "PARTICLES"
 setting_name = "graphics/Particles"
 
-[node name="color_blind_options" parent="scroll/content/screen_options/settings/gameplay" instance=ExtResource( 19 )]
-margin_top = 142.0
+[node name="color_blind_options" parent="scroll/content/screen_options/TabContainer/Gameplay/gameplay" instance=ExtResource( 19 )]
+margin_top = 157.0
 margin_right = 324.0
-margin_bottom = 192.0
+margin_bottom = 207.0
 
-[node name="slider_color_intensity" parent="scroll/content/screen_options/settings/gameplay" instance=ExtResource( 8 )]
+[node name="slider_color_intensity" parent="scroll/content/screen_options/TabContainer/Gameplay/gameplay" instance=ExtResource( 8 )]
 margin_left = 0.0
-margin_top = 222.0
+margin_top = 242.0
 margin_right = 324.0
-margin_bottom = 238.0
-display_name = "INTENSITY"
+margin_bottom = 258.0
+display_name = "CORRECTION INTENSITY"
 setting_name = "gameplay/Colorblind Shader/Intensity"
+
+[node name="button_back" type="Button" parent="scroll/content/screen_options"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -45.5
+margin_top = -68.0
+margin_right = 45.5
+margin_bottom = -20.0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="screen_won" type="Control" parent="scroll/content"]
 visible = false
